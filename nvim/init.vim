@@ -1,22 +1,20 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'mxw/vim-jsx'                  " JSX highlighting, for react CONFIRMED
-Plug 'pangloss/vim-javascript'      " JS syntax and indentation CONFIRMED
+Plug 'mxw/vim-jsx'                  " JSX highlighting, for react
+Plug 'pangloss/vim-javascript'      " JS syntax and indentation
 Plug 'kien/ctrlp.vim'               " CtrlP fuzzy file finder
 Plug 'airblade/vim-gitgutter'       " Show git line status in the gutter
 Plug 'tpope/vim-fugitive'           " git plugin for git stuff
-Plug 'tpope/vim-rhubarb'            " more git stuff I guess
+Plug 'tpope/vim-rhubarb'            " More git stuff
 Plug 'Yggdroot/indentLine'          " Indent line guides
-Plug 'mg979/vim-visual-multi'
+Plug 'mg979/vim-visual-multi'       " Multiple cursors
 Plug 'tmhedberg/SimpylFold'         " Python folding
 Plug 'vim-scripts/indentpython.vim' " Python indentation
-Plug 'majutsushi/tagbar'            " Tagbar for file structure overview
 Plug 'vim-airline/vim-airline'      " Powerline
 Plug 'jparise/vim-graphql'          " Graphql syntax highlighting
-Plug 'psf/black'                   " Python code formatter
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'morhetz/gruvbox'  " Theme
-Plug 'elzr/vim-json'
+Plug 'morhetz/gruvbox'              " Theme
+Plug 'elzr/vim-json'                " JSON highlighting
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 call plug#end()
