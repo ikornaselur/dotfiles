@@ -40,8 +40,6 @@ endif
 
 let mapleader=","
 
-let g:python3_host_prog ='/usr/local/opt/pyenv/versions/3.8.0/bin/python'
-
 " Search highlight
 set hlsearch
 
