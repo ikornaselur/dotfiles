@@ -18,7 +18,7 @@ VERSIONS="${VERSION37} ${VERSION38} ${VERSION27} ${VERSION36} ${VERSION35}"
 
 echo -e "${GREEN}[+] Will install ${VERSIONS}${NC}"
 echo -ne "${ORANGE}"
-read -p "[?] Are you sure? (y/n) " -n 1 -r
+read -p "[?] Are you sure? (y/N) " -n 1 -r
 echo -e "${NC}"
 
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -35,8 +35,25 @@ then
   pyenv install ${VERSION38}
   echo -e "${GREEN}[+] Setting global versions to ${VERSIONS}...${NC}"
   pyenv global ${VERSIONS}
-  echo -e "${GREEN}[+] Installing global requirements...${NC}"
-  pip install -r ./global-requirements.txt
+
+  echo -e "${GREEN}[+] Installing base pip requirements...${NC}"
+  pip install \
+    pipx \
+    poetry \  # poetry globally detects all installed versions
+    pynvim
+
+  echo -e "${GREEN}[+] Installing tools with pipx...${NC}"
+  pipx install -f isort
+  pipx install -f flake8
+  pipx install -f black
+  pipx install -f mypy
+  pipx install -f monkeytype
+  pipx install -f pgcli
+  pipx install -f awscli
+  pipx install -f ipython
+  pipx install -f kyber-k8s==0.8.0rc1
+
+  echo -e "${GREEN}[+] All done!${NC}"
 else
   echo -e "${RED}[-] Aborting...${NC}"
 fi
