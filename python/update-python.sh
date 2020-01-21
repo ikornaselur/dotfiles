@@ -14,7 +14,7 @@ VERSION36=`pyenv install --list | grep -E "^\s+3.6.\d+$" | tail -1 | tr -d '[:sp
 VERSION37=`pyenv install --list | grep -E "^\s+3.7.\d+$" | tail -1 | tr -d '[:space:]'`
 VERSION38=`pyenv install --list | grep -E "^\s+3.8.\d+$" | tail -1 | tr -d '[:space:]'`
 
-VERSIONS="${VERSION37} ${VERSION38} ${VERSION27} ${VERSION36} ${VERSION35}"
+VERSIONS="${VERSION38} ${VERSION37} ${VERSION27} ${VERSION36} ${VERSION35}"
 
 echo -e "${GREEN}[+] Will install ${VERSIONS}${NC}"
 echo -ne "${ORANGE}"
@@ -39,7 +39,7 @@ then
   echo -e "${GREEN}[+] Installing base pip requirements...${NC}"
   pip install \
     pipx \
-    poetry \  # poetry globally detects all installed versions
+    poetry \
     pynvim
 
   echo -e "${GREEN}[+] Installing tools with pipx...${NC}"
