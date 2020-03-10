@@ -51,7 +51,7 @@ then
   pipx install -f pgcli
   pipx install -f awscli
   pipx install -f ipython
-  pipx install -f kyber-k8s==0.8.0rc1
+  pipx install -f kyber-k8s==0.8.0rc2
 
   echo -e "${GREEN}[+] All done!${NC}"
 else
