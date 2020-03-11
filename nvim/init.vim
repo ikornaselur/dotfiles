@@ -16,6 +16,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'              " Theme
 Plug 'elzr/vim-json'                " JSON highlighting
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -108,12 +109,17 @@ nmap <C-d> :GitGutterPreviewHunk<CR>
 " Functions
 """"""""""""""""""""""""""""""""""
 map <Leader>x :call InsertLine()<CR>
+map <Leader>l :call RevealLocals()<CR>
 
 autocmd FileType javascript let breakpoint_string=expand("debugger;")
 autocmd FileType python     let breakpoint_string=expand("breakpoint()  # noqa: E702 XXX BREAKPOINT!!")
 
 function! InsertLine()
   execute "normal o".g:breakpoint_string
+endfunction
+
+function! RevealLocals()
+  execute "normal o".expand("reveal_locals()  # noqa: F821")
 endfunction
 
 " Remember last position
@@ -154,9 +160,14 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 
-" Misc
+" Indentline
 """"""""""""""""""""""""""""""""""
 let g:indentLine_concealcursor=""
+let g:indentLine_char = '│'
+autocmd Filetype json let g:indentLine_enabled = 0
+
+" Misc
+""""""""""""""""""""""""""""""""""
 autocmd QuickFixCmdPost *Ggrep* cwindow " To automatically open quickfix window after grepping
 
 let g:tagbar_ctags_bin ='/usr/local/Cellar/ctags/5.8_1/bin/ctags'  " Specify a specific ctag version for tagbar
@@ -167,7 +178,6 @@ nmap <C-b> "+p
 imap ,, <Esc>
 vmap ,, <Esc>
 
-let g:indentLine_char = '│'
 
 let g:gitroot=system("git rev-parse --show-toplevel")
 let g:is_gitrepo = v:shell_error == 0
