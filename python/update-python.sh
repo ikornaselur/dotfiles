@@ -37,21 +37,48 @@ then
   pyenv global ${VERSIONS}
 
   echo -e "${GREEN}[+] Installing base pip requirements...${NC}"
+  pip install --upgrade pip
   pip install \
     pipx \
     poetry \
     pynvim
 
   echo -e "${GREEN}[+] Installing tools with pipx...${NC}"
+  pipx uninstall isort
   pipx install -f isort
+
+  pipx uninstall flake8
   pipx install -f flake8
+
+  pipx uninstall black
   pipx install -f black
+
+  pipx uninstall mypy
   pipx install -f mypy
+
+  pipx uninstall monkeytype
   pipx install -f monkeytype
+
+  pipx uninstall pgcli
   pipx install -f pgcli
+
+  pipx uninstall awscli
   pipx install -f awscli
+
+  pipx uninstall ipython
   pipx install -f ipython
+
+  pipx uninstall credstash
+  pipx install -f credstash
+
+  pipx uninstall kyber-k8s
   pipx install -f kyber-k8s==0.8.0rc2
+
+  pipx uninstall sucket
+  pipx install -f sucket
+
+  pipx uninstall dict-typer
+  pipx install -f dict-typer
 
   echo -e "${GREEN}[+] All done!${NC}"
 else
