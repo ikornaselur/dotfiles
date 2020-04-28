@@ -1,7 +1,19 @@
 #!/bin/bash
+set -e
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+NC='\033[0m'
+
+
+if [ "$(ls -A .)" ]; then
+zsh:1: command not found: :noh
+  exit 1
+fi
 
 # Set up poetry
-poetry init
+poetry init --author "Axel <dev@absalon.is>" --license MIT
 poetry add --dev \
   isort \
   black \
@@ -18,11 +30,11 @@ poetry add --dev \
   pytest-clarity
 
 # Create folder
-echo "Creating folders..."
+echo -e "${GREEN}[+] Creating folders...${NC}"
 mkdir -p tests/unit .hooks
 
 # Add Makefile
-echo "Adding Makefile..."
+echo -e "${GREEN}[+] Adding Makefile...${NC}"
 cat <<EOF >> Makefile
 mypy:
 	@poetry run mypy dict_typer tests/*
@@ -45,20 +57,28 @@ install_git_hooks:
 EOF
 
 # Add hook
-echo "Adding pre-push hook..."
+echo -e "${GREEN}[+] Adding pre-push hook...${NC}"
 cat <<EOF >> .hooks/pre-push
 #!/bin/bash
-echo "Checking if code lints..."
+echo -e "Checking if code lints..."
 make lint
-echo ""
+echo -e ""
 EOF
 
 # Initi git repo
-echo "Initialising repo"
+echo -e "${GREEN}[+] Initialising repo...${NC}"
 git init
 
 # Install hooks
-echo "Installing hook"
+echo -e "${GREEN}[+] Installing hook...${NC}"
 make install_git_hooks
 
-echo "Done!"
+# Add .gitignore
+echo -e "${GREEN}[+] Adding .gitignore...${NC}"
+cat <<EOF >> .gitignore
+*.egg-info
+.venv
+dist
+EOF
+
+echo -e "${GREEN}[+] Done!${NC}"
