@@ -16,7 +16,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'              " Theme
 Plug 'elzr/vim-json'                " JSON highlighting
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -61,6 +61,11 @@ autocmd BufRead,BufNewFile *.kit set filetype=html
 " Airline config
 """"""""""""""""""""
 let g:airline_powerline_fonts = 1
+let g:airline_section_x = ''
+let g:airline_section_y = ''
+let g:airline_section_z = ''
+let g:airline#extensions#coc#enabled = 0
+
 
 " CtrlP
 """"""""""""""""""""""""""""""
