@@ -64,6 +64,7 @@ echo -e "Checking if code lints..."
 make lint
 echo -e ""
 EOF
+chmod +x .hooks/pre-push
 
 # Initi git repo
 echo -e "${GREEN}[+] Initialising repo...${NC}"
