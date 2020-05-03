@@ -16,6 +16,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'              " Theme
 Plug 'elzr/vim-json'                " JSON highlighting
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
