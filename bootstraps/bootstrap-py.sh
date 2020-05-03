@@ -61,7 +61,8 @@ echo -e "${GREEN}[+] Adding pre-push hook...${NC}"
 cat <<EOF >> .hooks/pre-push
 #!/bin/bash
 echo -e "Checking if code lints..."
-make lint
+poetry run mypy dict_typer tests/*
+poetry run flake8 dict_typer tests/*
 echo -e ""
 EOF
 chmod +x .hooks/pre-push
