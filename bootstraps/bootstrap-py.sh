@@ -37,10 +37,10 @@ mkdir -p tests/unit .hooks
 echo -e "${GREEN}[+] Adding Makefile...${NC}"
 cat <<EOF >> Makefile
 mypy:
-	@poetry run mypy dict_typer tests/*
+	@poetry run mypy <PROJECT> tests/*
 
 flake8:
-	@poetry run flake8 dict_typer tests/*
+	@poetry run flake8 <PROJECT> tests/*
 
 lint: mypy flake8
 
@@ -60,10 +60,10 @@ EOF
 echo -e "${GREEN}[+] Adding pre-push hook...${NC}"
 cat <<EOF >> .hooks/pre-push
 #!/bin/bash
-echo -e "Checking if code lints..."
-poetry run mypy dict_typer tests/*
-poetry run flake8 dict_typer tests/*
-echo -e ""
+echo "Checking if code lints..."
+xargs -P 2 -I {} sh -c 'eval "$1"' - {} <<'EOF'
+make mypy
+make flake8
 EOF
 chmod +x .hooks/pre-push
 
