@@ -12,8 +12,12 @@ if [ "$(ls -A .)" ]; then
   exit 1
 fi
 
+echo "Project name: "
+read PROJECT_NAME
+FOLDER_NAME=${PROJECT_NAME//-/_}
+
 # Set up poetry
-poetry init --author "Axel <dev@absalon.is>" --license MIT
+poetry init -n --author "Axel <dev@absalon.is>" --license MIT --name $PROJECT_NAME
 poetry add --dev \
   isort \
   black \
@@ -32,16 +36,16 @@ poetry add --dev \
 
 # Create folder
 echo -e "${GREEN}[+] Creating folders...${NC}"
-mkdir -p tests/unit .hooks
+mkdir -p tests/unit .hooks src/$FOLDER_NAME
 
 # Add Makefile
 echo -e "${GREEN}[+] Adding Makefile...${NC}"
 cat <<EOF >> Makefile
 mypy:
-	@poetry run mypy <PROJECT> tests/*
+	@poetry run mypy src/$FOLDER_NAME tests/*
 
 flake8:
-	@poetry run flake8 <PROJECT> tests/*
+	@poetry run flake8 src/$FOLDER_NAME tests/*
 
 lint: mypy flake8
 
