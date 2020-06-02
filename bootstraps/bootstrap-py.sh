@@ -12,7 +12,7 @@ if [ "$(ls -A .)" ]; then
   exit 1
 fi
 
-echo "Project name: "
+echo "Project name:"
 read PROJECT_NAME
 FOLDER_NAME=${PROJECT_NAME//-/_}
 
@@ -38,14 +38,28 @@ poetry add --dev \
 echo -e "${GREEN}[+] Creating folders...${NC}"
 mkdir -p tests/unit .hooks src/$FOLDER_NAME
 
+echo -e "${GREEN}[+] Adding hello world...${NC}"
+cat <<EOF >> src/$FOLDER_NAME/__init__.py
+def hello(name: str) -> str:
+    return f"Hello, {name}"
+EOF
+cat <<EOF >> tests/unit/test_$FOLDER_NAME.py
+from $FOLDER_NAME import hello
+
+
+def test_hello() -> None:
+    assert hello("there") == "Hello, there"
+EOF
+
+
 # Add Makefile
 echo -e "${GREEN}[+] Adding Makefile...${NC}"
 cat <<EOF >> Makefile
 mypy:
-	@poetry run mypy src/$FOLDER_NAME tests/*
+	@poetry run mypy src/$FOLDER_NAME/* tests/*
 
 flake8:
-	@poetry run flake8 src/$FOLDER_NAME tests/*
+	@poetry run flake8 src/$FOLDER_NAME/* tests/*
 
 lint: mypy flake8
 
@@ -87,5 +101,8 @@ cat <<EOF >> .gitignore
 .venv
 dist
 EOF
+
+# Final install the package for development
+poetry install
 
 echo -e "${GREEN}[+] Done!${NC}"
