@@ -8,6 +8,7 @@ NC='\033[0m'
 
 
 if [ "$(ls -A .)" ]; then
+  echo "Current directly is not empty"
   exit 1
 fi
 
@@ -23,6 +24,7 @@ poetry add --dev \
   flake8-bugbear \
   flake8-black \
   flake8-comprehensions \
+  flake8-annotations \
   ipdb \
   pdbpp \
   pytest \
