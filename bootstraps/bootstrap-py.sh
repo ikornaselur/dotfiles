@@ -8,7 +8,6 @@ NC='\033[0m'
 
 
 if [ "$(ls -A .)" ]; then
-zsh:1: command not found: :noh
   exit 1
 fi
 

@@ -1,7 +1,9 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'mxw/vim-jsx'                  " JSX highlighting, for react
+Plug 'MaxMEllon/vim-jsx-pretty'     " JSX highlighting, for react
 Plug 'pangloss/vim-javascript'      " JS syntax and indentation
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'leafgarland/typescript-vim'
 Plug 'kien/ctrlp.vim'               " CtrlP fuzzy file finder
 Plug 'airblade/vim-gitgutter'       " Show git line status in the gutter
 Plug 'tpope/vim-fugitive'           " git plugin for git stuff
@@ -16,8 +18,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'              " Theme
 Plug 'elzr/vim-json'                " JSON highlighting
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
 Plug 'cespare/vim-toml'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
