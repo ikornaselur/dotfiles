@@ -10,7 +10,8 @@ Plug 'tpope/vim-fugitive'           " git plugin for git stuff
 Plug 'tpope/vim-rhubarb'            " More git stuff
 Plug 'Yggdroot/indentLine'          " Indent line guides
 Plug 'mg979/vim-visual-multi'       " Multiple cursors
-Plug 'tmhedberg/SimpylFold'         " Python folding
+Plug 'pseewald/vim-anyfold'         " Foldng
+Plug 'arecarn/vim-fold-cycle'
 Plug 'vim-scripts/indentpython.vim' " Python indentation
 Plug 'vim-airline/vim-airline'      " Powerline
 Plug 'jparise/vim-graphql'          " Graphql syntax highlighting
@@ -35,6 +36,7 @@ set ignorecase
 set incsearch                   " Incremental search while typing
 set sidescroll=1                " Scroll one char horizontally instead of half page
 set sidescrolloff=20            " How many chars away from the edge should start scroll
+set linebreak
 
 let g:gruvbox_contrast_dark='hard'
 if !("g:syntax_on")
@@ -191,11 +193,14 @@ let g:gitroot=system("git rev-parse --show-toplevel")
 let g:is_gitrepo = v:shell_error == 0
 
 " Folding
-" let anyfold_activate=1
-set foldlevel=15
+filetype plugin indent on
+autocmd Filetype * AnyFoldActivate
+nmap <Tab> <Plug>(fold-cycle-open)
+nmap <S-Tab> <Plug>(fold-cycle-close)
+set foldlevel=10
 hi Folded ctermbg=None
 " Enable folding with the spacebar
-nnoremap <space> za
+"nnoremap <space> za
 
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 " autocmd BufWritePre *.py :OR
