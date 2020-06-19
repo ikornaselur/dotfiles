@@ -36,49 +36,36 @@ then
   echo -e "${GREEN}[+] Setting global versions to ${VERSIONS}...${NC}"
   pyenv global ${VERSIONS}
 
-  echo -e "${GREEN}[+] Installing base pip requirements...${NC}"
+  echo -e "${GREEN}[+] Installing base pip requirements and tools...${NC}"
   pip install --upgrade pip
   pip install \
     pipx \
     poetry \
-    pynvim
+    pynvim \
+    isort \
+    flake8
 
-  echo -e "${GREEN}[+] Installing tools with pipx...${NC}"
-  pipx uninstall isort
-  pipx install -f isort
+  echo -e "${GREEN}[+] Installing more tools with pipx...${NC}"
 
-  pipx uninstall flake8
-  pipx install -f flake8
+  declare -a PipxTools=(
+    "black"
+    "mypy"
+    "pgcli"
+    "awscli"
+    "ipython"
+    "credstash"
+    "sucket"
+    "dict-typer"
+    "pytype"
+  )
 
-  pipx uninstall black
-  pipx install -f black
-
-  pipx uninstall mypy
-  pipx install -f mypy
-
-  pipx uninstall monkeytype
-  pipx install -f monkeytype
-
-  pipx uninstall pgcli
-  pipx install -f pgcli
-
-  pipx uninstall awscli
-  pipx install -f awscli
-
-  pipx uninstall ipython
-  pipx install -f ipython
-
-  pipx uninstall credstash
-  pipx install -f credstash
+  for val in ${PipxTools[@]}; do
+    pipx uninstall $val
+    pipx install -f $val
+  done
 
   pipx uninstall kyber-k8s
   pipx install -f kyber-k8s==0.8.0rc2
-
-  pipx uninstall sucket
-  pipx install -f sucket
-
-  pipx uninstall dict-typer
-  pipx install -f dict-typer
 
   echo -e "${GREEN}[+] All done!${NC}"
 else
