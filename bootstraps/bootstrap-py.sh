@@ -36,7 +36,7 @@ poetry add --dev \
 
 # Create folder
 echo -e "${GREEN}[+] Creating folders...${NC}"
-mkdir -p tests/unit .hooks src/$FOLDER_NAME
+mkdir -p tests/unit src/$FOLDER_NAME .hooks .vim
 
 echo -e "${GREEN}[+] Adding hello world...${NC}"
 cat <<EOF >> src/$FOLDER_NAME/__init__.py
@@ -85,6 +85,37 @@ make mypy
 make flake8
 EOF
 chmod +x .hooks/pre-push
+
+# coc-nvim local config
+echo -e "${GREEN}[+] Adding coc-nvim local config...${NC}"
+cat <<EOF >> .vim/coc-settings.json
+{
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.mypyEnabled": true,
+  "python.linting.enabled": true
+}
+EOF
+
+# linting setups
+echo -e "${GREEN}[+] Adding setup.cfg to configure mypy/flake8/isort...${NC}"
+cat <<EOF >> setup.cfg
+[mypy]
+python_version=3.8
+check_untyped_defs=True
+ignore_missing_imports=True
+disallow_untyped_defs=True
+
+[flake8]
+max-line-length = 120
+
+[isort]
+force_grid_wrap=0
+include_trailing_comma=True
+line_length=100
+multi_line_output=3
+order_by_type=1
+EOF
 
 # Initi git repo
 echo -e "${GREEN}[+] Initialising repo...${NC}"
