@@ -1,10 +1,11 @@
 #!/bin/sh
+set -e
 
 apt-get update
 apt-get --assume-yes upgrade
 
 pkg up -y
-pkg install -y neovim tmux nodejs python zsh git exa file mosh ripgrep hub perl
+pkg install -y neovim tmux nodejs python zsh git tig exa file mosh ripgrep hub perl
 
 # Clone dotfiles
 mkdir projects
@@ -18,6 +19,7 @@ git clone https://github.com/ikornaselur/dotfiles projects/dotfiles
 curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
 
 # Link the .zsh config
+rm ~/.zshrc
 ln -s ~/projects/dotfiles/termux/zshrc ~/.zshrc
 
 # Set up powerlevel10k
