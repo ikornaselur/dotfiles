@@ -92,4 +92,3 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.g
 nvim +'PlugInstall --sync' +qall
 
 echo "All done! Restart Termux..."
-echo "Don't forget to termux-setup-storage !"
