@@ -1,0 +1,26 @@
+if [[ -r "\${XDG_CACHE_HOME:-\$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}.zsh" ]]; then
+  source "\${XDG_CACHE_HOME:-\$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}.zsh"
+fi
+
+export ZSH="\$HOME/.oh-my-zsh"
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+plugins=(git)
+
+source \$ZSH/oh-my-zsh.sh
+
+export EDITOR=nvim
+
+# Aliases
+alias vim=nvim
+alias ls=exa
+alias rg="rg -S"
+alias rgff="rg --files -g"
+alias p=poetry
+alias ,,='git rev-parse --git-dir >/dev/null 2>&1 && cd \`git rev-parse --show-toplevel\` || echo "Not in git repo"'
+alias git=hub
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
