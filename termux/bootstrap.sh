@@ -5,7 +5,7 @@ apt-get update
 apt-get --assume-yes upgrade
 
 pkg up -y
-pkg install -y neovim tmux nodejs python zsh git tig exa file mosh ripgrep hub perl
+pkg install -y neovim tmux nodejs python zsh git tig exa file mosh ripgrep hub perl git-delta
 
 # Clone dotfiles
 mkdir projects
