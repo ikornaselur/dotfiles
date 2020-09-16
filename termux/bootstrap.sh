@@ -31,6 +31,20 @@ ln -s ~/projects/dotfiles/termux/p10k.zsh ~/.p10k.zsh
 # Set default shell
 chsh -s zsh
 
+#######
+# Git #
+#######
+
+# Base git config
+cat <<EOF >> ~/.gitconfig
+[pull]
+  rebase = true
+[diff]
+  colorMoved = plain
+[core]
+  pager = delta --plus-color="#012800" --minus-color="#340001"
+EOF
+
 ##########
 # Python #
 ##########
