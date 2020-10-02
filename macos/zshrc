@@ -1,0 +1,52 @@
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export ZSH="$HOME/.oh-my-zsh"
+
+export PATH="/usr/local/opt/pyenv/shims:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+export EDITOR=nvim
+
+# Pyenv
+eval "$(pyenv init -)"
+
+# Aliases
+alias vim=nvim
+alias ls=exa
+alias rg="rg -S"
+alias rgff="rg --files -g"
+alias p=poetry
+alias ,,='git rev-parse --git-dir >/dev/null 2>&1 && cd \`git rev-parse --show-toplevel\` || echo "Not in git repo"'
+alias git=hub
+alias :q='exit'
+alias vi='vi -u NONE'
+
+# Utils
+sleep-in() {echo "Sleeping laptop in $1 minutes..." && sleep $((60 * $1)) && pmset sleepnow}
+alias flushdns="sudo killall -HUP mDNSResponder"
+
+# Make that history biiiig
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
