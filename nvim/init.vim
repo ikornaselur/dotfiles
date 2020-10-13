@@ -20,6 +20,7 @@ Plug 'morhetz/gruvbox'              " Theme
 Plug 'elzr/vim-json'                " JSON highlighting
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'cespare/vim-toml'
+Plug 'christoomey/vim-tmux-navigator'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
@@ -84,8 +85,6 @@ let g:ctrlp_use_caching = 0
 """"""""""""""""""""""""""""""
 nnoremap <leader>[ :cprev<CR>
 nnoremap <leader>] :cnext<CR>
-nnoremap <M-j> jzz
-nnoremap <M-k> kzz
 nmap <silent> <C-h> <Plug>(coc-diagnostic-prev)
 nmap <silent> <C-l> <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
@@ -219,3 +218,11 @@ function CustomHighlights()
   hi semshiParameterUnused ctermfg=69 cterm=underline
 endfunction
 autocmd FileType python call CustomHighlights()
+
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <M-/> :TmuxNavigatePrevious<cr>
