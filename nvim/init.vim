@@ -21,7 +21,7 @@ Plug 'elzr/vim-json'                " JSON highlighting
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'cespare/vim-toml'
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'mattboehm/vim-unstack'
 
 call plug#end()
 
@@ -193,16 +193,12 @@ let g:is_gitrepo = v:shell_error == 0
 
 " Folding
 filetype plugin indent on
-autocmd Filetype * AnyFoldActivate
-nmap <Tab> <Plug>(fold-cycle-open)
-nmap <S-Tab> <Plug>(fold-cycle-close)
-set foldlevel=10
-hi Folded ctermbg=None
-" Enable folding with the spacebar
-"nnoremap <space> za
 
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
-" autocmd BufWritePre *.py :OR
+command! -nargs=0 Pico :! pyboard --device /dev/tty.usbmodem0000000000001 %
+command! -nargs=0 Pico2 :! pyboard --device /dev/tty.usbmodem3 %
+nnoremap <leader>r :Pico<CR>
+nnoremap <leader>b :Pico2<CR>
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -220,9 +216,3 @@ endfunction
 autocmd FileType python call CustomHighlights()
 
 let g:tmux_navigator_no_mappings = 1
-
-nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
-nnoremap <silent> <M-/> :TmuxNavigatePrevious<cr>
