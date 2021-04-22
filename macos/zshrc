@@ -18,6 +18,7 @@ export PATH="/usr/local/opt/libpq/bin:$PATH"
 # Env variables
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export PYTHONDONTWRITEBYTECODE=1
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -56,6 +57,9 @@ alias gcan="git commit --amend --no-edit"
 alias greb="git rebase origin/master"
 alias pods="kubectl get pods"
 alias nodes="kubectl get nodes"
+alias weather="curl https://v2.wttr.in/London"
+alias pyb="pyboard --device /dev/tty.usbmodem0000000000001"
+alias pyb2="pyboard --device /dev/tty.usbmodem3"
 
 # Utils
 sleep-in() {echo "Sleeping laptop in $1 minutes..." && sleep $((60 * $1)) && pmset sleepnow}
@@ -74,3 +78,7 @@ source ~/.zshrc.extra
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
