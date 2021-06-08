@@ -37,6 +37,9 @@ compinit -C
 export EDITOR=nvim
 
 # Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
 # Direnv
@@ -45,6 +48,7 @@ export DIRENV_LOG_FORMAT=""
 
 # Aliases
 alias vim=nvim
+alias vimn="nvim-nightly -u ~/.config/nvim/init.lua"
 alias ls=lsd
 alias rg="rg -S"
 alias rgff="rg --files -g"
@@ -60,6 +64,7 @@ alias nodes="kubectl get nodes"
 alias weather="curl https://v2.wttr.in/London"
 alias pyb="pyboard --device /dev/tty.usbmodem0000000000001"
 alias pyb2="pyboard --device /dev/tty.usbmodem3"
+alias ci="unbuffer hub ci-status -v | cut -f1-2"
 
 # Utils
 sleep-in() {echo "Sleeping laptop in $1 minutes..." && sleep $((60 * $1)) && pmset sleepnow}
