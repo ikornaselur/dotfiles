@@ -18,6 +18,7 @@ brew install \
   hub \
   imagemagick \
   neovim \
+  nodejs \
   pyenv \
   ripgrep \
   tig \
@@ -56,6 +57,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Create folders
 mkdir -p ~/.config/alacritty
+mkdir -p ~/.config/nvim
 mkdir -p ~/Projects
 git clone https://github.com/ikornaselur/dotfiles.git ~/Projects/dotfiles
 
@@ -91,6 +93,11 @@ ln -s ~/Projects/dotfiles/macos/p10k.zsh ~/.p10k.zsh
 chsh -s zsh
 
 # Set up neovim
+ln -s ~/Projects/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+ln -s ~/Projects/dotfiles/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim \
+  --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim +'PlugInstall --sync' +qall
 
 # Set up Python + Poetry
 
