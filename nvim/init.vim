@@ -38,6 +38,9 @@ set incsearch                   " Incremental search while typing
 set sidescroll=1                " Scroll one char horizontally instead of half page
 set sidescrolloff=20            " How many chars away from the edge should start scroll
 set linebreak
+" Hybrid relative line numbers
+set number relativenumber
+set nu rnu
 
 let g:gruvbox_contrast_dark='hard'
 if !("g:syntax_on")
