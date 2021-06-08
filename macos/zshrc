@@ -49,7 +49,7 @@ export DIRENV_LOG_FORMAT=""
 # Aliases
 alias vim=nvim
 alias vimn="nvim-nightly -u ~/.config/nvim/init.lua"
-alias ls=lsd
+alias ls="exa --git"
 alias rg="rg -S"
 alias rgff="rg --files -g"
 alias p=poetry

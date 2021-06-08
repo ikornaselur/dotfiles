@@ -9,6 +9,7 @@ sudo -k  #  Reset sudo timestamp
 
 # Install common apps/utils from homebrew
 brew install \
+  exa \
   ffmpeg \
   git \
   htop \
@@ -44,8 +45,15 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Cargo install apps
 ~/.cargo/bin/cargo install \
-  cargo-edit \
-  lsd
+  cargo-edit
+
+# Create folders
+mkdir -p ~/.config/alacritty
+mkdir -p ~/Projects
+git clone https://github.com/ikornaselur/dotfiles.git ~/Projects/dotfiles
+
+# Hook up dot files
+ln -s ~/Projects/dotfiles/macos/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 # Configure tmux
 
