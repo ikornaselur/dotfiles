@@ -105,9 +105,6 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/cu
 # Link the powerlevel10k config
 ln -s ~/Projects/dotfiles/macos/p10k.zsh ~/.p10k.zsh
 
-# Set default shell
-chsh -s zsh
-
 # Set up neovim
 ln -s ~/Projects/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
 ln -s ~/Projects/dotfiles/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
