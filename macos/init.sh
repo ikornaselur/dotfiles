@@ -61,8 +61,8 @@ VERSION39=`pyenv install --list | grep -E "^\s+3.9.\d+$" | tail -1 | tr -d '[:sp
 pyenv install ${VERSION27}
 pyenv install ${VERSION39}
 pyenv global ${VERSION39} ${VERSION27}
-pip install --upgrade pip
-pip install \
+~/.pyenv/shims/pip install --upgrade pip
+~/.pyenv/shims/pip install \
   black \
   flake8 \
   ipython \
@@ -97,7 +97,8 @@ touch ~/.zshrc.extra
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-compaudit | xargs chmod g-w,o-w
+chmod g-w,o-w /usr/local/share/zsh
+chmod g-w,o-w /usr/local/share/zsh/site-functions
 
 # Set up powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
