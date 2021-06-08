@@ -55,6 +55,22 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   cargo-edit \
   litime
 
+# Set up Python + Poetry
+VERSION27=`pyenv install --list | grep -E "^\s+2.7.\d+$" | tail -1 | tr -d '[:space:]'`
+VERSION39=`pyenv install --list | grep -E "^\s+3.9.\d+$" | tail -1 | tr -d '[:space:]'`
+pyenv install ${VERSION27}
+pyenv install ${VERSION39}
+pyenv global ${VERSION39} ${VERSION27}
+pip install --upgrade pip
+pip install \
+  black \
+  flake8 \
+  ipython \
+  isort \
+  mypy \
+  poetry \
+  pynvim
+
 # Create folders
 mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/nvim
@@ -98,6 +114,3 @@ ln -s ~/Projects/dotfiles/nvim/coc-settings.json ~/.config/nvim/coc-settings.jso
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim \
   --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim +'PlugInstall --sync' +qall
-
-# Set up Python + Poetry
-
