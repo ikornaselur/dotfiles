@@ -18,6 +18,7 @@ brew install \
   htop \
   hub \
   imagemagick \
+  mosh \
   neovim \
   nodejs \
   pyenv \
