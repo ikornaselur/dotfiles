@@ -14,6 +14,7 @@ brew install \
   exa \
   ffmpeg \
   git \
+  hammerspoon \
   htop \
   hub \
   imagemagick \
@@ -29,11 +30,15 @@ brew install \
 brew tap homebrew/cask-fonts
 brew install --cask \
   alacritty \
+  bettertouchtool \
+  docker \
+  ferdi \
   google-chrome \
-  spotify \
+  little-snitch \
+  rectangle \
   slack \
-  steam \
-  ferdi
+  spotify \
+  steam
 
 # Remove default dock stuff and configure to hide
 wget https://raw.githubusercontent.com/kcrawford/dockutil/8a16df86e98502e2e22af86a82b54aa20f6d6fca/scripts/dockutil -O /tmp/dockutil
@@ -44,7 +49,8 @@ chmod +x /tmp/dockutil
 /tmp/dockutil --add "/Applications/Spotify.app" --no-restart
 /tmp/dockutil --add "/Applications/Ferdi.app" --no-restart
 /tmp/dockutil --add "/Applications/Slack.app" --no-restart
-/tmp/dockutil --add "/Applications/Steam.app"
+/tmp/dockutil --add "/Applications/Steam.app" --no-restart
+defaults write com.apple.Dock autohide -bool TRUE; killall Dock
 
 
 # Set up Rust
@@ -75,10 +81,15 @@ pyenv global ${VERSION39} ${VERSION27}
 mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/nvim
 mkdir -p ~/Projects
+mkdir -p ~/.hammerspoon
 git clone https://github.com/ikornaselur/dotfiles.git ~/Projects/dotfiles
 
-# Hook up dotfiles
+# Set up alacritty
 ln -s ~/Projects/dotfiles/macos/alacritty.yml ~/.config/alacritty/alacritty.yml
+
+wget https://github.com/asmagill/hs._asm.undocumented.spaces/releases/download/v0.5/spaces-v0.5.tar.gz -O /tmp/spaces.tar.gz
+tar -zxvf /tmp/spaces.tar.gz -C ~/.hammerspoon/
+ln -s ~/Projects/dotfiles/macos/hammerspoon.init.lua ~/.hammerspoon/init.lua
 
 # Install Fira Code font
 wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Retina/complete/Fira%20Code%20Retina%20Nerd%20Font%20Complete.ttf -O "/Library/Fonts/Fira Code.ttf"
