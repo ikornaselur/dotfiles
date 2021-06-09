@@ -36,7 +36,7 @@ brew install --cask \
   ferdi
 
 # Remove default dock stuff and configure to hide
-wget https://raw.githubusercontent.com/kcrawford/dockutil/master/scripts/dockutil -O /tmp/dockutil
+wget https://raw.githubusercontent.com/kcrawford/dockutil/8a16df86e98502e2e22af86a82b54aa20f6d6fca/scripts/dockutil -O /tmp/dockutil
 chmod +x /tmp/dockutil
 /tmp/dockutil --remove all --no-restart
 /tmp/dockutil --add "/Applications/Alacritty.app" --no-restart
