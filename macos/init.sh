@@ -32,6 +32,7 @@ brew tap homebrew/cask-fonts
 brew install --cask \
   alacritty \
   bettertouchtool \
+  dashlane \
   docker \
   ferdi \
   google-chrome \
