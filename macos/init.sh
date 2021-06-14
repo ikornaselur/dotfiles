@@ -14,6 +14,7 @@ brew install \
   exa \
   ffmpeg \
   git \
+  git-delta \
   hammerspoon \
   htop \
   hub \
@@ -36,6 +37,7 @@ brew install --cask \
   docker \
   ferdi \
   google-chrome \
+  gpg-tools \
   little-snitch \
   rectangle \
   slack \
