@@ -13,12 +13,14 @@ brew install \
   direnv \
   exa \
   ffmpeg \
+  fzf \
   git \
   git-delta \
   hammerspoon \
   htop \
   hub \
   imagemagick \
+  jq \
   mosh \
   neovim \
   nodejs \
@@ -80,6 +82,12 @@ pyenv global ${VERSION39} ${VERSION27}
   mypy \
   poetry \
   pynvim
+
+# nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+
+# Install fzf
+$(brew --prefix)/opt/fzf/install --all
 
 # Create folders
 mkdir -p ~/.config/alacritty
