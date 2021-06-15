@@ -26,6 +26,7 @@ brew install \
   nodejs \
   pyenv \
   ripgrep \
+  rust-analyzer \
   tig \
   tmux \
   wget \
@@ -85,6 +86,18 @@ pyenv global ${VERSION39} ${VERSION27}
 
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+nvm install --lts
+npm install -g \
+  bash-language-server \
+  pyright \
+  sql-language-server \
+  typescript \
+  typescript-language-server \
+  vim-language-server \
+  vls yaml-language-server \
+  vscode-css-languageserver-bin \
+  vscode-html-languageserver-bin \
+  vscode-json-languageserver
 
 # Install fzf
 $(brew --prefix)/opt/fzf/install --all
