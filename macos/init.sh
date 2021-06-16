@@ -95,9 +95,8 @@ npm install -g \
   typescript-language-server \
   vim-language-server \
   vls yaml-language-server \
-  vscode-css-languageserver-bin \
-  vscode-html-languageserver-bin \
-  vscode-json-languageserver
+  vscode-langservers-extracted
+
 
 # Install fzf
 $(brew --prefix)/opt/fzf/install --all
