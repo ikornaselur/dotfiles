@@ -28,3 +28,4 @@ paq({
   'lukas-reineke/indent-blankline.nvim',
   branch = 'lua',
 })
+paq('onsails/lspkind-nvim')
