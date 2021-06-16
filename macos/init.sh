@@ -22,14 +22,18 @@ brew install \
   imagemagick \
   jq \
   mosh \
-  neovim \
   nodejs \
   pyenv \
   ripgrep \
+  rust-analyzer \
   tig \
   tmux \
   wget \
   zsh
+
+# Install nightly neovim for v0.5
+brew install --head luajit
+brew install --head neovim
 
 brew tap homebrew/cask-fonts
 brew install --cask \
@@ -85,6 +89,17 @@ pyenv global ${VERSION39} ${VERSION27}
 
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+nvm install --lts
+npm install -g \
+  bash-language-server \
+  pyright \
+  sql-language-server \
+  typescript \
+  typescript-language-server \
+  vim-language-server \
+  vls yaml-language-server \
+  vscode-langservers-extracted
+
 
 # Install fzf
 $(brew --prefix)/opt/fzf/install --all
@@ -130,8 +145,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/cu
 ln -s ~/Projects/dotfiles/macos/p10k.zsh ~/.p10k.zsh
 
 # Set up neovim
-ln -s ~/Projects/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
-ln -s ~/Projects/dotfiles/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim \
-  --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim +'PlugInstall --sync' +qall
+ln -s ~/Projects/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
+ln -s ~/Projects/dotfiles/nvim/lua ~/.config/nvim/lua
+git clone --depth=1 https://github.com/savq/paq-nvim.git \
+    "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
+nvim +PaqInstall
