@@ -15,8 +15,6 @@ paq('rmagatti/auto-session')
 paq('rmagatti/session-lens')
 paq('crispgm/telescope-heading.nvim')
 
-paq('RRethy/vim-illuminate')
-paq('Yggdroot/indentLine')
 paq('christoomey/vim-system-copy')
 paq('farmergreg/vim-lastplace')
 paq('hrsh7th/nvim-compe')
@@ -26,3 +24,7 @@ paq('neovim/nvim-lspconfig')
 paq('sainnhe/gruvbox-material')
 paq('vim-airline/vim-airline')
 paq('lewis6991/gitsigns.nvim')
+paq({
+  'lukas-reineke/indent-blankline.nvim',
+  branch = 'lua',
+})
