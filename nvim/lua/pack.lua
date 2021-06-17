@@ -1,33 +1,34 @@
 local cmd = vim.cmd
 
 cmd 'packadd paq-nvim'
-local paq = require('paq-nvim').paq
+require('paq-nvim')({
+  {'savq/paq-nvim', opt = true};
 
-paq({'savq/paq-nvim', opt = true})
-paq({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
-paq('nvim-treesitter/playground')
+  {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'};
+  'nvim-treesitter/playground';
 
-paq('nvim-lua/plenary.nvim')
-paq('nvim-lua/popup.nvim')
+  'nvim-lua/plenary.nvim';
+  'nvim-lua/popup.nvim';
 
-paq('nvim-telescope/telescope.nvim')
-paq('rmagatti/auto-session')
-paq('rmagatti/session-lens')
-paq('crispgm/telescope-heading.nvim')
+  'nvim-telescope/telescope.nvim';
+  'rmagatti/auto-session';
+  'rmagatti/session-lens';
 
-paq('christoomey/vim-system-copy')
-paq('farmergreg/vim-lastplace')
-paq('hrsh7th/nvim-compe')
-paq('hrsh7th/vim-vsnip')
-paq('mg979/vim-visual-multi')
-paq('neovim/nvim-lspconfig')
-paq('sainnhe/gruvbox-material')
-paq('vim-airline/vim-airline')
-paq('kyazdani42/nvim-web-devicons')
-paq('lewis6991/gitsigns.nvim')
-paq({
-  'lukas-reineke/indent-blankline.nvim',
-  branch = 'lua',
+  'christoomey/vim-system-copy';
+  'farmergreg/vim-lastplace';
+  'hrsh7th/nvim-compe';
+  'hrsh7th/vim-vsnip';
+  'mg979/vim-visual-multi';
+  'neovim/nvim-lspconfig';
+  'sainnhe/gruvbox-material';
+  'vim-airline/vim-airline';
+  'kyazdani42/nvim-web-devicons';
+  'lewis6991/gitsigns.nvim';
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    branch = 'lua',
+  };
+  'onsails/lspkind-nvim';
+  'akinsho/nvim-toggleterm.lua';
+  'petobens/poet-v';
 })
-paq('onsails/lspkind-nvim')
-paq('akinsho/nvim-toggleterm.lua')
