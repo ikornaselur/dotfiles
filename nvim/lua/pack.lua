@@ -23,9 +23,11 @@ paq('mg979/vim-visual-multi')
 paq('neovim/nvim-lspconfig')
 paq('sainnhe/gruvbox-material')
 paq('vim-airline/vim-airline')
+paq('kyazdani42/nvim-web-devicons')
 paq('lewis6991/gitsigns.nvim')
 paq({
   'lukas-reineke/indent-blankline.nvim',
   branch = 'lua',
 })
 paq('onsails/lspkind-nvim')
+paq('akinsho/nvim-toggleterm.lua')

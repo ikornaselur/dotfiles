@@ -26,3 +26,6 @@ opt.incsearch = true              -- Incremental search while typing
 
 opt.termguicolors = true
 opt.background = 'dark'
+
+opt.hidden = true
+opt.cursorline = true
