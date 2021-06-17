@@ -32,4 +32,5 @@ require('paq-nvim')({
   'akinsho/nvim-toggleterm.lua';
   'petobens/poet-v';
   'airblade/vim-rooter';
+  'rust-lang/rust.vim';
 })

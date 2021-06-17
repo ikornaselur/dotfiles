@@ -3,7 +3,15 @@ require('lspconfig').bashls.setup({})
 require('lspconfig').cssls.setup({})
 require('lspconfig').html.setup({})
 require('lspconfig').jsonls.setup({})
-require('lspconfig').rust_analyzer.setup({})
+require('lspconfig').rust_analyzer.setup({
+  settings = {
+    ['rust-analyzer'] = {
+      checkOnSave = {
+        command = "clippy"
+      }
+    }
+  }
+})
 require('lspconfig').sqlls.setup({
   cmd = { '/usr/local/bin/sql-language-server', 'up', '--method', 'stdio' },
 })
