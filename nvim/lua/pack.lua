@@ -31,4 +31,5 @@ require('paq-nvim')({
   'onsails/lspkind-nvim';
   'akinsho/nvim-toggleterm.lua';
   'petobens/poet-v';
+  'airblade/vim-rooter';
 })

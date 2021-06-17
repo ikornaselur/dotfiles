@@ -1,4 +1,7 @@
 require('telescope').load_extension('session-lens')
+require('auto-session').setup {
+  log_level = 'error'
+}
 require('session-lens').setup {
   shorten_path = false,
 }
