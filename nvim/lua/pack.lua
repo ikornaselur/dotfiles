@@ -33,4 +33,5 @@ require('paq-nvim')({
   'petobens/poet-v';
   'airblade/vim-rooter';
   'rust-lang/rust.vim';
+  'psf/black';
 })
