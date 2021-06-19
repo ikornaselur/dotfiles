@@ -44,6 +44,7 @@ brew install --cask \
   ferdi \
   google-chrome \
   gpg-tools \
+  hyperswitch \
   little-snitch \
   rectangle \
   slack \
