@@ -6,7 +6,7 @@ require('session-lens').setup {
   shorten_path = false,
 }
 
-local set_keymap = require('../common').set_keymap
+local set_keymap = require('../utils').set_keymap
 
 set_keymap('n', '<c-p>', '<cmd>Telescope git_files<cr>')
 set_keymap('n', '<c-g>', '<cmd>Telescope live_grep<cr>')

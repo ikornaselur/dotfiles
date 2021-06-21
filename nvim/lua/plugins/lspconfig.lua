@@ -1,4 +1,12 @@
-require('lspconfig').pyright.setup({})
+require('lspconfig').pyright.setup({
+  settings = {
+    python = {
+      analysis = {
+        useLibraryCodeForTypes = true
+      }
+    }
+  }
+})
 require('lspconfig').bashls.setup({})
 require('lspconfig').cssls.setup({})
 require('lspconfig').html.setup({})
@@ -44,7 +52,7 @@ require('lspconfig').sumneko_lua.setup({
   },
 })
 
-local set_keymap = require('../common').set_keymap
+local set_keymap = require('../utils').set_keymap
 set_keymap('n', '<c-h>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 set_keymap('n', '<c-l>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
