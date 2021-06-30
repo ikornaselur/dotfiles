@@ -15,6 +15,7 @@ g.airline_section_y = ''
 -- IndentLine
 g.indent_blankline_use_treesitter = true
 g.indent_blankline_show_current_context = true
+g.indent_blankline_buftype_exclude = {'terminal'}
 
 -- VimVisualMulti
 g.VM_default_mappings = 0
