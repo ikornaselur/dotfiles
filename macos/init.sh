@@ -21,7 +21,9 @@ brew install \
   hub \
   imagemagick \
   jq \
+  luajit \
   mosh \
+  neovim \
   nodejs \
   pyenv \
   ripgrep \

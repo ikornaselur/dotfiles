@@ -24,10 +24,7 @@ require('paq-nvim')({
   'vim-airline/vim-airline';
   'kyazdani42/nvim-web-devicons';
   'lewis6991/gitsigns.nvim';
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    branch = 'lua',
-  };
+  'lukas-reineke/indent-blankline.nvim';
   'onsails/lspkind-nvim';
   'akinsho/nvim-toggleterm.lua';
   'petobens/poet-v';
