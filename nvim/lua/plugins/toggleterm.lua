@@ -5,8 +5,8 @@ require("toggleterm").setup{
   direction = 'float',
   float_opts = {
     border = 'single',
-    width = 100,
-    height = 35,
+    width = 150,
+    height = 40,
     winblend = 3,
   }
 }

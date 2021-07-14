@@ -27,11 +27,6 @@ require('compe').setup({
 })
 
 local vim = vim
-local opts = {
-    noremap = true,
-    silent = true,
-    expr = true,
-}
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -75,3 +70,4 @@ vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap('i', '<CR>', 'compe#confirm("<CR>")', {expr = true})

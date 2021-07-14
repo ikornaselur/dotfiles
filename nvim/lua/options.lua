@@ -1,6 +1,8 @@
 local opt = vim.opt
 local cmd = vim.cmd
 
+local set_keymap = require('utils').set_keymap
+
 cmd 'filetype plugin indent on'
 
 opt.completeopt = {'menuone', 'noselect'}
@@ -29,3 +31,8 @@ opt.background = 'dark'
 
 opt.hidden = true
 opt.cursorline = true
+
+opt.foldmethod = 'expr'
+opt.foldexpr = 'nvim_treesitter#foldexpr()' -- Use treesitter for folding expr
+opt.foldlevelstart = 10
+set_keymap('n', '<space>', 'za')  -- Toggle folds with space

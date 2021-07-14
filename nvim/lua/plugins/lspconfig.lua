@@ -1,3 +1,4 @@
+require'lspinstall'.setup()
 require('lspconfig').pyright.setup({
   settings = {
     python = {
@@ -20,12 +21,10 @@ require('lspconfig').rust_analyzer.setup({
     }
   }
 })
-require('lspconfig').sqlls.setup({
-  cmd = { '/usr/local/bin/sql-language-server', 'up', '--method', 'stdio' },
-})
 require('lspconfig').tsserver.setup({})
 require('lspconfig').vimls.setup({})
 require('lspconfig').yamlls.setup({})
+--require('lspconfig').efm.setup({})
 
 local user = vim.fn.expand('$USER')
 local sumneko_root_path = '/Users/' .. user .. '/Repos/lua-language-server'
