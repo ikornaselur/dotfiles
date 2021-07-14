@@ -33,10 +33,6 @@ brew install \
   wget \
   zsh
 
-# Install nightly neovim for v0.5
-brew install --head luajit
-brew install --head neovim
-
 brew tap homebrew/cask-fonts
 brew install --cask \
   alacritty \
