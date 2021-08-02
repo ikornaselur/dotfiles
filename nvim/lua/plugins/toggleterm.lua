@@ -1,8 +1,8 @@
 require("toggleterm").setup{
-  size = 12,
+  size = 16,
   open_mapping = [[<c-\>]],
   hide_numbers = true,
-  direction = 'float',
+  direction = 'horizontal',  -- 'float'
   float_opts = {
     border = 'single',
     width = 150,
@@ -11,3 +11,6 @@ require("toggleterm").setup{
   }
 }
 
+local set_keymap = require('../utils').set_keymap
+
+set_keymap('t', '<esc>', '<C-\\><C-n>')
