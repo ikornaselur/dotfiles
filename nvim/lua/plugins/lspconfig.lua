@@ -1,30 +1,20 @@
-require'lspinstall'.setup()
-require('lspconfig').pyright.setup({
-  settings = {
-    python = {
-      analysis = {
-        useLibraryCodeForTypes = true
-      }
-    }
-  }
-})
-require('lspconfig').bashls.setup({})
-require('lspconfig').cssls.setup({})
-require('lspconfig').html.setup({})
-require('lspconfig').jsonls.setup({})
-require('lspconfig').rust_analyzer.setup({
-  settings = {
-    ['rust-analyzer'] = {
-      checkOnSave = {
-        command = "clippy"
-      }
-    }
-  }
-})
-require('lspconfig').tsserver.setup({})
-require('lspconfig').vimls.setup({})
-require('lspconfig').yamlls.setup({})
---require('lspconfig').efm.setup({})
+local function setup_servers()
+  require('lspinstall').setup()
+  local servers = require('lspinstall').installed_servers()
+  for _, server in pairs(servers) do
+    require'lspconfig'[server].setup{}
+  end
+end
+
+setup_servers()
+
+require('lspinstall').post_install_hook = function ()
+  setup_servers()
+  vim.cmd("bufdo e")
+end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local user = vim.fn.expand('$USER')
 local sumneko_root_path = '/Users/' .. user .. '/Repos/lua-language-server'
