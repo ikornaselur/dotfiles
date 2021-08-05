@@ -1,9 +1,7 @@
-require('auto-session').setup {
-  log_level = 'error'
-}
-require('session-lens').setup {
+require('auto-session').setup({})
+require('session-lens').setup({
   path_display={'shorten'},
-}
+})
 
 local set_keymap = require('../utils').set_keymap
 
