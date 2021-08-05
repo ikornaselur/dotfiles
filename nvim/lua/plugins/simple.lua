@@ -2,8 +2,9 @@ local g = vim.g
 local cmd = vim.cmd
 
 -- Theme
-g.gruvbox_material_palette = 'original'
+g.gruvbox_material_palette = 'material'
 g.gruvbox_material_background = 'hard'
+g.gruvbox_material_diagnostic_text_highlight = 1
 cmd 'syntax enable'
 cmd 'colorscheme gruvbox-material'
 
