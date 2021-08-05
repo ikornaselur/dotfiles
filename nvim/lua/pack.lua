@@ -2,7 +2,7 @@ local cmd = vim.cmd
 
 cmd 'packadd paq-nvim'
 require('paq-nvim')({
-  {'savq/paq-nvim', opt = true};
+  'savq/paq-nvim';
 
   {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'};
   'nvim-treesitter/playground';
