@@ -1,3 +1,12 @@
+require('telescope').setup({
+  defaults = {
+    winblend = 10,
+    layout_config = {
+      preview_width = 0.5
+    },
+    path_display = {'shorten'},
+  }
+})
 require('auto-session').setup({})
 require('session-lens').setup({
   path_display={'shorten'},
