@@ -39,7 +39,7 @@ brew install --cask \
   bettertouchtool \
   dashlane \
   docker \
-  ferdi \
+  element \
   google-chrome \
   gpg-tools \
   little-snitch \
@@ -54,7 +54,7 @@ chmod +x /tmp/dockutil
 /tmp/dockutil --remove all --no-restart
 /tmp/dockutil --add "/Applications/Google Chrome.app" --no-restart
 /tmp/dockutil --add "/Applications/Spotify.app" --no-restart
-/tmp/dockutil --add "/Applications/Ferdi.app" --no-restart
+/tmp/dockutil --add "/Applications/Element.app" --no-restart
 /tmp/dockutil --add "/Applications/Slack.app" --no-restart
 /tmp/dockutil --add "/Applications/Steam.app" --no-restart
 /tmp/dockutil --add "/Applications/Alacritty.app" --no-restart
@@ -87,16 +87,6 @@ pyenv global ${VERSION39} ${VERSION27}
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 nvm install --lts
-npm install -g \
-  bash-language-server \
-  pyright \
-  sql-language-server \
-  typescript \
-  typescript-language-server \
-  vim-language-server \
-  vls yaml-language-server \
-  vscode-langservers-extracted
-
 
 # Install fzf
 $(brew --prefix)/opt/fzf/install --all
