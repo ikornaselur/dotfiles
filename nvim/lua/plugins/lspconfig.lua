@@ -97,6 +97,7 @@ local function setup_servers()
         }
       }
     end
+
     require('lspconfig')[server].setup(config)
   end
 end

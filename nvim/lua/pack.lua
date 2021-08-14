@@ -11,8 +11,7 @@ require('paq-nvim')({
   'nvim-lua/popup.nvim';
 
   'nvim-telescope/telescope.nvim';
-  'rmagatti/auto-session';
-  'rmagatti/session-lens';
+  'ahmedkhalf/project.nvim';
 
   'christoomey/vim-system-copy';
   'farmergreg/vim-lastplace';
@@ -29,7 +28,7 @@ require('paq-nvim')({
   'onsails/lspkind-nvim';
   'akinsho/nvim-toggleterm.lua';
   'petobens/poet-v';
-  'airblade/vim-rooter';
+  --'airblade/vim-rooter';
   'rust-lang/rust.vim';
   'psf/black';
 })
