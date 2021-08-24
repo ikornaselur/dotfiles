@@ -27,8 +27,6 @@ require('paq-nvim')({
   'lukas-reineke/indent-blankline.nvim';
   'onsails/lspkind-nvim';
   'akinsho/nvim-toggleterm.lua';
-  'petobens/poet-v';
-  --'airblade/vim-rooter';
   'rust-lang/rust.vim';
   'psf/black';
 })

@@ -33,9 +33,7 @@ g.rooter_patterns = {'.git', 'Makefile', 'pyproject.toml', 'Cargo.toml', 'packag
 
 -- Python
 cmd("autocmd BufWritePre *.py execute ':Black'")
-cmd("autocmd BufWritePre *.py execute ':PyrightOrganizeImports'")
-g.poetv_executables = {'poetry'}
-g.poetv_auto_activate = 1
+--cmd("autocmd BufWritePre *.py execute ':PyrightOrganizeImports'")
 
 -- Rust
 g.rustfmt_autosave = 1

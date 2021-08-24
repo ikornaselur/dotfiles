@@ -2,7 +2,7 @@ require("toggleterm").setup{
   size = 16,
   open_mapping = [[<c-\>]],
   hide_numbers = true,
-  direction = 'horizontal',  -- 'float'
+  direction = 'float',
   float_opts = {
     border = 'single',
     width = 150,
