@@ -8,5 +8,7 @@ require('gitsigns').setup({
   current_line_blame_opts = {
     delay = 0,
   },
-  use_internal_diff = true,
+  diff_opts = {
+    internal = true,
+  },
 })
