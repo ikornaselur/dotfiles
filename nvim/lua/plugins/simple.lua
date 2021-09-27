@@ -29,8 +29,10 @@ cmd "let g:VM_maps[\"Add Cursor Up\"]   = '<C-K>'"
 -----------------------
 
 -- Python
-cmd("autocmd BufWritePre *.py execute ':Black'")
+--cmd("autocmd BufWritePre *.py execute ':Black'")
 --cmd("autocmd BufWritePre *.py execute ':PyrightOrganizeImports'")
+local set_keymap = require('../utils').set_keymap
+set_keymap('n', '<c-b>', '<cmd>Black<cr>')
 
 -- Rust
 g.rustfmt_autosave = 1
