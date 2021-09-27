@@ -37,6 +37,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
+eval "$(direnv hook zsh)"
+
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -55,6 +57,7 @@ alias gcan="git commit --amend --no-edit"
 alias greb="git rebase origin/master"
 alias ci="unbuffer hub ci-status -v | cut -f1-2"
 alias dc="docker-compose"
+alias pbcopy="xclip -sel clip"
 
 # Make that history biiiig
 HISTFILE=~/.zsh_history
