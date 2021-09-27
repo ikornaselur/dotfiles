@@ -1,0 +1,11 @@
+[aliases]
+Google-chrome = "Chrome"
+
+[general]
+default_icon = ""
+wm_property = "class"
+
+[options]
+remove_duplicates = true
+no_names = false
+no_icon_names = false

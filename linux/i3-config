@@ -6,6 +6,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift
 exec --no-startup-id dunst
+exec_always --no-startup-id $HOME/.cargo/bin/i3wsr --config $HOME/.config/i3wsr.toml
 
 # Volume
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -15,8 +16,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Notifications
-bindsym $mod+bracketleft exec dunstctl close-all
-bindsym $mod+bracketright exec dunstctl history-pop
+bindsym $mod+bracketright exec dunstctl close-all
+bindsym $mod+bracketleft exec dunstctl history-pop
 
 # Brightness
 bindsym XF86MonBrightnessUp exec light -A 10
