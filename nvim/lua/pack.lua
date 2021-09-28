@@ -29,4 +29,5 @@ require('paq-nvim')({
   'akinsho/nvim-toggleterm.lua';
   'rust-lang/rust.vim';
   'psf/black';
+  'smbl64/vim-black-macchiato';
 })
