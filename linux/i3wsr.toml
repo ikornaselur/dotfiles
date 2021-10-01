@@ -1,5 +1,6 @@
 [aliases]
 Google-chrome = "Chrome"
+mockoon = "Mockoon"
 
 [general]
 default_icon = ""
