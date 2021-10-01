@@ -163,7 +163,7 @@
       res+="${meta}#"
       where=${(V)VCS_STATUS_TAG}
     fi
-    (( $#where > 32 )) && where[13,-13]="…"
+    (( $#where > 26 )) && where[26,-1]="…"
     res+="${clean}${where//\%/%%}"  # escape %
     [[ -z $where ]] && res+="${meta}@${clean}${VCS_STATUS_COMMIT[1,8]}"
     if [[ -n ${VCS_STATUS_REMOTE_BRANCH:#$VCS_STATUS_LOCAL_BRANCH} ]]; then
