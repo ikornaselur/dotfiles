@@ -37,3 +37,8 @@ set_keymap('x', '<c-b>', ":'<,'>BlackMacchiato<cr>")
 
 -- Rust
 g.rustfmt_autosave = 1
+
+-- Bash
+vim.api.nvim_exec([[
+autocmd Filetype sh setlocal ts=4 sw=4 sts=4 expandtab
+]], false)
