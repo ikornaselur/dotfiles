@@ -1,0 +1,52 @@
+theme = "plain"
+icons = "awesome5"
+
+[[block]]
+block = "networkmanager"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+interface_name_include = []
+ap_format = "{ssid} {strength}"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = "{barchart} {utilization} {frequency}"
+
+[[block]]
+block = "temperature"
+collapsed = false
+interval = 1
+format = "{average}"
+chip = "coretemp-isa-0000"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used_percents}"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "battery"
+interval = 10
+warning = 40
+critical = 20
+format = "{percentage} {time}"
+
+[[block]]
+block = "music"
+player = "spotify"
+buttons = ["play", "next"]
+
+[[block]]
+block = "github"
+format = "{total}"
+info = ["total"]
+warning = ["comment", "manual"]
+critical = ["author", "mention", "review_requested"]
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %d/%m %R"
