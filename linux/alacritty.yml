@@ -18,7 +18,7 @@ colors:
     blue:    '0x458588'
     magenta: '0xb16286'
     cyan:    '0x689d6a'
-    white:   '0xa89984'
+    white:   '0xdbdcc7'
   bright:
     black:   '0x928374'
     red:     '0xfb4934'
