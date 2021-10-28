@@ -15,9 +15,16 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 export NVM_LAZY_LOAD=true
+export NVM_LAZY_LOAD_EXTRA_COMMANDS=('nvim')
+
+vim () {
+	unset -f nvim > /dev/null 2>&1
+	_zsh_nvm_load
+	nvim "$@"
+}
+
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
 
 plugins=(git autojump zsh-syntax-highlighting zsh-completions zsh-autosuggestions zsh-nvm)
 
@@ -43,7 +50,6 @@ eval "$(direnv hook zsh)"
 
 
 # Aliases
-alias vim="/usr/local/bin/nvim -u ~/.config/nvim/init.lua"
 alias ls="exa --git"
 alias rg="rg -S"
 alias rgff="rg --files -g"
