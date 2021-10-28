@@ -30,4 +30,5 @@ require('paq-nvim')({
   'rust-lang/rust.vim';
   'psf/black';
   'smbl64/vim-black-macchiato';
+  'Vimjas/vim-python-pep8-indent';
 })
