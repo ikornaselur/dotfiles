@@ -52,5 +52,5 @@ hide_if_total_is_zero = true
 
 [[block]]
 block = "time"
-interval = 5
-format = "%a %d/%m %R"
+interval = 1
+format = "%a %d/%m %T"
