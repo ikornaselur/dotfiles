@@ -1,0 +1,32 @@
+# Env variables
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export PYTHONDONTWRITEBYTECODE=1
+
+autoload -Uz compinit
+
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+
+compinit -C
+
+export EDITOR=nvim
+
+# Aliases
+alias ls="exa --git"
+alias rg="rg -S"
+alias rgff="rg --files -g"
+alias p=poetry
+alias ,,='git rev-parse --git-dir >/dev/null 2>&1 && cd `git rev-parse --show-toplevel` || echo "Not in git repo"'
+alias :q='exit'
+alias vi='nvim -u NONE'
+alias dc="docker-compose"
+
+# Make that history biiiig
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups
+
+source ~/.zshrc.extra
