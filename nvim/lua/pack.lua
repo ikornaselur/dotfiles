@@ -1,7 +1,6 @@
 local cmd = vim.cmd
 
-cmd 'packadd paq-nvim'
-require('paq-nvim')({
+require('paq')({
   'savq/paq-nvim';
 
   {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'};
@@ -13,13 +12,13 @@ require('paq-nvim')({
   'nvim-telescope/telescope.nvim';
   'ahmedkhalf/project.nvim';
 
+  'rcarriga/nvim-notify';
   'christoomey/vim-system-copy';
   'farmergreg/vim-lastplace';
   'hrsh7th/nvim-compe';
   'hrsh7th/vim-vsnip';
   'mg979/vim-visual-multi';
   'neovim/nvim-lspconfig';
-  --'kabouzeid/nvim-lspinstall';
   'williamboman/nvim-lsp-installer';
   'sainnhe/gruvbox-material';
   'vim-airline/vim-airline';
