@@ -51,6 +51,11 @@ critical = ["author", "mention", "review_requested"]
 hide_if_total_is_zero = true
 
 [[block]]
+block = "custom"
+command = "/usr/bin/python3 /home/axel/Work/notes/todos.py"
+interval = 10
+
+[[block]]
 block = "time"
 interval = 1
 format = "%a %d/%m %T"
