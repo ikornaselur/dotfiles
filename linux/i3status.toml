@@ -52,7 +52,7 @@ hide_if_total_is_zero = true
 
 [[block]]
 block = "custom"
-command = "/usr/bin/python3 /home/axel/Work/notes/todos.py"
+command = "/usr/bin/python3 /home/axel/.watson.py"
 interval = 10
 
 [[block]]
