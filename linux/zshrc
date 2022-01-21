@@ -44,6 +44,7 @@ export EDITOR=nvim
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
@@ -64,6 +65,7 @@ alias greb="git rebase origin/develop"
 alias ci="unbuffer hub ci-status -v | cut -f1-2"
 alias dc="docker-compose"
 alias pbcopy="xclip -sel clip"
+alias w="watson"
 
 # Make that history biiiig
 HISTFILE=~/.zsh_history
