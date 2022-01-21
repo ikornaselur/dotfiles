@@ -31,4 +31,5 @@ require('paq')({
   'psf/black';
   'smbl64/vim-black-macchiato';
   'Vimjas/vim-python-pep8-indent';
+  'itchyny/calendar.vim';
 })

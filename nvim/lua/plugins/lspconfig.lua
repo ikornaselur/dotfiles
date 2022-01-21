@@ -39,6 +39,22 @@ lsp_installer.on_server_ready(function(server)
       }
     }
   end
+  if server.name == "efm" then
+    config.init_options = {documentFormatting = true}
+    config.settings = {
+      rootMarkers = {".git/"},
+      languages = {
+        python = {
+          {
+            lintCommand = "flake8 --stdin-display-name ${INPUT} -",
+            lintStdin = true,
+            lintFormats = {"%f:%l:%c: %m"}
+          }
+        }
+      }
+    }
+  end
+
   server:setup(config)
 
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -51,7 +67,7 @@ lsp_installer.on_server_ready(function(server)
   buf_set_keymap('n', '<c-h>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<c-l>', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
