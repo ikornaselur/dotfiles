@@ -1,5 +1,6 @@
 local g = vim.g
 local cmd = vim.cmd
+local set_keymap = require('../utils').set_keymap
 
 -- Theme
 g.gruvbox_material_palette = 'material'
@@ -20,18 +21,24 @@ g.indent_blankline_buftype_exclude = {'terminal'}
 
 -- VimVisualMulti
 g.VM_default_mappings = 0
-cmd "let g:VM_maps = {}"
-cmd "let g:VM_maps[\"Add Cursor Down\"] = '<C-J>'"
-cmd "let g:VM_maps[\"Add Cursor Up\"]   = '<C-K>'"
+cmd("let g:VM_maps = {}")
+cmd("let g:VM_maps[\"Add Cursor Down\"] = '<C-J>'")
+cmd("let g:VM_maps[\"Add Cursor Up\"]   = '<C-K>'")
+
+-- Ultest
+set_keymap('n', '<c-t>', ':UltestNearest<cr>')
+set_keymap('n', '<c-y>', ':UltestOutput<cr>')
+cmd("let g:ultest_use_pty = 1")
+
 
 -----------------------
 -- Language specific --
 -----------------------
 
 -- Python
---cmd("autocmd BufWritePre *.py execute ':Black'")
---cmd("autocmd BufWritePre *.py execute ':PyrightOrganizeImports'")
-local set_keymap = require('../utils').set_keymap
+cmd("autocmd BufWritePost *.py call flake8#Flake8()")
+cmd("let g:flake8_show_in_gutter=1")
+cmd("let g:flake8_show_quickfix=0")
 set_keymap('n', '<c-b>', '<cmd>Black<cr>')
 set_keymap('x', '<c-b>', ":'<,'>BlackMacchiato<cr>")
 

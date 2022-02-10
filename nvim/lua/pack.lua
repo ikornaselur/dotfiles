@@ -1,5 +1,3 @@
-local cmd = vim.cmd
-
 require('paq')({
   'savq/paq-nvim';
 
@@ -32,4 +30,6 @@ require('paq')({
   'smbl64/vim-black-macchiato';
   'Vimjas/vim-python-pep8-indent';
   'nvie/vim-flake8';
+  'vim-test/vim-test';
+  'rcarriga/vim-ultest';
 })

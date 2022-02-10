@@ -16,3 +16,9 @@ require('gitsigns').setup({
     internal = true,
   },
 })
+
+local cmd = vim.cmd
+
+cmd("au VimEnter * highlight link GitSignsAddLnInline DiffAdd")
+cmd("au VimEnter * highlight link GitSignsChangeLnInline DiffChange")
+cmd("au VimEnter * highlight link GitSignsDeleteLnInline DiffDelete")
