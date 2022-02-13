@@ -2,12 +2,14 @@ local g = vim.g
 local cmd = vim.cmd
 local set_keymap = require('../utils').set_keymap
 
+cmd('let mapleader = ","')
+
 -- Theme
 g.gruvbox_material_palette = 'material'
 g.gruvbox_material_background = 'hard'
 g.gruvbox_material_diagnostic_text_highlight = 1
-cmd 'syntax enable'
-cmd 'colorscheme gruvbox-material'
+cmd('syntax enable')
+cmd('colorscheme gruvbox-material')
 
 -- Airline
 g.airline_theme = 'gruvbox_material'
@@ -29,6 +31,9 @@ cmd("let g:VM_maps[\"Add Cursor Up\"]   = '<C-K>'")
 set_keymap('n', '<c-t>', ':UltestNearest<cr>')
 set_keymap('n', '<c-y>', ':UltestOutput<cr>')
 cmd("let g:ultest_use_pty = 1")
+
+-- NERDTree
+set_keymap('n', '<leader>n', ':NERDTreeToggle<CR>')
 
 
 -----------------------

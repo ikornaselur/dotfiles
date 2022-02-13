@@ -32,4 +32,6 @@ require('paq')({
   'nvie/vim-flake8';
   'vim-test/vim-test';
   'rcarriga/vim-ultest';
+  'preservim/nerdtree';
+  'ryanoasis/vim-devicons';
 })
