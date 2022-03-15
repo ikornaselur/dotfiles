@@ -20,6 +20,7 @@ require('paq')({
   'williamboman/nvim-lsp-installer';
   'sainnhe/gruvbox-material';
   'vim-airline/vim-airline';
+  'vim-airline/vim-airline-themes';
   'kyazdani42/nvim-web-devicons';
   'lewis6991/gitsigns.nvim';
   'lukas-reineke/indent-blankline.nvim';
@@ -34,4 +35,5 @@ require('paq')({
   'rcarriga/vim-ultest';
   'preservim/nerdtree';
   'ryanoasis/vim-devicons';
+  'romgrk/nvim-treesitter-context';
 })
