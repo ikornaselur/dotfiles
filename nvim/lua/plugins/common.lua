@@ -15,15 +15,6 @@ cmd('colorscheme gruvbox-material')
 g.airline_theme = 'gruvbox_material'
 g.airline_powerline_fonts =  1
 g.airline_section_y = ''
-cmd("let g:airline#extensions#tabline#enabled = 1")
-cmd("let g:airline#extensions#tabline#show_close_button = 0")
-cmd("let g:airline#extensions#tabline#tabs_label = ''")
-cmd("let g:airline#extensions#tabline#buffers_label = ''")
-cmd("let g:airline#extensions#tabline#fnamemod = ':t'")
-cmd("let g:airline#extensions#tabline#show_tab_count = 0")
-cmd("let g:airline#extensions#tabline#show_buffers = 0")
-cmd("let g:airline#extensions#tabline#tab_min_count = 2")
-cmd("let g:airline#extensions#tabline#show_tab_nr = 0")
 
 -- IndentLine
 g.indent_blankline_use_treesitter = true
@@ -45,7 +36,6 @@ cmd("let g:ultest_use_pty = 1")
 
 -- NERDTree
 set_keymap('n', '<leader>n', ':NERDTreeToggle<CR>')
-
 
 -----------------------
 -- Language specific --

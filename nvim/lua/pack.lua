@@ -36,4 +36,6 @@ require('paq')({
   'preservim/nerdtree';
   'ryanoasis/vim-devicons';
   'romgrk/nvim-treesitter-context';
+  'akinsho/bufferline.nvim';
+  'j-hui/fidget.nvim';
 })
