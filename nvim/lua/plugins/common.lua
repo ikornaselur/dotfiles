@@ -37,14 +37,17 @@ cmd("let g:ultest_use_pty = 1")
 -- NERDTree
 set_keymap('n', '<leader>n', ':NERDTreeToggle<CR>')
 
+-- Trouble
+set_keymap('n', '<leader>xx', ':TroubleToggle workspace_diagnostics<CR>')
+
 -----------------------
 -- Language specific --
 -----------------------
 
 -- Python
-cmd("autocmd BufWritePost *.py call flake8#Flake8()")
-cmd("let g:flake8_show_in_gutter=1")
-cmd("let g:flake8_show_quickfix=0")
+--cmd("autocmd BufWritePost *.py call flake8#Flake8()")
+--cmd("let g:flake8_show_in_gutter=1")
+--cmd("let g:flake8_show_quickfix=0")
 set_keymap('n', '<c-b>', '<cmd>Black<cr>')
 set_keymap('x', '<c-b>', ":'<,'>BlackMacchiato<cr>")
 

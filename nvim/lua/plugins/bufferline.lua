@@ -1,6 +1,6 @@
 require('bufferline').setup({
   options = {
-    mode = "buffers", -- set to "tabs" to only show tabpages instead
+    mode = "tabs",
     numbers = "ordinal",
     indicator_icon = '▎',
     buffer_close_icon = '',
@@ -23,3 +23,15 @@ require('bufferline').setup({
     always_show_bufferline = true,
   }
 })
+
+local set_keymap = require('../utils').set_keymap
+
+-- These commands will navigate through buffers in order regardless of which
+-- mode you are using e.g. if you change the order of buffers :bnext and
+-- :bprevious will not respect the custom ordering
+set_keymap('n', ']b', ':BufferLineCycleNext<CR>')
+set_keymap('n', '[b', ':BufferLineCyclePrev<CR>')
+
+-- These commands will move the current buffer backwards or forwards in the bufferline
+set_keymap('n', ']B', ':BufferLineMoveNext<CR>')
+set_keymap('n', '[B', ':BufferLineMovePrev<CR>')

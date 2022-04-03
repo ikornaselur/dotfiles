@@ -15,7 +15,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 end
@@ -34,16 +34,18 @@ lsp_installer.on_server_ready(function(server)
     }
   end
   if server.name == "efm" then
+    config.flags = {debounce_text_changes = 1000}
     config.init_options = {documentFormatting = true}
     config.settings = {
-      rootMarkers = {".git/"},
+      rootMarkers = {".git/", "pyproject.toml"},
+      lintDebounce = "1s",
+      formatDebounce = "1000ms",
       languages = {
         python = {
           {
             lintCommand = "flake8 --stdin-display-name ${INPUT} -",
             lintStdin = true,
-            lintFormats = {"%f:%l:%c: %m"},
-            lintDebounce = 10000000000
+            lintFormats = {"%f:%l:%c: %m"}
           }
         }
       }

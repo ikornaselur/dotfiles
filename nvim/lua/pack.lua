@@ -30,7 +30,7 @@ require('paq')({
   'psf/black';
   'smbl64/vim-black-macchiato';
   'Vimjas/vim-python-pep8-indent';
-  'nvie/vim-flake8';
+  --'nvie/vim-flake8';
   'vim-test/vim-test';
   'rcarriga/vim-ultest';
   'preservim/nerdtree';
@@ -38,4 +38,6 @@ require('paq')({
   'romgrk/nvim-treesitter-context';
   'akinsho/bufferline.nvim';
   'j-hui/fidget.nvim';
+  'folke/lsp-colors.nvim';
+  'folke/trouble.nvim';
 })
