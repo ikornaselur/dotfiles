@@ -4,7 +4,7 @@ require('telescope').setup({
     layout_config = {
       preview_width = 0.5
     },
-    path_display = {'smart'},
+    path_display = {'truncate'},
   }
 })
 require("project_nvim").setup({})
