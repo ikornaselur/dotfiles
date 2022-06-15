@@ -30,13 +30,6 @@ format_swap = "{swap_used_percents}"
 block = "sound"
 
 [[block]]
-block = "battery"
-interval = 10
-warning = 40
-critical = 20
-format = "{percentage} {time}"
-
-[[block]]
 block = "music"
 player = "spotify"
 buttons = ["play", "next"]
@@ -54,6 +47,13 @@ hide_if_total_is_zero = true
 block = "custom"
 command = "/usr/bin/python3 /home/axel/.watson.py"
 interval = 10
+
+[[block]]
+block = "battery"
+interval = 10
+warning = 40
+critical = 20
+format = "{percentage} {time}"
 
 [[block]]
 block = "time"
