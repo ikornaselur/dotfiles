@@ -10,6 +10,7 @@ g.gruvbox_material_background = 'hard'
 g.gruvbox_material_diagnostic_text_highlight = 1
 cmd('syntax enable')
 cmd('colorscheme gruvbox-material')
+-- cmd('set background=light')
 
 -- Airline
 g.airline_theme = 'gruvbox_material'
@@ -27,18 +28,14 @@ cmd("let g:VM_maps = {}")
 cmd("let g:VM_maps[\"Add Cursor Down\"] = '<C-J>'")
 cmd("let g:VM_maps[\"Add Cursor Up\"]   = '<C-K>'")
 
--- Ultest
-set_keymap('n', '<c-t>', ':UltestNearest<cr>')
-set_keymap('n', '<c-u>', ':Ultest<cr>')
-set_keymap('n', 'U', ':UltestSummary<cr>')
-set_keymap('n', '<c-y>', ':UltestOutput<cr>')
-cmd("let g:ultest_use_pty = 1")
-
 -- NERDTree
 set_keymap('n', '<leader>n', ':NERDTreeToggle<CR>')
 
 -- Trouble
 set_keymap('n', '<leader>xx', ':TroubleToggle workspace_diagnostics<CR>')
+
+-- Minimap
+set_keymap('n', '<leader>m', ':MinimapToggle<CR>')
 
 -----------------------
 -- Language specific --

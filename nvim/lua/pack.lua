@@ -31,7 +31,6 @@ require('paq')({
   'smbl64/vim-black-macchiato';
   'Vimjas/vim-python-pep8-indent';
   'vim-test/vim-test';
-  'rcarriga/vim-ultest';
   'preservim/nerdtree';
   'ryanoasis/vim-devicons';
   'lewis6991/nvim-treesitter-context';
@@ -39,4 +38,11 @@ require('paq')({
   'j-hui/fidget.nvim';
   'folke/lsp-colors.nvim';
   'folke/trouble.nvim';
+  'mfussenegger/nvim-dap';
+  'mfussenegger/nvim-dap-python';
+  'antoinemadec/FixCursorHold.nvim';
+  'nvim-neotest/neotest';
+  'nvim-neotest/neotest-python';
+  'phaazon/hop.nvim';
+  'wfxr/minimap.vim';
 })
