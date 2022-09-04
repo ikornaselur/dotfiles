@@ -44,5 +44,5 @@ require('paq')({
   'nvim-neotest/neotest';
   'nvim-neotest/neotest-python';
   'phaazon/hop.nvim';
-  'wfxr/minimap.vim';
+  --'wfxr/minimap.vim';
 })

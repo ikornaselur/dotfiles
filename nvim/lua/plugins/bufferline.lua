@@ -2,7 +2,10 @@ require('bufferline').setup({
   options = {
     mode = "tabs",
     numbers = "ordinal",
-    indicator_icon = '▎',
+    indicator = {
+      icon = '▎',
+      style = 'icon'
+    },
     buffer_close_icon = '',
     modified_icon = '●',
     close_icon = '',
