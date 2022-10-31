@@ -10,39 +10,45 @@ require('paq')({
   'nvim-telescope/telescope.nvim';
   'ahmedkhalf/project.nvim';
 
+  -- LSP tools
+  'williamboman/mason.nvim'; -- LSP related package manager
+  'williamboman/mason-lspconfig.nvim';  -- mason extension for lspconfig
+  'neovim/nvim-lspconfig';
+  'jose-elias-alvarez/null-ls.nvim'; -- Linting and formatting
+
+  -- Language specific
+  'rust-lang/rust.vim';
+  'Vimjas/vim-python-pep8-indent';
+
+  -- Testing
+  'vim-test/vim-test';
+  'nvim-neotest/neotest';
+  'nvim-neotest/neotest-python';
+
+  -- Visual
+  'sainnhe/gruvbox-material';
+  'vim-airline/vim-airline';
+  'vim-airline/vim-airline-themes';
   'rcarriga/nvim-notify';
+  'ryanoasis/vim-devicons';
+  'kyazdani42/nvim-web-devicons';
+  'lukas-reineke/indent-blankline.nvim';
+  'lewis6991/gitsigns.nvim';
+  'folke/lsp-colors.nvim';
+  'folke/trouble.nvim';
+
+  -- Other
   'christoomey/vim-system-copy';
   'farmergreg/vim-lastplace';
   'hrsh7th/nvim-compe';
   'hrsh7th/vim-vsnip';
   'mg979/vim-visual-multi';
-  'neovim/nvim-lspconfig';
-  'williamboman/nvim-lsp-installer';
-  'sainnhe/gruvbox-material';
-  'vim-airline/vim-airline';
-  'vim-airline/vim-airline-themes';
-  'kyazdani42/nvim-web-devicons';
-  'lewis6991/gitsigns.nvim';
-  'lukas-reineke/indent-blankline.nvim';
   'onsails/lspkind-nvim';
   'akinsho/nvim-toggleterm.lua';
-  'rust-lang/rust.vim';
-  'psf/black';
-  'smbl64/vim-black-macchiato';
-  'Vimjas/vim-python-pep8-indent';
-  'vim-test/vim-test';
   'preservim/nerdtree';
-  'ryanoasis/vim-devicons';
   'lewis6991/nvim-treesitter-context';
   'akinsho/bufferline.nvim';
   'j-hui/fidget.nvim';
-  'folke/lsp-colors.nvim';
-  'folke/trouble.nvim';
-  'mfussenegger/nvim-dap';
-  'mfussenegger/nvim-dap-python';
   'antoinemadec/FixCursorHold.nvim';
-  'nvim-neotest/neotest';
-  'nvim-neotest/neotest-python';
   'phaazon/hop.nvim';
-  --'wfxr/minimap.vim';
 })

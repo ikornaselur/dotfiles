@@ -17,4 +17,3 @@ require("neotest").setup({
 
 set_keymap('n', '<c-t>', '<cmd>lua require("neotest").run.run()<CR>')
 set_keymap('n', '<c-u>', '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>')
-set_keymap('n', '<c-u>', '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>')

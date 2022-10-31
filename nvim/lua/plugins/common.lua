@@ -41,13 +41,6 @@ set_keymap('n', '<leader>m', ':MinimapToggle<CR>')
 -- Language specific --
 -----------------------
 
--- Python
---cmd("autocmd BufWritePost *.py call flake8#Flake8()")
---cmd("let g:flake8_show_in_gutter=1")
---cmd("let g:flake8_show_quickfix=0")
-set_keymap('n', '<c-b>', '<cmd>Black<cr>')
-set_keymap('x', '<c-b>', ":'<,'>BlackMacchiato<cr>")
-
 -- Rust
 g.rustfmt_autosave = 1
 
