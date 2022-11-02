@@ -15,15 +15,11 @@ require('paq')({
   'williamboman/mason-lspconfig.nvim';  -- mason extension for lspconfig
   'neovim/nvim-lspconfig';
   'jose-elias-alvarez/null-ls.nvim'; -- Linting and formatting
+  'jayp0521/mason-null-ls.nvim';
 
   -- Language specific
   'rust-lang/rust.vim';
   'Vimjas/vim-python-pep8-indent';
-
-  -- Testing
-  'vim-test/vim-test';
-  'nvim-neotest/neotest';
-  'nvim-neotest/neotest-python';
 
   -- Visual
   'sainnhe/gruvbox-material';
@@ -35,7 +31,14 @@ require('paq')({
   'lukas-reineke/indent-blankline.nvim';
   'lewis6991/gitsigns.nvim';
   'folke/lsp-colors.nvim';
-  'folke/trouble.nvim';
+  'folke/trouble.nvim';  -- Show lsp errors across the project
+
+  -- Testing
+  'vim-test/vim-test';
+  'antoinemadec/FixCursorHold.nvim';
+  'nvim-neotest/neotest';
+  'nvim-neotest/neotest-python';
+  'rouge8/neotest-rust';
 
   -- Other
   'christoomey/vim-system-copy';
@@ -49,6 +52,6 @@ require('paq')({
   'lewis6991/nvim-treesitter-context';
   'akinsho/bufferline.nvim';
   'j-hui/fidget.nvim';
-  'antoinemadec/FixCursorHold.nvim';
   'phaazon/hop.nvim';
+  'lewis6991/impatient.nvim';
 })

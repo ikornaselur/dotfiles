@@ -12,6 +12,15 @@ require("neotest").setup({
     require("neotest-python")({
       dap = { justMyCode = false },
     }),
+    require("neotest-rust"),
+  },
+  icons = {
+    failed = "✖",
+    passed = "✓",
+    running = "◷",
+    running_animated = { "/", "|", "\\", "-", "/", "|", "\\", "-" },
+    skipped = "ﰸ",
+    unknown = ""
   },
 })
 
