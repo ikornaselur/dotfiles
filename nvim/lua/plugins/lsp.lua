@@ -22,3 +22,18 @@ set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 
 set_keymap('n', '<c-b>', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 set_keymap('x', '<c-b>', ":'<,'>lua vim.lsp.buf.range_formatting()<CR>")
+
+
+local on_attach = function(client, bufnr)
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+end
+
+require('lspconfig')['pyright'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+require('lspconfig')['rust_analyzer'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
