@@ -54,4 +54,5 @@ require('paq')({
   'j-hui/fidget.nvim';
   'phaazon/hop.nvim';
   'lewis6991/impatient.nvim';
+  'rmagatti/goto-preview';
 })

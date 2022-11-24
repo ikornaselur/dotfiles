@@ -3,6 +3,7 @@ local cmd = vim.cmd
 local set_keymap = require('../utils').set_keymap
 
 cmd('let mapleader = ","')
+cmd('let maplocalleader = ","')
 
 -- Theme
 g.gruvbox_material_palette = 'material'
@@ -10,6 +11,8 @@ g.gruvbox_material_background = 'hard'
 g.gruvbox_material_diagnostic_text_highlight = 1
 cmd('syntax enable')
 cmd('colorscheme gruvbox-material')
+cmd('hi NormalFloat ctermfg=223 ctermbg=234 guifg=#d4be98 guibg=#1d2021')
+cmd('hi FloatBorder ctermfg=223 ctermbg=234 guifg=#d4be98 guibg=#1d2021')
 -- cmd('set background=light')
 
 -- Airline
@@ -34,8 +37,6 @@ set_keymap('n', '<leader>n', ':NERDTreeToggle<CR>')
 -- Trouble
 set_keymap('n', '<leader>xx', ':TroubleToggle workspace_diagnostics<CR>')
 
--- Minimap
-set_keymap('n', '<leader>m', ':MinimapToggle<CR>')
 
 -----------------------
 -- Language specific --
