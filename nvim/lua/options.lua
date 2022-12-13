@@ -36,4 +36,4 @@ opt.foldmethod = 'expr'
 opt.foldexpr = 'nvim_treesitter#foldexpr()' -- Use treesitter for folding expr
 opt.foldlevelstart = 10
 
-opt.colorcolumn = '80,120'
+-- opt.colorcolumn = '80,120'

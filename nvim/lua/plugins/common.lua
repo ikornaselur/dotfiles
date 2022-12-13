@@ -49,3 +49,11 @@ g.rustfmt_autosave = 1
 vim.api.nvim_exec([[
 autocmd Filetype sh setlocal ts=4 sw=4 sts=4 expandtab
 ]], false)
+
+require("transparent").setup({
+  enable = true, -- boolean: enable transparent
+  extra_groups = {
+    "cursorline",
+  },
+  exclude = {}, -- table: groups you don't want to clear
+})

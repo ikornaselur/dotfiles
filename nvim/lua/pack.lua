@@ -41,6 +41,7 @@ require('paq')({
   'rouge8/neotest-rust';
 
   -- Other
+  'yioneko/nvim-yati';
   'christoomey/vim-system-copy';
   'farmergreg/vim-lastplace';
   'hrsh7th/nvim-compe';
@@ -55,4 +56,5 @@ require('paq')({
   'phaazon/hop.nvim';
   'lewis6991/impatient.nvim';
   'rmagatti/goto-preview';
+  'xiyaowong/nvim-transparent';
 })
