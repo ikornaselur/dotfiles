@@ -1,9 +1,11 @@
-theme = "plain"
+# theme = "plain"
+# theme = "gruvbox-light"
+theme = "gruvbox-dark"
 icons = "awesome5"
 
 [[block]]
 block = "networkmanager"
-interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+", "tailscale\\d+"]
 interface_name_include = []
 ap_format = "{ssid} {strength}"
 device_format = "{icon}{ap}"
@@ -36,17 +38,10 @@ buttons = ["play", "next"]
 hide_when_empty = true
 
 [[block]]
-block = "github"
-format = "{total}"
-info = ["total"]
-warning = ["comment", "manual"]
-critical = ["author", "mention", "review_requested"]
-hide_if_total_is_zero = true
-
-[[block]]
 block = "custom"
 command = "/usr/bin/python3 /home/axel/.watson.py"
 interval = 10
+json = true
 
 [[block]]
 block = "battery"
