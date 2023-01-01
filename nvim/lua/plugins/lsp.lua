@@ -1,14 +1,15 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
-null_ls = require("null-ls")
 require("mason-null-ls").setup({
+  automatic_installation = false,
   automatic_setup = true,
 })
+require("null-ls").setup()
 require("mason-null-ls").setup_handlers()
+
 require('goto-preview').setup({
   height = 30,
 })
-null_ls.setup()
 
 local set_keymap = require('../utils').set_keymap
 
@@ -28,6 +29,12 @@ set_keymap('x', '<c-b>', ":'<,'>lua vim.lsp.buf.range_formatting()<CR>")
 
 set_keymap('n', 'gD', '<cmd>lua require("goto-preview").goto_preview_definition()<CR>')
 
+-- Use internal formatting for bindings like gq. 
+vim.api.nvim_create_autocmd('LspAttach', { 
+  callback = function(args) 
+    vim.bo[args.buf].formatexpr = nil 
+  end, 
+})
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
