@@ -6,9 +6,9 @@ require("mason-null-ls").setup({
 })
 require("null-ls").setup()
 require("mason-null-ls").setup_handlers()
-
 require('goto-preview').setup({
-  height = 30,
+  width = 200; -- Width of the floating window
+  height = 30; -- Height of the floating window
 })
 
 local set_keymap = require('../utils').set_keymap
@@ -25,7 +25,6 @@ set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 
 set_keymap('n', '<c-b>', '<cmd>lua vim.lsp.buf.format { async = true }<CR>')
-set_keymap('x', '<c-b>', ":'<,'>lua vim.lsp.buf.range_formatting()<CR>")
 
 set_keymap('n', 'gD', '<cmd>lua require("goto-preview").goto_preview_definition()<CR>')
 

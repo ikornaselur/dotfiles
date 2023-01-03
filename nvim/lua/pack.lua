@@ -57,4 +57,5 @@ require('paq')({
   'lewis6991/impatient.nvim';
   'rmagatti/goto-preview';
   'xiyaowong/nvim-transparent';
+  'folke/todo-comments.nvim';
 })

@@ -37,6 +37,7 @@ set_keymap('n', '<leader>n', ':NERDTreeToggle<CR>')
 -- Trouble
 set_keymap('n', '<leader>xx', ':TroubleToggle workspace_diagnostics<CR>')
 
+require("todo-comments").setup({})
 
 -----------------------
 -- Language specific --

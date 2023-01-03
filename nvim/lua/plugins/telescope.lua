@@ -1,6 +1,6 @@
 require('telescope').setup({
   defaults = {
-    winblend = 10,
+    winblend = 0,
     layout_config = {
       preview_width = 0.5
     },
