@@ -61,11 +61,14 @@ alias greb="git rebase origin/master"
 alias pods="kubectl get pods"
 alias nodes="kubectl get nodes"
 alias weather="curl https://v2.wttr.in/London"
-alias pyb="pyboard --device /dev/tty.usbmodem0000000000001"
-alias pyb2="pyboard --device /dev/tty.usbmodem3"
+# alias pyb="pyboard --device `serpico -p`"
 alias ci="unbuffer hub ci-status -v | cut -f1-2"
 alias dc="docker-compose"
 alias play="ncplayer -s scale"
+
+function pyb () {
+  pyboard --device `serpico -p` $*
+}
 
 # Utils
 sleep-in() {echo "Sleeping laptop in $1 minutes..." && sleep $((60 * $1)) && pmset sleepnow}
@@ -85,6 +88,7 @@ source ~/.zshrc.extra
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

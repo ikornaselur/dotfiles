@@ -22,6 +22,9 @@ require("neotest").setup({
     skipped = "ﰸ",
     unknown = ""
   },
+  quickfix = {
+    enabled = false,
+  },
 })
 
 set_keymap('n', '<c-t>', '<cmd>lua require("neotest").run.run()<CR>')
