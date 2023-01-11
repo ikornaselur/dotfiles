@@ -13,6 +13,8 @@ cmd('syntax enable')
 cmd('colorscheme gruvbox-material')
 cmd('hi NormalFloat ctermfg=223 ctermbg=234 guifg=#d4be98 guibg=#1d2021')
 cmd('hi FloatBorder ctermfg=223 ctermbg=234 guifg=#d4be98 guibg=#1d2021')
+cmd('hi DiffText guibg=#10102e')
+cmd('hi DiffAdd guibg=#102e1a')
 -- cmd('set background=light')
 
 -- Airline
@@ -38,6 +40,9 @@ set_keymap('n', '<leader>n', ':NERDTreeToggle<CR>')
 set_keymap('n', '<leader>xx', ':TroubleToggle workspace_diagnostics<CR>')
 
 require("todo-comments").setup({})
+require('git-conflict').setup({
+  disable_diagnostics = true
+})
 
 -----------------------
 -- Language specific --

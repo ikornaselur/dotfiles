@@ -24,7 +24,7 @@ set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 
-set_keymap('n', '<c-b>', '<cmd>lua vim.lsp.buf.format { async = true }<CR>')
+set_keymap('n', '<space>b', '<cmd>lua vim.lsp.buf.format { async = true }<CR>')
 
 set_keymap('n', 'gD', '<cmd>lua require("goto-preview").goto_preview_definition()<CR>')
 

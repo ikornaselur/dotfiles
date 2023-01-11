@@ -58,4 +58,5 @@ require('paq')({
   'rmagatti/goto-preview';
   'xiyaowong/nvim-transparent';
   'folke/todo-comments.nvim';
+  'akinsho/git-conflict.nvim';
 })
