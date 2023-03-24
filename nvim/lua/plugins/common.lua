@@ -57,9 +57,8 @@ autocmd Filetype sh setlocal ts=4 sw=4 sts=4 expandtab
 ]], false)
 
 require("transparent").setup({
-  enable = true, -- boolean: enable transparent
   extra_groups = {
     "cursorline",
   },
-  exclude = {}, -- table: groups you don't want to clear
+  exclude_groups = {}, -- table: groups you don't want to clear
 })

@@ -3,7 +3,7 @@ require('options')
 
 require('pack')
 
-require('plugins.compe')
+require('plugins.cmp')
 require('plugins.gitsigns')
 require('plugins.telescope')
 require('plugins.toggleterm')
@@ -14,3 +14,4 @@ require('plugins.simple')
 require('plugins.neotest')
 require('plugins.hop')
 require('plugins.lsp')
+require('plugins.copilot')

@@ -3,5 +3,4 @@ require('fidget').setup({
     blend = 0
   }
 })
-require('lspkind').init({})
 require('trouble').setup({})

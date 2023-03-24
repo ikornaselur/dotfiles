@@ -40,14 +40,21 @@ require('paq')({
   'nvim-neotest/neotest-python';
   'rouge8/neotest-rust';
 
+  -- Completion
+  'hrsh7th/nvim-cmp';
+  'hrsh7th/cmp-nvim-lsp';
+  'hrsh7th/cmp-buffer';
+  'hrsh7th/cmp-path';
+  'hrsh7th/cmp-cmdline';
+  'hrsh7th/cmp-calc';
+  'hrsh7th/cmp-emoji';
+  'onsails/lspkind-nvim';
+
   -- Other
   'yioneko/nvim-yati';
   'christoomey/vim-system-copy';
   'farmergreg/vim-lastplace';
-  'hrsh7th/nvim-compe';
-  'hrsh7th/vim-vsnip';
   'mg979/vim-visual-multi';
-  'onsails/lspkind-nvim';
   'akinsho/nvim-toggleterm.lua';
   'preservim/nerdtree';
   'lewis6991/nvim-treesitter-context';
@@ -59,4 +66,6 @@ require('paq')({
   'xiyaowong/nvim-transparent';
   'folke/todo-comments.nvim';
   'akinsho/git-conflict.nvim';
+  'zbirenbaum/copilot.lua';
+  'zbirenbaum/copilot-cmp';
 })
