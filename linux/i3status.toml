@@ -13,7 +13,7 @@ device_format = "{icon}{ap}"
 [[block]]
 block = "cpu"
 interval = 1
-format = "{barchart} {utilization} {frequency}"
+format = "{utilization} {frequency}"
 
 [[block]]
 block = "temperature"
@@ -21,12 +21,6 @@ collapsed = false
 interval = 1
 format = "{average}"
 chip = "coretemp-isa-0000"
-
-[[block]]
-block = "memory"
-display_type = "memory"
-format_mem = "{mem_used_percents}"
-format_swap = "{swap_used_percents}"
 
 [[block]]
 block = "sound"
