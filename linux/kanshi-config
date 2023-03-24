@@ -1,0 +1,8 @@
+{
+  output eDP-1 disable
+  output DP-1 enable mode 3840x1600@74.997002 position 0,0
+}
+
+{
+  output eDP-1 enable
+}
