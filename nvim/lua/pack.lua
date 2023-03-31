@@ -11,7 +11,12 @@ require('paq')({
   'ahmedkhalf/project.nvim';
 
   -- LSP tools
-  'williamboman/mason.nvim'; -- LSP related package manager
+  {
+    'williamboman/mason.nvim',
+    run = function() 
+      pcall(vim.cmd, 'MasonInstall') 
+    end,
+  }; -- LSP related package manager
   'williamboman/mason-lspconfig.nvim';  -- mason extension for lspconfig
   'neovim/nvim-lspconfig';
   'jose-elias-alvarez/null-ls.nvim'; -- Linting and formatting

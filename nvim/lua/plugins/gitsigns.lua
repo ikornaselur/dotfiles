@@ -7,7 +7,8 @@ require('gitsigns').setup({
     ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
     ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
   },
-  word_diff = true,
+  word_diff = false,
+  linehl = true,
   numhl = true,
   current_line_blame_opts = {
     delay = 0,
