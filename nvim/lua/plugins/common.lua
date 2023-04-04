@@ -57,9 +57,8 @@ vim.api.nvim_exec([[
 autocmd Filetype sh setlocal ts=4 sw=4 sts=4 expandtab
 ]], false)
 
+--[[
 require("transparent").setup({
-  extra_groups = {
-    "cursorline",
-  },
-  exclude_groups = {}, -- table: groups you don't want to clear
+  extra_groups = {"cursorline"},
 })
+--]]
