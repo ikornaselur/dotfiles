@@ -23,7 +23,6 @@ require('paq')({
   'jayp0521/mason-null-ls.nvim';
 
   -- Language specific
-  'rust-lang/rust.vim';
   'Vimjas/vim-python-pep8-indent';
 
   -- Visual
