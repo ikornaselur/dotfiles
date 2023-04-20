@@ -5,7 +5,6 @@ require("mason-null-ls").setup({
   automatic_setup = true,
 })
 require("null-ls").setup()
-require("mason-null-ls").setup_handlers()
 require('goto-preview').setup({
   width = 200; -- Width of the floating window
   height = 30; -- Height of the floating window
