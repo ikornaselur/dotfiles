@@ -7,6 +7,9 @@ require("copilot").setup({
     lua = true,
     javascript = true,
     typescript = true,
+    sql = true,
+    yaml = true,
+    toml = true,
     ["*"] = false,
   },
 })

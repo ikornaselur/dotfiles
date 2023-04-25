@@ -2,7 +2,7 @@ require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-null-ls").setup({
   automatic_installation = false,
-  automatic_setup = true,
+  handlers = {},
 })
 require("null-ls").setup()
 require('goto-preview').setup({
