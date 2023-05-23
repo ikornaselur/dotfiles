@@ -10,6 +10,7 @@ require("copilot").setup({
     sql = true,
     yaml = true,
     toml = true,
+    dockerfile = true,
     ["*"] = false,
   },
 })

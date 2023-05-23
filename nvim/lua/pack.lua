@@ -72,4 +72,5 @@ require('paq')({
   'akinsho/git-conflict.nvim';
   'zbirenbaum/copilot.lua';
   'zbirenbaum/copilot-cmp';
+  'dstein64/vim-startuptime';
 })

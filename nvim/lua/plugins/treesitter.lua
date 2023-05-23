@@ -2,7 +2,7 @@ require('nvim-treesitter.configs').setup({
   highlight = {
     enable = true,
   },
-  ensure_installed = 'all',
+  --ensure_installed = 'all',
   indent = {
     enable = false,
   },
@@ -16,7 +16,7 @@ require('nvim-treesitter.configs').setup({
     },
   },
   playground = {
-    enable = true,
+    enable = false,
     disable = {},
     updatetime = 25,
     persist_queries = false,
