@@ -1,8 +1,8 @@
 require('paq')({
   'savq/paq-nvim';
 
-  {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'};
-  'nvim-treesitter/playground';
+  'nvim-treesitter/nvim-treesitter';
+  'nvim-treesitter/nvim-treesitter-context';
 
   'nvim-lua/plenary.nvim';
   'nvim-lua/popup.nvim';
@@ -54,6 +54,10 @@ require('paq')({
   'hrsh7th/cmp-emoji';
   'onsails/lspkind-nvim';
 
+  -- Folding
+  'kevinhwang91/promise-async';
+  'kevinhwang91/nvim-ufo';
+
   -- Other
   'yioneko/nvim-yati';
   'christoomey/vim-system-copy';
@@ -61,9 +65,11 @@ require('paq')({
   'mg979/vim-visual-multi';
   'akinsho/nvim-toggleterm.lua';
   'preservim/nerdtree';
-  'lewis6991/nvim-treesitter-context';
   'akinsho/bufferline.nvim';
-  'j-hui/fidget.nvim';
+  {
+    'j-hui/fidget.nvim',
+    branch = 'legacy',
+  };
   'phaazon/hop.nvim';
   'lewis6991/impatient.nvim';
   'rmagatti/goto-preview';

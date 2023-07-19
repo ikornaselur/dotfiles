@@ -33,7 +33,14 @@ opt.hidden = true
 opt.cursorline = true
 
 opt.foldmethod = 'expr'
-opt.foldexpr = 'nvim_treesitter#foldexpr()' -- Use treesitter for folding expr
+-- opt.foldexpr = 'nvim_treesitter#foldexpr()' -- Use treesitter for folding expr
 opt.foldlevelstart = 10
+opt.foldenable = true
+
+require('ufo').setup({
+  provider_selector = function(bufnr, filetype, buftype)
+    return {'treesitter', 'indent'}
+  end
+})
 
 -- opt.colorcolumn = '80,120'

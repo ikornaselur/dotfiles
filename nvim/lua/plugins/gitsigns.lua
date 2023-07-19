@@ -1,12 +1,28 @@
 require('gitsigns').setup({
-  keymaps = {
-    noremap = true,
-    buffer = true,
-    ['n gp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
-    ['n gb'] = '<cmd>lua require"gitsigns".toggle_current_line_blame()<CR>',
-    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
-    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
-  },
+  on_attach = function(bufnr)
+    local gs = require('gitsigns')
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    map('n', 'gp', gs.preview_hunk)
+    map('n', 'gb', gs.toggle_current_line_blame)
+  end,
   word_diff = true,
   linehl = false,
   numhl = true,
