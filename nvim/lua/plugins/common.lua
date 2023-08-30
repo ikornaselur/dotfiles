@@ -16,7 +16,7 @@ cmd('hi FloatBorder ctermfg=223 ctermbg=234 guifg=#d4be98 guibg=#1d2021')
 cmd('hi DiffText guibg=#10102e')
 cmd('hi DiffAdd guibg=#102e1a')
 cmd('hi DiffChange guibg=#102e1a')
-cmd('set background=light')
+-- cmd('set background=light')
 
 -- Airline
 g.airline_theme = 'gruvbox_material'
@@ -44,6 +44,9 @@ require("todo-comments").setup({})
 require('git-conflict').setup({
   disable_diagnostics = true
 })
+
+-- Bad habits
+require("hardtime").setup()
 
 -----------------------
 -- Language specific --

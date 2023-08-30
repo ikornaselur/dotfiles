@@ -62,7 +62,7 @@ cmp.setup({
   },
   sources = {
     {name = "copilot" },
-    {name = "nvim_lsp", max_item_count = 20 },
+    {name = "nvim_lsp", max_item_count = 100 },
     {name = "buffer", keyword_length = 5, max_item_count = 2 },
     {name = "calc" },
     {name = "emoji" },
