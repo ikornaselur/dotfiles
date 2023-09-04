@@ -23,7 +23,7 @@
         - {src: ~/Projects/dotfiles/nvim/init.lua, dest: ~/.config/nvim/init.lua}
         - {src: ~/Projects/dotfiles/nvim/lua, dest: ~/.config/nvim/lua}
 
-    - name: Ensure .zsh.extra exists
+    - name: Ensure .zshrc.extra exists
       ansible.builtin.file:
-        path: ~/.zsh.extra
+        path: ~/.zshrc.extra
         state: touch
