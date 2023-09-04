@@ -22,3 +22,8 @@
         - {src: ~/Projects/dotfiles/macos/p10k.zsh, dest: ~/.p10k.zsh}
         - {src: ~/Projects/dotfiles/nvim/init.lua, dest: ~/.config/nvim/init.lua}
         - {src: ~/Projects/dotfiles/nvim/lua, dest: ~/.config/nvim/lua}
+
+    - name: Ensure .zsh.extra exists
+      ansible.builtin.file:
+        path: ~/.zsh.extra
+        state: touch

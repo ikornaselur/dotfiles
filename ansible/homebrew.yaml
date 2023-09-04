@@ -33,6 +33,7 @@
         - autojump
         - direnv
         - dockutil
+        - font-fira-code-nerd-font
         - fzf
         - git
         - git-delta
