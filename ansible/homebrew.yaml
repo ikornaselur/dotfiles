@@ -16,13 +16,14 @@
         install_options: "appdir=/Applications"
       with_items:
         - alacritty
+        - bettertouchtool
         - docker
+        - font-fira-code-nerd-font
         - google-chrome
         - little-snitch
+        - rectangle
         - slack
         - spotify
-        - rectangle
-        - bettertouchtool
 
     - name: Ensure packages are present via homebrew
       community.general.homebrew:
@@ -34,7 +35,6 @@
         - direnv
         - dockutil
         - exa 
-        - font-fira-code-nerd-font
         - fzf
         - git
         - git-delta
