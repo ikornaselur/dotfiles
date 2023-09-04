@@ -1,0 +1,47 @@
+- hosts: localhost
+  name: Install Homebrew
+  gather_facts: False
+  tasks:
+    - name: Ensure taps are present via homebrew
+      community.general.homebrew_tap:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - homebrew/cask-fonts
+
+    - name: Ensure packages are present via homebrew cask
+      community.general.homebrew_cask:
+        name: "{{ item }}"
+        state: latest
+        install_options: "appdir=/Applications"
+      with_items:
+        - alacritty
+        - docker
+        - google-chrome
+        - little-snitch
+        - slack
+        - spotify
+        - rectangle
+        - bettertouchtool
+
+    - name: Ensure packages are present via homebrew
+      community.general.homebrew:
+        name: "{{ item }}"
+        path: "/Applications"
+        state: latest
+      with_items:
+        - autojump
+        - direnv
+        - dockutil
+        - fzf
+        - git
+        - git-delta
+        - htop
+        - imagemagick
+        - jq
+        - pyenv
+        - ripgrep
+        - tig
+        - tmux
+        - wget
+        - zsh
