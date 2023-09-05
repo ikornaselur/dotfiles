@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# Start with the xcode cli tools
+xcode-select --install
+
 # Set up homebrew
 echo "Requesting sudo permission for installing homebrew"
 sudo echo ""
@@ -12,7 +15,7 @@ brew install ansible
 ansible-galaxy collection install community.general
 
 # Clone the repo 
-git clone https://github.com/ikornaselur/dotfiles.git ~/.dotfiles
+git clone https://github.com/ikornaselur/dotfiles.git --branch ans ~/.dotfiles 
 
 cd ~/.dotfiles/macos/ansible
 
