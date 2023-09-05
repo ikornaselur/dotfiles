@@ -11,7 +11,11 @@ sudo -k  #  Reset sudo timestamp
 brew install ansible
 ansible-galaxy collection install community.general
 
+# Clone the repo 
+git clone https://github.com/ikornaselur/dotfiles.git ~/.dotfiles
+
+cd ~/.dotfiles/macos/ansible
+
 # Bootstrap with ansible
-cd ../ansible
 ansible-playbook homebrew.yaml
 ansible-playbook dotfiles.yaml
