@@ -1,4 +1,7 @@
 ---
 - import_playbook: ./playbooks/homebrew.yaml
+- import_playbook: ./playbooks/dock.yaml
 - import_playbook: ./playbooks/dotfiles.yaml
 - import_playbook: ./playbooks/omz.yaml
+- import_playbook: ./playbooks/nvim.yaml
+- import_playbook: ./playbooks/tmux.yaml

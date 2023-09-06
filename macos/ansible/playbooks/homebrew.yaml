@@ -16,6 +16,7 @@
         install_options: "appdir=/Applications"
       with_items:
         - alacritty
+        - alt-tab
         - bettertouchtool
         - docker
         - font-fira-code-nerd-font

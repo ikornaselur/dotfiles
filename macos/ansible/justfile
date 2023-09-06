@@ -17,3 +17,7 @@ litime:
 # Set up neovim
 nvim:
   ansible-playbook playbooks/nvim.yaml
+
+# Set up tmux
+tmux:
+  ansible-playbook playbooks/tmux.yaml

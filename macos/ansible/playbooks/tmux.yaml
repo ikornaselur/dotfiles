@@ -1,0 +1,19 @@
+- hosts: localhost
+  name: Set up tmux
+  gather_facts: False
+  tasks:
+    - name: Ensure configs are symlinked
+      ansible.builtin.file:
+        src: ~/.dotfiles/tmux.conf
+        dest: ~/.tmux.conf
+        state: link
+
+    - name: Ensure tpm is up to date
+      ansible.builtin.git:
+        repo: "https://github.com/tmux-plugins/tpm.git"
+        dest: "~/.tmux/plugins/tpm"
+        update: true
+        depth: 1
+
+    - name: Run plugin install
+      ansible.builtin.shell: ~/.tmux/plugins/tpm/bin/install_plugins

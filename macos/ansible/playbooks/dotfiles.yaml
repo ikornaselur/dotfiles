@@ -8,7 +8,6 @@
         state: directory
       with_items:
         - ~/.config/alacritty
-        - ~/.config/nvim
     
     - name: Ensure configs are symlinked
       ansible.builtin.file:
@@ -16,12 +15,9 @@
         dest: "{{ item.dest }}"
         state: link
       with_items:
-        - {src: ~/.dotfiles/tmux.conf, dest: ~/.tmux.conf}
         - {src: ~/.dotfiles/macos/alacritty.yml, dest: ~/.config/alacritty/alacritty.yml}
         - {src: ~/.dotfiles/macos/zshrc, dest: ~/.zshrc}
         - {src: ~/.dotfiles/macos/p10k.zsh, dest: ~/.p10k.zsh}
-        - {src: ~/.dotfiles/nvim/init.lua, dest: ~/.config/nvim/init.lua}
-        - {src: ~/.dotfiles/nvim/lua, dest: ~/.config/nvim/lua}
 
     - name: Ensure base empty files exist
       ansible.builtin.file:
