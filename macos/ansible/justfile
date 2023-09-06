@@ -1,0 +1,7 @@
+# Run the full set of playbooks
+full:
+  ansible-playbook full.yaml
+
+# Update and ensure packages installed with homebrew
+homebrew:
+  ansible-playbook playbooks/homebrew.yaml

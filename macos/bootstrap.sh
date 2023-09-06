@@ -2,7 +2,7 @@
 set -e
 
 # Start with the xcode cli tools
-xcode-select --install
+xcode-select --install || true
 
 # Set up homebrew
 echo "Requesting sudo permission for installing homebrew"
@@ -20,5 +20,4 @@ git clone https://github.com/ikornaselur/dotfiles.git --branch ans ~/.dotfiles
 cd ~/.dotfiles/macos/ansible
 
 # Bootstrap with ansible
-ansible-playbook homebrew.yaml
-ansible-playbook dotfiles.yaml
+ansible-playbook full.yaml
