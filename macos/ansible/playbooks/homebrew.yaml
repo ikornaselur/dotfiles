@@ -17,6 +17,7 @@
       with_items:
         - alacritty
         - alt-tab
+        - beardedspice
         - bettertouchtool
         - docker
         - font-fira-code-nerd-font
