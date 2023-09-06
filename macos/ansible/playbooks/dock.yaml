@@ -1,0 +1,16 @@
+- hosts: localhost
+  name: Set up the MacOS dock 
+  gather_facts: False
+  tasks:
+    - name: Check if dockutil is installed 
+      stat:
+        path: /usr/local/bin/dockutil
+      register: dockutil_installed
+    - name: Download dockutil if not installed
+      get_url:
+        url: https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg
+        dest: /tmp/dockutil-3.0.2.pkg
+      when: dockutil_installed.stat.exists == False
+    - name: Install dockutil using installer
+      shell: installer -pkg /tmp/dockutil-3.0.2.pkg -target /tmp
+      when: dockutil_installed.stat.exists == False
