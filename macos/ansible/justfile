@@ -5,3 +5,7 @@ full:
 # Update and ensure packages installed with homebrew
 homebrew:
   ansible-playbook playbooks/homebrew.yaml
+
+# Install dockutil and use it to arrange the dock
+dock:
+  ansible-playbook playbooks/dock.yaml

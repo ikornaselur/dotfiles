@@ -3,14 +3,45 @@
   gather_facts: False
   tasks:
     - name: Check if dockutil is installed 
-      stat:
-        path: /usr/local/bin/dockutil
+      ansible.builtin.stat:
+        path: ~/.local/bin/dockutil
       register: dockutil_installed
     - name: Download dockutil if not installed
-      get_url:
+      ansible.builtin.get_url:
         url: https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg
         dest: /tmp/dockutil-3.0.2.pkg
       when: dockutil_installed.stat.exists == False
     - name: Install dockutil using installer
-      shell: installer -pkg /tmp/dockutil-3.0.2.pkg -target /tmp
+      ansible.builtin.shell: installer -pkg /tmp/dockutil-3.0.2.pkg -target CurrentUserHomeDirectory
       when: dockutil_installed.stat.exists == False
+    - name: Ensure .local/bin exists
+      ansible.builtin.file:
+        path: ~/.local/bin
+        state: directory
+      when: dockutil_installed.stat.exists == False
+    - name: Move dockutil to ~/.local/bin
+      ansible.builtin.copy:
+        src: ~/usr/local/bin/dockutil
+        dest: ~/.local/bin/dockutil
+      when: dockutil_installed.stat.exists == False
+    - name: Make sure dockutil is executable
+      ansible.builtin.file:
+        dest: ~/.local/bin/dockutil
+        mode: a+x
+      when: dockutil_installed.stat.exists == False
+    - name: Remove ~/usr
+      ansible.builtin.file:
+        path: ~/usr
+        state: absent
+      when: dockutil_installed.stat.exists == False
+    - name: Clear the dock
+      ansible.builtin.shell: dockutil --remove all --no-restart
+    - name: Add applications
+      ansible.builtin.shell: dockutil --add "{{ item }}" {% if not ansible_loop.last %} --no-restart {% endif %}
+      with_items:
+        - "/Applications/Google Chrome.app"
+        - "/Applications/Spotify.app"
+        - "/Applications/Slack.app"
+        - "/Applications/Alacritty.app"
+      loop_control:
+        extended: true

@@ -37,12 +37,18 @@
         - fzf
         - git
         - git-delta
+        - golang
+        - gpg
         - htop
+        - hyperfine
         - imagemagick
         - jq
         - just
+        - neovim
+        - openssh
         - pyenv
         - ripgrep
+        - rust
         - tig
         - tmux
         - wget
