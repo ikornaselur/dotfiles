@@ -9,3 +9,11 @@ homebrew:
 # Install dockutil and use it to arrange the dock
 dock:
   ansible-playbook playbooks/dock.yaml
+
+# Install litime if it's missing
+litime:
+  ansible-playbook playbooks/litime.yaml
+
+# Set up neovim
+nvim:
+  ansible-playbook playbooks/nvim.yaml

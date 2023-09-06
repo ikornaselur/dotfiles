@@ -1,0 +1,23 @@
+- hosts: localhost
+  name: Set up litime
+  gather_facts: False
+  tasks:
+    - name: Check if litime is installed 
+      ansible.builtin.stat:
+        path: ~/.local/bin/litime
+      register: litime_installed
+    - name: Ensure .local/bin exists
+      ansible.builtin.file:
+        path: ~/.local/bin
+        state: directory
+      when: litime_installed.stat.exists == False
+    - name: Download litime if not installed
+      ansible.builtin.get_url:
+        url: https://github.com/ikornaselur/litime/releases/latest/download/litime-aarch64-apple-darwin
+        dest: ~/.local/bin/litime
+      when: litime_installed.stat.exists == False
+    - name: Make sure litime is executable
+      ansible.builtin.file:
+        dest: ~/.local/bin/litime
+        mode: a+x
+      when: litime_installed.stat.exists == False

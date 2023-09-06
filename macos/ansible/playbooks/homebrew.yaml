@@ -42,6 +42,7 @@
         - htop
         - hyperfine
         - imagemagick
+        - nodejs
         - jq
         - just
         - neovim
