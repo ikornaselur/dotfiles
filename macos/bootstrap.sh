@@ -4,6 +4,8 @@ set -e
 # Start with the xcode cli tools
 xcode-select --install || true
 
+read -p "Press any key to continue after xcode tools finish installing"
+
 # Set up homebrew
 echo "Requesting sudo permission for installing homebrew"
 sudo echo ""
