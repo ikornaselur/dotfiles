@@ -8,6 +8,7 @@
         state: directory
       with_items:
         - ~/.config/alacritty
+        - ~/.hammerspoon
     
     - name: Ensure configs are symlinked
       ansible.builtin.file:
@@ -15,9 +16,10 @@
         dest: "{{ item.dest }}"
         state: link
       with_items:
-        - {src: ~/.dotfiles/macos/alacritty.yml, dest: ~/.config/alacritty/alacritty.yml}
-        - {src: ~/.dotfiles/macos/zshrc, dest: ~/.zshrc}
-        - {src: ~/.dotfiles/macos/p10k.zsh, dest: ~/.p10k.zsh}
+        - {src: ~/.dotfiles/alacritty/alacritty.yml, dest: ~/.config/alacritty/alacritty.yml}
+        - {src: ~/.dotfiles/zsh/zshrc, dest: ~/.zshrc}
+        - {src: ~/.dotfiles/zsh/p10k.zsh, dest: ~/.p10k.zsh}
+        - {src: ~/.dotfiles/hammerspoon/hammerspoon.init.lua, dest: ~/.hammerspoon/init.lua}
 
     - name: Ensure base empty files exist
       ansible.builtin.file:
