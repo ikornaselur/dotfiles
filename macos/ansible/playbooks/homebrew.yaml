@@ -41,13 +41,14 @@
         - git-delta
         - golang
         - gpg
+        - gron
         - htop
         - hyperfine
         - imagemagick
-        - nodejs
         - jq
         - just
         - neovim
+        - nodejs
         - openssh
         - pyenv
         - ripgrep
