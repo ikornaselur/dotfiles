@@ -4,13 +4,9 @@ local spaces = require('hs.spaces')
 hs.hotkey.bind({'cmd'}, '§', function ()
   local APP_NAME = 'Alacritty'
   function moveWindow(alacritty, mainScreen)
-    local win = nil
-    while win == nil do
-      win = alacritty:mainWindow()
-    end
-    winFrame = win:frame()
-    win:setFrame(winFrame, 0)
-    win:moveToScreen(mainScreen)
+    local win = alacritty:mainWindow()
+    local space = hs.spaces.activeSpaceOnScreen()
+    hs.spaces.moveWindowToSpace(win:id(), space)
     win:focus()
   end
   local alacritty = hs.application.get(APP_NAME)
