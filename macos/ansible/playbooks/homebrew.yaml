@@ -31,12 +31,11 @@
     - name: Ensure packages are present via homebrew
       community.general.homebrew:
         name: "{{ item }}"
-        path: "/Applications"
         state: latest
       with_items:
         - autojump
         - direnv
-        - exa 
+        - eza 
         - fzf
         - git
         - git-delta
@@ -57,3 +56,9 @@
         - tmux
         - wget
         - zsh
+    - name: Ensure packages are absent
+      community.general.homebrew:
+        name: "{{ item }}"
+        state: absent
+      with_items:
+        - exa  # Replaced with eza
