@@ -1,11 +1,4 @@
-litime --main-colour white --author-colour bright-white
-
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-export ZSH="$HOME/.oh-my-zsh"
-
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/usr/local/opt/pyenv/shims:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -15,10 +8,19 @@ export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
+litime --main-colour white --author-colour bright-white
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export ZSH="$HOME/.oh-my-zsh"
+
 # Env variables
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
+export TMUX_PLUGIN_MANAGER_PATH="$HOME/.tmux/plugins/"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -47,24 +49,20 @@ eval "$(direnv hook zsh osx brew)"
 export DIRENV_LOG_FORMAT=""
 
 # Aliases
-alias vim="/usr/local/bin/nvim -u ~/.config/nvim/init.lua"
+alias vim="nvim -u ~/.config/nvim/init.lua"
 alias ls="exa --git"
 alias rg="rg -S"
 alias rgff="rg --files -g"
 alias p=poetry
 alias ,,='git rev-parse --git-dir >/dev/null 2>&1 && cd `git rev-parse --show-toplevel` || echo "Not in git repo"'
-alias git=hub
 alias :q='exit'
 alias vi='nvim -u NONE'
 alias gcan="git commit --amend --no-edit"
 alias greb="git rebase origin/master"
 alias pods="kubectl get pods"
 alias nodes="kubectl get nodes"
-alias weather="curl https://v2.wttr.in/London"
-# alias pyb="pyboard --device `serpico -p`"
-alias ci="unbuffer hub ci-status -v | cut -f1-2"
 alias dc="docker-compose"
-alias play="ncplayer -s scale"
+alias flushdns="sudo killall -HUP mDNSResponder"
 
 function pyb () {
   pyboard --device `serpico -p` $*
@@ -72,7 +70,6 @@ function pyb () {
 
 # Utils
 sleep-in() {echo "Sleeping laptop in $1 minutes..." && sleep $((60 * $1)) && pmset sleepnow}
-alias flushdns="sudo killall -HUP mDNSResponder"
 
 # Make that history biiiig
 HISTFILE=~/.zsh_history
@@ -80,15 +77,12 @@ HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 source ~/.zshrc.extra
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

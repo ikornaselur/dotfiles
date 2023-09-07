@@ -1,0 +1,28 @@
+- hosts: localhost
+  name: Ensure oh-my-zsh is installed
+  gather_facts: False
+  tasks:
+    - name: Ensure oh-my-zsh is checked out
+      ansible.builtin.git:
+        repo: https://github.com/ohmyzsh/ohmyzsh.git
+        dest: ~/.oh-my-zsh
+        update: true
+        depth: 1
+
+    - name: Ensure powerlevel10k is checked out
+      ansible.builtin.git:
+        repo: https://github.com/romkatv/powerlevel10k.git
+        dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
+        update: true
+        depth: 1
+
+    - name: Ensure plugins are checked out
+      ansible.builtin.git:
+        repo: "{{ item.repo }}"
+        dest: "~/.oh-my-zsh/custom/plugins/{{ item.dest }}"
+        update: true
+        depth: 1
+      with_items:
+        - { repo: "https://github.com/zsh-users/zsh-autosuggestions", dest: "zsh-autosuggestions" }
+        - { repo: "https://github.com/zsh-users/zsh-syntax-highlighting", dest: "zsh-syntax-highlighting" }
+        - { repo: "https://github.com/zsh-users/zsh-completions", dest: "zsh-completions" }
