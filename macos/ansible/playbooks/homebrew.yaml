@@ -9,6 +9,10 @@
       with_items:
         - homebrew/cask-fonts
 
+    - name: Update homebrew
+      community.general.homebrew:
+        update_homebrew: yes
+
     - name: Ensure packages are present via homebrew cask
       community.general.homebrew_cask:
         name: "{{ item }}"
