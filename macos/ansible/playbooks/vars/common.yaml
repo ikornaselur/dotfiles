@@ -1,0 +1,45 @@
+homebrew_cask_packages:
+  - aerial
+  - alacritty
+  - alt-tab
+  - beardedspice
+  - bettertouchtool
+  - docker
+  - font-fira-code-nerd-font
+  - google-chrome
+  - itsycal
+  - little-snitch
+  - rectangle
+  - slack
+  - spotify
+
+homebrew_packages:
+  - autojump
+  - direnv
+  - entr
+  - eza 
+  - fzf
+  - git
+  - git-delta
+  - golang
+  - gpg
+  - gron
+  - htop
+  - hyperfine
+  - imagemagick
+  - jq
+  - just
+  - neovim
+  - nodejs
+  - openssh
+  - pyenv
+  - ripgrep
+  - rsync
+  - rust
+  - tig
+  - tmux
+  - wget
+  - zsh
+
+homebrew_packages_to_remove:
+  - exa  # Replaced with eza

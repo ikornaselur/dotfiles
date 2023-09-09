@@ -1,23 +1,25 @@
+set dotenv-load 
+
 # Run the full set of playbooks
 full:
-  ansible-playbook full.yaml
+  ansible-playbook -e "codename=${CODENAME}" full.yaml
 
 # Update and ensure packages installed with homebrew
 homebrew:
-  ansible-playbook playbooks/homebrew.yaml
+  ansible-playbook -e "codename=${CODENAME}" playbooks/homebrew.yaml
 
 # Install dockutil and use it to arrange the dock
 dock:
-  ansible-playbook playbooks/dock.yaml
+  ansible-playbook -e "codename=${CODENAME}" playbooks/dock.yaml
 
 # Install litime if it's missing
 litime:
-  ansible-playbook playbooks/litime.yaml
+  ansible-playbook -e "codename=${CODENAME}" playbooks/litime.yaml
 
 # Set up neovim
 nvim:
-  ansible-playbook playbooks/nvim.yaml
+  ansible-playbook -e "codename=${CODENAME}" playbooks/nvim.yaml
 
 # Set up tmux
 tmux:
-  ansible-playbook playbooks/tmux.yaml
+  ansible-playbook -e "codename=${CODENAME}" playbooks/tmux.yaml

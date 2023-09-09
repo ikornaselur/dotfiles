@@ -2,6 +2,12 @@
   name: Install Homebrew
   gather_facts: False
   tasks:
+    - name: Include common variables
+      include_vars: vars/common.yaml
+
+    - name: Include host specific variables
+      include_vars: vars/{{ codename }}.yaml
+
     - name: Ensure taps are present via homebrew
       community.general.homebrew_tap:
         name: "{{ item }}"
@@ -13,58 +19,34 @@
       community.general.homebrew:
         update_homebrew: yes
 
-    - name: Ensure packages are present via homebrew cask
+    - name: Ensure common packages are present via homebrew cask
       community.general.homebrew_cask:
         name: "{{ item }}"
         state: latest
         install_options: "appdir=/Applications"
-      with_items:
-        - aerial
-        - alacritty
-        - alt-tab
-        - beardedspice
-        - bettertouchtool
-        - docker
-        - font-fira-code-nerd-font
-        - google-chrome
-        - itsycal
-        - little-snitch
-        - rectangle
-        - slack
-        - spotify
+      loop: "{{ homebrew_cask_packages }}"
 
-    - name: Ensure packages are present via homebrew
+    - name: Ensure host specific packages are present via homebrew cask
+      community.general.homebrew_cask:
+        name: "{{ item }}"
+        state: latest
+        install_options: "appdir=/Applications"
+      loop: "{{ host_homebrew_cask_packages | default([]) }}"
+
+    - name: Ensure common packages are present via homebrew
       community.general.homebrew:
         name: "{{ item }}"
         state: latest
-      with_items:
-        - autojump
-        - direnv
-        - eza 
-        - fzf
-        - git
-        - git-delta
-        - golang
-        - gpg
-        - gron
-        - htop
-        - hyperfine
-        - imagemagick
-        - jq
-        - just
-        - neovim
-        - nodejs
-        - openssh
-        - pyenv
-        - ripgrep
-        - rust
-        - tig
-        - tmux
-        - wget
-        - zsh
+      loop: "{{ homebrew_packages }}"
+
+    - name: Ensure host specific packages are present via homebrew
+      community.general.homebrew:
+        name: "{{ item }}"
+        state: latest
+      loop: "{{ host_homebrew_packages | default([]) }}"
+
     - name: Ensure packages are absent
       community.general.homebrew:
         name: "{{ item }}"
         state: absent
-      with_items:
-        - exa  # Replaced with eza
+      loop: "{{ homebrew_packages_to_remove }}"

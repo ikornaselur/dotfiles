@@ -1,0 +1,8 @@
+host_homebrew_packages:
+  - helm
+  - kubernetes-cli
+  - nmap
+  - pgcli
+  - qemu
+  - ruby
+  - youtube-dl
