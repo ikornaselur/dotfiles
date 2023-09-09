@@ -15,6 +15,7 @@
         state: latest
         install_options: "appdir=/Applications"
       with_items:
+        - aerial
         - alacritty
         - alt-tab
         - beardedspice
