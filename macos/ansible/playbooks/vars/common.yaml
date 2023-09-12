@@ -14,6 +14,7 @@ homebrew_cask_packages:
   - spotify
 
 homebrew_packages:
+  - atuin
   - autojump
   - direnv
   - entr
@@ -40,6 +41,7 @@ homebrew_packages:
   - tmux
   - wget
   - zsh
+  - zoxide
 
 homebrew_packages_to_remove:
   - exa  # Replaced with eza
