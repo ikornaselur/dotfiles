@@ -29,11 +29,9 @@ plugins=(git zsh-syntax-highlighting zsh-completions zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 autoload -Uz compinit
-
 for dump in ~/.zcompdump(N.mh+24); do
   compinit
 done
-
 compinit -C
 
 export EDITOR=nvim
@@ -81,7 +79,7 @@ source ~/.zshrc.extra
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(atuin init zsh --disable-up-arrow)"
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd j)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
