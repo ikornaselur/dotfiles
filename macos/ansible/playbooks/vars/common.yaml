@@ -3,7 +3,6 @@ homebrew_cask_packages:
   - alacritty
   - alt-tab
   - beardedspice
-  - bettertouchtool
   - docker
   - font-fira-code-nerd-font
   - google-chrome

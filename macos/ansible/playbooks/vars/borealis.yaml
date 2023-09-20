@@ -1,3 +1,6 @@
+host homebrew_cask_packages:
+  - bettertouchtool
+
 host_homebrew_packages:
   - helm
   - kubernetes-cli
