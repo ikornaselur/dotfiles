@@ -1,5 +1,7 @@
 set dotenv-load 
 
+alias brew := homebrew
+
 # Run the full set of playbooks
 full:
   @ansible-playbook -e "codename=${CODENAME}" full.yaml

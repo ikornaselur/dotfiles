@@ -1,5 +1,4 @@
 homebrew_cask_packages:
-  - aerial
   - alacritty
   - alt-tab
   - beardedspice
@@ -45,3 +44,4 @@ homebrew_packages:
 
 homebrew_packages_to_remove:
   - exa  # Replaced with eza
+  - aerial  # Replaced with native screensavers in Sonoma
