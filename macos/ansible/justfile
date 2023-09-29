@@ -12,10 +12,6 @@ homebrew:
 dock:
   @ansible-playbook -e "codename=${CODENAME}" playbooks/dock.yaml
 
-# Install litime if it's missing
-litime:
-  @ansible-playbook -e "codename=${CODENAME}" playbooks/litime.yaml
-
 # Set up neovim
 nvim:
   @ansible-playbook -e "codename=${CODENAME}" playbooks/nvim.yaml

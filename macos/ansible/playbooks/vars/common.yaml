@@ -29,6 +29,7 @@ homebrew_packages:
   - imagemagick
   - jq
   - just
+  - litime
   - neovim
   - nodejs
   - openssh
@@ -39,8 +40,8 @@ homebrew_packages:
   - tig
   - tmux
   - wget
-  - zsh
   - zoxide
+  - zsh
 
 homebrew_packages_to_remove:
   - exa  # Replaced with eza
