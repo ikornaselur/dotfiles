@@ -1,3 +1,6 @@
+homebrew_taps:
+  - homebrew/cask-fonts
+
 homebrew_cask_packages:
   - alacritty
   - alt-tab
@@ -15,9 +18,11 @@ homebrew_packages:
   - atuin
   - autojump
   - direnv
+  - dive
   - entr
   - eza 
   - fzf
+  - gh
   - git
   - git-delta
   - golang
@@ -25,10 +30,10 @@ homebrew_packages:
   - gron
   - htop
   - hyperfine
+  - ikornaselur/tap/litime
   - imagemagick
   - jq
   - just
-  - litime
   - neovim
   - nodejs
   - openssh

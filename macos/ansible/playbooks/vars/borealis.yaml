@@ -4,7 +4,9 @@ host homebrew_cask_packages:
 host_homebrew_packages:
   - helm
   - kubernetes-cli
+  - nextdns/tap/nextdns
   - nmap
   - qemu
   - ruby
   - youtube-dl
+  - minio

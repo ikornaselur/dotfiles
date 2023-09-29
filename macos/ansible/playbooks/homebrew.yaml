@@ -12,9 +12,7 @@
       community.general.homebrew_tap:
         name: "{{ item }}"
         state: present
-      with_items:
-        - homebrew/cask-fonts
-        - ikornaselur/tap
+      loop: "{{ homebrew_taps }}"
 
     - name: Update homebrew
       community.general.homebrew:
