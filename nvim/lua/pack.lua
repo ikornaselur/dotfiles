@@ -40,6 +40,7 @@ require('paq')({
   'lewis6991/gitsigns.nvim';
   'folke/lsp-colors.nvim';
   'folke/trouble.nvim';  -- Show lsp errors across the project
+  'f-person/auto-dark-mode.nvim';
 
   -- Testing
   'vim-test/vim-test';

@@ -18,6 +18,15 @@ cmd('hi DiffAdd guibg=#102e1a')
 cmd('hi DiffChange guibg=#102e1a')
 -- cmd('set background=light')
 
+require('auto-dark-mode').setup({
+  update_interval = 3000,
+  set_dark_mode = function()
+    vim.cmd('set background=dark')
+  end,
+  set_light_mode = function()
+    vim.cmd('set background=light')
+  end,
+})
 -- Airline
 g.airline_theme = 'gruvbox_material'
 g.airline_powerline_fonts =  1
