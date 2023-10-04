@@ -2,7 +2,6 @@ homebrew_taps:
   - homebrew/cask-fonts
 
 homebrew_cask_packages:
-  - alacritty
   - alt-tab
   - beardedspice
   - docker
@@ -13,6 +12,7 @@ homebrew_cask_packages:
   - rectangle
   - slack
   - spotify
+  - wezterm
 
 homebrew_packages:
   - atuin
