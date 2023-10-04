@@ -17,6 +17,7 @@
         state: link
       with_items:
         - {src: ~/.dotfiles/alacritty/alacritty.yml, dest: ~/.config/alacritty/alacritty.yml}
+        - {src: ~/.dotfiles/wezterm/wezterm.lua, dest: ~/.wezterm.lua}
         - {src: ~/.dotfiles/zsh/zshrc, dest: ~/.zshrc}
         - {src: ~/.dotfiles/zsh/p10k.zsh, dest: ~/.p10k.zsh}
         - {src: ~/.dotfiles/hammerspoon/hammerspoon.init.lua, dest: ~/.hammerspoon/init.lua}

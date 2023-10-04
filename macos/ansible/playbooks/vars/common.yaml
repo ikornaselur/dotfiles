@@ -17,6 +17,7 @@ homebrew_cask_packages:
 homebrew_packages:
   - atuin
   - autojump
+  - cmake
   - direnv
   - dive
   - entr
@@ -31,6 +32,7 @@ homebrew_packages:
   - htop
   - hyperfine
   - ikornaselur/tap/litime
+  - luarocks
   - imagemagick
   - jq
   - just

@@ -7,7 +7,6 @@ cmd('let maplocalleader = ","')
 
 -- Theme
 g.gruvbox_material_palette = 'material'
-g.gruvbox_material_background = 'hard'
 g.gruvbox_material_diagnostic_text_highlight = 1
 cmd('syntax enable')
 cmd('colorscheme gruvbox-material')
@@ -16,7 +15,6 @@ cmd('hi FloatBorder ctermfg=223 ctermbg=234 guifg=#d4be98 guibg=#1d2021')
 cmd('hi DiffText guibg=#10102e')
 cmd('hi DiffAdd guibg=#102e1a')
 cmd('hi DiffChange guibg=#102e1a')
--- cmd('set background=light')
 
 require('auto-dark-mode').setup({
   update_interval = 3000,
