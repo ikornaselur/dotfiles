@@ -23,8 +23,8 @@ require('gitsigns').setup({
     map('n', 'gp', gs.preview_hunk)
     map('n', 'gb', gs.toggle_current_line_blame)
   end,
-  word_diff = true,
-  linehl = false,
+  word_diff = false,
+  linehl = true,
   numhl = true,
   current_line_blame_opts = {
     delay = 0,

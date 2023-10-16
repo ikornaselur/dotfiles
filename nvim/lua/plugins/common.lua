@@ -12,9 +12,9 @@ cmd('syntax enable')
 cmd('colorscheme gruvbox-material')
 cmd('hi NormalFloat ctermfg=223 ctermbg=234 guifg=#d4be98 guibg=#1d2021')
 cmd('hi FloatBorder ctermfg=223 ctermbg=234 guifg=#d4be98 guibg=#1d2021')
-cmd('hi DiffText guibg=#10102e')
-cmd('hi DiffAdd guibg=#102e1a')
-cmd('hi DiffChange guibg=#102e1a')
+--cmd('hi DiffText guibg=#10102e')
+--cmd('hi DiffAdd guibg=#102e1a')
+--cmd('hi DiffChange guibg=#102e1a')
 
 require('auto-dark-mode').setup({
   update_interval = 3000,

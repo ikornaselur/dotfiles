@@ -15,12 +15,6 @@ require('nvim-treesitter.configs').setup({
       node_decremental = 'grm',
     },
   },
-  playground = {
-    enable = false,
-    disable = {},
-    updatetime = 25,
-    persist_queries = false,
-  },
   textobjects = {
     select = {
       enable = true,
