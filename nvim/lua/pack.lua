@@ -1,7 +1,7 @@
 require('paq')({
   'savq/paq-nvim';
 
-  'nvim-treesitter/nvim-treesitter';
+  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' };
   'nvim-treesitter/nvim-treesitter-context';
 
   'nvim-lua/plenary.nvim';
@@ -13,7 +13,7 @@ require('paq')({
   -- LSP tools
   {
     'williamboman/mason.nvim',
-    run = function() 
+    build = function() 
       pcall(vim.cmd, 'MasonInstall') 
     end,
   }; -- LSP related package manager
