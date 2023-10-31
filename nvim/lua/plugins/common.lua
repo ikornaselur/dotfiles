@@ -55,6 +55,9 @@ require('git-conflict').setup({
 -- Bad habits
 require("hardtime").setup()
 
+-- Barbecue - VSCode like winbar
+require("barbecue").setup()
+
 -----------------------
 -- Language specific --
 -----------------------

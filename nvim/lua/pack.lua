@@ -35,7 +35,7 @@ require('paq')({
   'vim-airline/vim-airline-themes';
   'rcarriga/nvim-notify';
   'ryanoasis/vim-devicons';
-  'kyazdani42/nvim-web-devicons';
+  'nvim-tree/nvim-web-devicons';
   'lukas-reineke/indent-blankline.nvim';
   'lewis6991/gitsigns.nvim';
   'folke/lsp-colors.nvim';
@@ -48,6 +48,10 @@ require('paq')({
   'nvim-neotest/neotest';
   'nvim-neotest/neotest-python';
   'rouge8/neotest-rust';
+
+  -- Barbecue
+  'SmiteshP/nvim-navic';
+  'utilyre/barbecue.nvim';
 
   -- Completion
   'hrsh7th/nvim-cmp';
