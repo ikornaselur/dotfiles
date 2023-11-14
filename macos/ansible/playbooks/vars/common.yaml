@@ -16,7 +16,6 @@ homebrew_cask_packages:
 
 homebrew_packages:
   - atuin
-  - autojump
   - cmake
   - direnv
   - dive
@@ -52,3 +51,4 @@ homebrew_packages:
 homebrew_packages_to_remove:
   - exa  # Replaced with eza
   - aerial  # Replaced with native screensavers in Sonoma
+  - autojump  # Replaced with zoxide
