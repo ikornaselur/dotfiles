@@ -34,6 +34,7 @@ g.airline_section_y = ''
 g.indent_blankline_use_treesitter = true
 g.indent_blankline_show_current_context = true
 g.indent_blankline_buftype_exclude = {'terminal'}
+require("ibl").setup()
 
 -- VimVisualMulti
 g.VM_default_mappings = 0
@@ -52,11 +53,11 @@ require('git-conflict').setup({
   disable_diagnostics = true
 })
 
--- Bad habits
-require("hardtime").setup()
-
 -- Barbecue - VSCode like winbar
 require("barbecue").setup()
+
+-- Rainbox brackets
+require('rainbow-delimiters.setup').setup({})
 
 -----------------------
 -- Language specific --
@@ -69,9 +70,3 @@ g.rustfmt_autosave = 1
 vim.api.nvim_exec([[
 autocmd Filetype sh setlocal ts=4 sw=4 sts=4 expandtab
 ]], false)
-
---[[
-require("transparent").setup({
-  extra_groups = {"cursorline"},
-})
---]]

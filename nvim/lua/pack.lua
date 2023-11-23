@@ -82,10 +82,10 @@ require('paq')({
   'phaazon/hop.nvim';
   'lewis6991/impatient.nvim';
   'rmagatti/goto-preview';
-  --'xiyaowong/nvim-transparent';
   'folke/todo-comments.nvim';
   'akinsho/git-conflict.nvim';
   'zbirenbaum/copilot.lua';
   'zbirenbaum/copilot-cmp';
   'dstein64/vim-startuptime';
+  'hiphish/rainbow-delimiters.nvim';
 })
