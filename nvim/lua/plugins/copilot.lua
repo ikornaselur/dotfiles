@@ -3,6 +3,8 @@ require("copilot").setup({
   panel = { enabled = false },
   filetypes = {
     python = true,
+    bash = true,
+    sh = true,
     rust = true,
     lua = true,
     javascript = true,
