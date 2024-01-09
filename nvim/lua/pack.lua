@@ -25,10 +25,6 @@ require('paq')({
   -- Language specific
   'Vimjas/vim-python-pep8-indent';
 
-  -- Get rid of bad habits
-  'MunifTanjim/nui.nvim';
-  'm4xshen/hardtime.nvim';
-
   -- Visual
   'sainnhe/gruvbox-material';
   'vim-airline/vim-airline';
