@@ -23,7 +23,7 @@ set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 
-set_keymap('n', '<space>b', '<cmd>lua vim.lsp.buf.format { async = true }<CR>')
+set_keymap('n', '<space>b', '<cmd>lua require("conform").format()<CR>')
 
 set_keymap('n', 'gD', '<cmd>lua require("goto-preview").goto_preview_definition()<CR>')
 
@@ -41,6 +41,16 @@ end
 require('lspconfig')['pyright'].setup({
   on_attach = on_attach,
   flags = lsp_flags,
+  settings = {
+    pyright = {
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        ignore = { '*' },
+      },
+    },
+  },
 })
 require('lspconfig')['rust_analyzer'].setup({
   on_attach = on_attach,
@@ -52,6 +62,23 @@ require('lspconfig')['rust_analyzer'].setup({
       }
     }
   }
+})
+require('lspconfig')['ruff_lsp'].setup({
+  on_attach = on_attach,
+  init_options = {
+    settings = {
+      args = {},
+    }
+  }
+})
+
+require("conform").setup({
+  formatters_by_ft = {
+    python = {
+      "ruff_fix",    -- ruff check --fix
+      "ruff_format", -- ruff format
+    },
+  },
 })
 
 

@@ -19,8 +19,9 @@ require('paq')({
   }; -- LSP related package manager
   'williamboman/mason-lspconfig.nvim';  -- mason extension for lspconfig
   'neovim/nvim-lspconfig';
-  'jose-elias-alvarez/null-ls.nvim'; -- Linting and formatting
-  'jayp0521/mason-null-ls.nvim';
+  'nvimtools/none-ls.nvim'; -- Linting and formatting
+  'jay-babu/mason-null-ls.nvim';
+  'stevearc/conform.nvim';
 
   -- Language specific
   'Vimjas/vim-python-pep8-indent';
