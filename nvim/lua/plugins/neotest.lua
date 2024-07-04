@@ -5,6 +5,7 @@ require("neotest").setup({
     require("neotest-python")({
       dap = { justMyCode = false },
     }),
+    --require('rustaceanvim.neotest')
     require("neotest-rust"),
   },
   icons = {

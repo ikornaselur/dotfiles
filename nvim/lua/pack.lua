@@ -42,6 +42,7 @@ require('paq')({
   -- Testing
   'vim-test/vim-test';
   'antoinemadec/FixCursorHold.nvim';
+  'nvim-neotest/nvim-nio';
   'nvim-neotest/neotest';
   'nvim-neotest/neotest-python';
   'rouge8/neotest-rust';
@@ -58,6 +59,9 @@ require('paq')({
   'hrsh7th/cmp-cmdline';
   'hrsh7th/cmp-calc';
   'hrsh7th/cmp-emoji';
+  'hrsh7th/cmp-vsnip';
+  'hrsh7th/vim-vsnip';
+
   'onsails/lspkind-nvim';
 
   -- Folding
@@ -85,4 +89,10 @@ require('paq')({
   'zbirenbaum/copilot-cmp';
   'dstein64/vim-startuptime';
   'hiphish/rainbow-delimiters.nvim';
+
+  -- Rust stuff
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^4',
+  }
 })

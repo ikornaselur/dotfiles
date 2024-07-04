@@ -36,7 +36,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.lsp.inlay_hint.enable(bufnr, true)
 end
+
 
 require('lspconfig')['pyright'].setup({
   on_attach = on_attach,
@@ -47,7 +49,9 @@ require('lspconfig')['pyright'].setup({
     },
     python = {
       analysis = {
-        ignore = { '*' },
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = 'openFilesOnly',
       },
     },
   },

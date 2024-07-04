@@ -9,30 +9,30 @@ end
 
 lspkind.init({
   symbol_map = {
-    Text = "",
-    Method = "",
-    Function = "",
+    Text = "󰉿",
+    Method = "󰆧",
+    Function = "󰊕",
     Constructor = "",
-    Field = "ﰠ",
-    Variable = "",
-    Class = "ﴯ",
+    Field = "󰜢",
+    Variable = "󰀫",
+    Class = "󰠱",
     Interface = "",
     Module = "",
-    Property = "ﰠ",
-    Unit = "塞",
-    Value = "",
+    Property = "󰜢",
+    Unit = "󰑭",
+    Value = "󰎠",
     Enum = "",
-    Keyword = "",
+    Keyword = "󰌋",
     Snippet = "",
-    Color = "",
-    File = "",
-    Reference = "",
-    Folder = "",
+    Color = "󰏘",
+    File = "󰈙",
+    Reference = "󰈇",
+    Folder = "󰉋",
     EnumMember = "",
-    Constant = "",
-    Struct = "פּ",
+    Constant = "󰏿",
+    Struct = "󰙅",
     Event = "",
-    Operator = "",
+    Operator = "󰆕",
     Copilot = "",
     TypeParameter = ""
   }
@@ -56,6 +56,11 @@ cmp.setup({
       }
     })
   },
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
@@ -63,6 +68,7 @@ cmp.setup({
   sources = {
     {name = "copilot" },
     {name = "nvim_lsp", max_item_count = 100 },
+    {name = "vsnip" },
     {name = "buffer", keyword_length = 5, max_item_count = 2 },
     {name = "calc" },
     {name = "emoji" },
