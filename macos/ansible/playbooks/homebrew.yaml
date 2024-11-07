@@ -8,12 +8,6 @@
     - name: Include host specific variables
       include_vars: vars/{{ codename }}.yaml
 
-    - name: Ensure taps are present via homebrew
-      community.general.homebrew_tap:
-        name: "{{ item }}"
-        state: present
-      loop: "{{ homebrew_taps }}"
-
     - name: Update homebrew
       community.general.homebrew:
         update_homebrew: yes
