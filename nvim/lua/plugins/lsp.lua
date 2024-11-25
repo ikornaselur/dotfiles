@@ -34,11 +34,32 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end, 
 })
 
+local inlay_hints_enabled = true
+function ToggleInlayHints()
+  inlay_hints_enabled = not inlay_hints_enabled
+  vim.lsp.inlay_hint.enable(inlay_hints_enabled)
+  if inlay_hints_enabled then
+    print("Inlay hints enabled")
+  else
+    print("Inlay hints disabled")
+  end
+end
+set_keymap('n', '<leader>ih', '<cmd>lua ToggleInlayHints()<CR>')
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  vim.lsp.inlay_hint.enable(bufnr, true)
+  vim.lsp.inlay_hint.enable(inlay_hints_enabled)
 end
 
+
+for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+    local default_diagnostic_handler = vim.lsp.handlers[method]
+    vim.lsp.handlers[method] = function(err, result, context, config)
+        if err ~= nil and err.code == -32802 then
+            return
+        end
+        return default_diagnostic_handler(err, result, context, config)
+    end
+end
 
 require('lspconfig')['pyright'].setup({
   on_attach = on_attach,
@@ -67,7 +88,7 @@ require('lspconfig')['rust_analyzer'].setup({
     }
   }
 })
-require('lspconfig')['ruff_lsp'].setup({
+require('lspconfig')['ruff'].setup({
   on_attach = on_attach,
   init_options = {
     settings = {

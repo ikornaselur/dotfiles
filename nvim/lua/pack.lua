@@ -89,10 +89,4 @@ require('paq')({
   'zbirenbaum/copilot-cmp';
   'dstein64/vim-startuptime';
   'hiphish/rainbow-delimiters.nvim';
-
-  -- Rust stuff
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^4',
-  }
 })
