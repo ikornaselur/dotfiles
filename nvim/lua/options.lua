@@ -34,7 +34,7 @@ opt.cursorline = true
 
 opt.foldmethod = 'expr'
 -- opt.foldexpr = 'nvim_treesitter#foldexpr()' -- Use treesitter for folding expr
-opt.foldlevelstart = 10
+opt.foldlevelstart = 50
 opt.foldenable = true
 
 require('ufo').setup({

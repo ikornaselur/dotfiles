@@ -89,4 +89,6 @@ require('paq')({
   'zbirenbaum/copilot-cmp';
   'dstein64/vim-startuptime';
   'hiphish/rainbow-delimiters.nvim';
+  'L3MON4D3/LuaSnip';
+  'benfowler/telescope-luasnip.nvim';
 })
