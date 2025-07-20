@@ -28,4 +28,18 @@ return {
       vim.keymap.set("n", "f", "<cmd>HopWord<CR>", { desc = "Hop to word" })
     end,
   },
+
+  {
+    "mg979/vim-visual-multi",
+    branch = "master",
+    lazy = false,
+    init = function()
+      vim.g.VM_default_mappings = 0
+      vim.g.VM_maps = {
+        ["Add Cursor Down"] = "<C-J>",
+        ["Add Cursor Up"] = "<C-K>",
+      }
+      vim.g.VM_set_statusline = 0
+    end,
+  },
 }
