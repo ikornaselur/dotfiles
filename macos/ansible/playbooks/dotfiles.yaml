@@ -7,7 +7,6 @@
         path: "{{ item }}"
         state: directory
       with_items:
-        - ~/.config/alacritty
         - ~/.hammerspoon
     
     - name: Ensure configs are symlinked

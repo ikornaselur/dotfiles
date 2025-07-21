@@ -4,12 +4,19 @@ set -e
 # Start with the xcode cli tools
 xcode-select --install || true
 
-read -p "Press any key to continue after xcode tools finish installing"
+printf "Waiting for Xcode CLI tools to finish installing.."
+until xcode-select -p &>/dev/null; do
+	printf "."
+	sleep 10
+done
+echo
 
 # Set up homebrew
 echo "Requesting sudo permission for installing homebrew"
-sudo echo ""
+sudo -v
+
 CI=true /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 sudo -k #  Reset sudo timestamp
 
 # Set up ansible with brew
