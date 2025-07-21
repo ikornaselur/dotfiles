@@ -3,13 +3,10 @@ homebrew_cask_packages:
   - beardedspice
   - docker
   - font-fira-code-nerd-font
-  - google-chrome
   - itsycal
   - little-snitch
   - rectangle
-  - slack
-  - spotify
-  - wezterm
+  - bettertouchtool
 
 homebrew_packages:
   - atuin
@@ -25,15 +22,14 @@ homebrew_packages:
   - gpg
   - htop
   - hyperfine
-  - ikornaselur/tap/litime
-  - luarocks
   - imagemagick
   - jq
   - just
+  - luarocks
   - neovim
+  - nmap
   - nodejs
   - openssh
-  - pyenv
   - ripgrep
   - rsync
   - rust
@@ -42,10 +38,3 @@ homebrew_packages:
   - wget
   - zoxide
   - zsh
-
-homebrew_packages_to_remove:
-  - exa  # Replaced with eza
-  - aerial  # Replaced with native screensavers in Sonoma
-  - autojump  # Replaced with zoxide
-  - dive  # Never use it
-  - gron  # Never use it

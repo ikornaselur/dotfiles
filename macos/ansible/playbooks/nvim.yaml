@@ -1,32 +1,19 @@
 - hosts: localhost
-  name: Set up neovim
-  gather_facts: False
+  name: Set up Neovim with LazyVim
+  gather_facts: false
   tasks:
-    - name: Ensure directories exist for nvim
-      ansible.builtin.file:
+    - name: Check if ~/.config/nvim exists
+      ansible.builtin.stat:
         path: "~/.config/nvim"
-        state: directory
+      register: nvim_stat
 
-    - name: Ensure configs are symlinked
+    - name: Backup existing ~/.config/nvim if it is not a symlink
+      ansible.builtin.command: mv ~/.config/nvim ~/.config/nvim.bak
+      when: nvim_stat.stat.exists and not nvim_stat.stat.islnk
+
+    - name: Ensure ~/.config/nvim is symlinked to lazyvim config
       ansible.builtin.file:
-        src: "{{ item.src }}"
-        dest: "{{ item.dest }}"
+        src: "~/.dotfiles/lazyvim"
+        dest: "~/.config/nvim"
         state: link
-      with_items:
-        - {src: ~/.dotfiles/nvim/init.lua, dest: ~/.config/nvim/init.lua}
-        - {src: ~/.dotfiles/nvim/lua, dest: ~/.config/nvim/lua}
-
-    - name: Ensure paq-nvim up to date
-      ansible.builtin.git:
-        repo: "https://github.com/savq/paq-nvim.git"
-        dest: "~/.local/share/nvim/site/pack/paqs/start/paq-nvim"
-        update: true
-        depth: 1
-
-    - name: Create temporary init.lua for initial install
-      ansible.builtin.copy:
-        content: "require('pack')"
-        dest: /tmp/init.lua
-
-    - name: Run PaqInstall
-      ansible.builtin.shell: nvim -E -u /tmp/init.lua +PaqInstall +q
+        force: true

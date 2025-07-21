@@ -5,9 +5,6 @@
     - name: Include common variables
       include_vars: vars/common.yaml
 
-    - name: Include host specific variables
-      include_vars: vars/{{ codename }}.yaml
-
     - name: Update homebrew
       community.general.homebrew:
         update_homebrew: yes
@@ -37,9 +34,3 @@
         name: "{{ item }}"
         state: latest
       loop: "{{ host_homebrew_packages | default([]) }}"
-
-    - name: Ensure packages are absent
-      community.general.homebrew:
-        name: "{{ item }}"
-        state: absent
-      loop: "{{ homebrew_packages_to_remove }}"
