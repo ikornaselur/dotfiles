@@ -42,4 +42,11 @@ return {
       vim.g.VM_set_statusline = 0
     end,
   },
+  {
+    "f-person/auto-dark-mode.nvim",
+    lazy = false,
+    config = function()
+      require("auto-dark-mode").setup()
+    end,
+  },
 }
