@@ -1,4 +1,7 @@
--- Plugin specs are organized by domain in separate files and imported here.
+-- Central list of plugin module imports. Lazy will pull in each file referenced here.
 return {
-  -- Core modules will be added in follow-up steps, e.g. require("plugins.core")
+	{ import = "plugins.core" },
+	{ import = "plugins.tooling" },
+	{ import = "plugins.languages" },
+	-- Additional groups get appended here (completion, lsp, languages, etc.).
 }
