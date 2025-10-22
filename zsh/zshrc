@@ -52,6 +52,7 @@ alias gcan="git commit --amend --no-edit"
 alias greb="git rebase origin/master"
 alias dc="docker-compose"
 alias flushdns="sudo killall -HUP mDNSResponder"
+alias rustrepl=evcxr
 
 source ~/.zshrc.extra
 
