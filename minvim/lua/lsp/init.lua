@@ -33,19 +33,17 @@ end
 
 local function try_register_with_which_key(bufnr)
 	local ok, wk = pcall(require, "which-key")
-	if not ok then
+	if not ok or not wk.add then
 		return
 	end
 
-	wk.register({
-		l = {
-			name = "+LSP",
-			f = "Format buffer",
-			d = "Line diagnostics",
-			r = "Rename symbol",
-			a = "Code action",
-		},
-	}, { prefix = "<leader>", buffer = bufnr })
+	wk.add({
+		{ "<leader>l", buffer = bufnr, group = "LSP" },
+		{ "<leader>la", buffer = bufnr, desc = "Code action" },
+		{ "<leader>ld", buffer = bufnr, desc = "Line diagnostics" },
+		{ "<leader>lf", buffer = bufnr, desc = "Format buffer" },
+		{ "<leader>lr", buffer = bufnr, desc = "Rename symbol" },
+	})
 end
 
 local function apply_inlay_hints(client, bufnr)
@@ -55,7 +53,7 @@ local function apply_inlay_hints(client, bufnr)
 	local ft = vim.bo[bufnr].filetype
 	local lang_cfg = settings.languages[ft]
 	if lang_cfg and lang_cfg.extras and lang_cfg.extras.inlay_hints then
-		vim.lsp.inlay_hint(bufnr, true)
+		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
 end
 
@@ -72,44 +70,60 @@ function M.capabilities()
 end
 
 local function setup_diagnostics()
+	local severity = vim.diagnostic.severity
 	vim.diagnostic.config({
 		float = { border = "rounded" },
 		severity_sort = true,
 		virtual_text = {
-			severity = { min = vim.diagnostic.severity.WARN },
+			severity = { min = severity.WARN },
 		},
 		underline = true,
 		update_in_insert = false,
+		signs = {
+			text = {
+				[severity.ERROR] = "",
+				[severity.WARN] = "",
+				[severity.HINT] = "",
+				[severity.INFO] = "",
+			},
+		},
 	})
-
-	local signs = { Error = "", Warn = "", Hint = "", Info = "" }
-	for type, icon in pairs(signs) do
-		local hl = "DiagnosticSign" .. type
-		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-	end
 end
 
 local function setup_servers()
-	local lspconfig = require("lspconfig")
 	local capabilities = get_capabilities()
+	local has_vim_lsp_config = vim.lsp and vim.lsp.config and vim.lsp.enable
 
 	local configured = {}
 
-	local configs = require("lspconfig.configs")
 	local util = require("lspconfig.util")
+	local configs = has_vim_lsp_config and nil or require("lspconfig.configs")
+	local lspconfig = has_vim_lsp_config and nil or require("lspconfig")
 
 	local function ensure_custom_server(name)
-		if name == "ty" and not configs.ty then
-			configs.ty = {
-				default_config = {
-					cmd = { "ty", "server" },
-					filetypes = { "python" },
-					root_dir = util.root_pattern("pyproject.toml", "ruff.toml", ".ruff.toml", "setup.cfg", ".git"),
-				},
-				docs = {
-					description = [[Ty language server (ty server)]],
-				},
-			}
+		if name ~= "ty" then
+			return
+		end
+
+		local base = {
+			cmd = { "ty", "server" },
+			filetypes = { "python" },
+			root_dir = util.root_pattern("pyproject.toml", "ruff.toml", ".ruff.toml", "setup.cfg", ".git"),
+		}
+
+		if has_vim_lsp_config then
+			if not vim.lsp.config.ty then
+				vim.lsp.config("ty", base)
+			end
+		else
+			if not configs.ty then
+				configs.ty = {
+					default_config = base,
+					docs = {
+						description = [[Ty language server (ty server)]],
+					},
+				}
+			end
 		end
 	end
 
@@ -126,11 +140,14 @@ local function setup_servers()
 
 		ensure_custom_server(name)
 
-		local server_opts = vim.tbl_deep_extend("force", {
+		local server_opts = {
 			capabilities = capabilities,
 			on_attach = server.on_attach or M.on_attach,
-			settings = server.settings,
-		}, server.opts or {})
+		}
+		if server.settings then
+			server_opts.settings = server.settings
+		end
+		server_opts = vim.tbl_deep_extend("force", server_opts, server.opts or {})
 
 		if name == "lua_ls" then
 			server_opts.settings = vim.tbl_deep_extend("force", {
@@ -143,7 +160,12 @@ local function setup_servers()
 			}, server_opts.settings or {})
 		end
 
-		lspconfig[name].setup(server_opts)
+		if has_vim_lsp_config then
+			vim.lsp.config(name, server_opts)
+			vim.lsp.enable(name)
+		else
+			lspconfig[name].setup(server_opts)
+		end
 	end
 
 	for _, cfg in pairs(settings.languages) do

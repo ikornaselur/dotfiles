@@ -42,7 +42,6 @@ M.mason = {
 		"prettierd",
 		"eslint_d",
 		"stylua",
-		"rustfmt",
 		"ruff",
 		"ty",
 	},
@@ -60,7 +59,7 @@ M.languages = {
 				},
 			},
 		},
-		formatters = { "rustfmt" },
+		formatters = {},
 		extras = {
 			crates = true,
 			inlay_hints = true,

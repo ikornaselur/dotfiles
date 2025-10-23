@@ -18,11 +18,27 @@ return {
 				vim.cmd("MasonUpdate")
 			end)
 		end,
-		opts = {
-			ui = {
+		opts = function(_, opts)
+			opts.ui = vim.tbl_deep_extend("force", opts.ui or {}, {
 				border = "rounded",
-			},
-		},
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗",
+				},
+				keymaps = {
+					toggle_package_expand = "<CR>",
+					install_package = "i",
+					update_package = "u",
+					check_package_version = "c",
+					update_all_packages = "U",
+					check_outdated_packages = "C",
+					uninstall_package = "X",
+					cancel_installation = "<Esc>",
+					apply_language_filter = "<C-f>",
+				},
+			})
+		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
