@@ -110,6 +110,14 @@ return {
 		},
 	},
 	{
+		"kylechui/nvim-surround",
+		version = "*",
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup()
+		end,
+	},
+	{
 		"SmiteshP/nvim-navic",
 		lazy = true,
 		opts = {
