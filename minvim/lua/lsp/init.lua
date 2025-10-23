@@ -15,12 +15,14 @@ local function buf_map(bufnr, mode, lhs, rhs, desc)
 	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-local function register_buffer_keymaps(bufnr)
+local function register_buffer_keymaps(client, bufnr)
 	buf_map(bufnr, "n", "gd", vim.lsp.buf.definition, "Goto definition")
 	buf_map(bufnr, "n", "gD", vim.lsp.buf.declaration, "Goto declaration")
 	buf_map(bufnr, "n", "gi", vim.lsp.buf.implementation, "Goto implementation")
 	buf_map(bufnr, "n", "gr", vim.lsp.buf.references, "List references")
+
 	buf_map(bufnr, "n", "K", vim.lsp.buf.hover, "Hover documentation")
+
 	buf_map(bufnr, "n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
 	buf_map(bufnr, "n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
 	buf_map(bufnr, "n", "<leader>lf", function()
@@ -58,7 +60,7 @@ local function apply_inlay_hints(client, bufnr)
 end
 
 local function on_attach(client, bufnr)
-	register_buffer_keymaps(bufnr)
+	register_buffer_keymaps(client, bufnr)
 	try_register_with_which_key(bufnr)
 	apply_inlay_hints(client, bufnr)
 end

@@ -19,6 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Load core config pieces (defined under lua/config)
 require("config.options").setup()
 require("config.keymaps").setup()
+require("config.clipboard").setup()
 require("config.autocmds").setup()
 
 -- Initialize Lazy with plugin modules housed under lua/plugins/

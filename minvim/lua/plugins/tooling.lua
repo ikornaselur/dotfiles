@@ -43,9 +43,21 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "williamboman/mason.nvim" },
-		opts = {
-			ensure_installed = filter_valid(settings.mason.lsp),
-		},
+		opts = function()
+			local exclude = {}
+			for _, lang in pairs(settings.languages) do
+				local servers = lang.lsp and lang.lsp.servers or {}
+				for _, server in ipairs(servers) do
+					if server.setup == "rustacean" and server.name then
+						exclude[#exclude + 1] = server.name
+					end
+				end
+			end
+			return {
+				ensure_installed = filter_valid(settings.mason.lsp),
+				automatic_enable = { exclude = filter_valid(exclude) },
+			}
+		end,
 	},
 	{
 		"jay-babu/mason-null-ls.nvim",

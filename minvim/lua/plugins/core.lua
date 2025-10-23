@@ -90,7 +90,16 @@ return {
 	{
 		"smoka7/hop.nvim",
 		version = false,
-		opts = {},
+		opts = {
+			keys = "etovxqpdygfblzhckisuran",
+		},
+		config = function(_, opts)
+			local hop = require("hop")
+			hop.setup(opts)
+			vim.keymap.set("n", "f", function()
+				hop.hint_words()
+			end, { desc = "Hop to word" })
+		end,
 	},
 	{
 		"akinsho/toggleterm.nvim",
