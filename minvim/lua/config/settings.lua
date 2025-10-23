@@ -32,7 +32,6 @@ M.formatting = {
 M.mason = {
 	lsp = {
 		"rust_analyzer",
-		"pyright",
 		"ruff",
 		"ts_ls",
 		"eslint",
@@ -71,22 +70,8 @@ M.languages = {
 	python = {
 		lsp = {
 			servers = {
-				{
-					name = "pyright",
-					settings = {
-						python = {
-							analysis = {
-								typeCheckingMode = "basic",
-							},
-						},
-					},
-				},
-				{
-					name = "ruff",
-				},
-				{
-					name = "ty",
-				},
+				{ name = "ruff" },
+				{ name = "ty" },
 			},
 		},
 		-- Ruff handles both linting and formatting duties. Run fix then format.
