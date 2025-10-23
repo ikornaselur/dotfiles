@@ -11,8 +11,9 @@ function M.setup()
 		vim.cmd.write()
 	end, { desc = "Save file" })
 
-	-- Quick escape using jk to leave insert mode; adjust if undesired.
-	map("i", "jk", "<ESC>")
+	map("n", "<Space><Space>", function()
+		require("telescope.builtin").find_files({ hidden = true })
+	end, { desc = "Find files" })
 
 	local function diagnostic_jump(forward)
 		return function()

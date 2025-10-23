@@ -54,7 +54,63 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		opts = {},
+		opts_extend = { "spec" },
+		opts = {
+			preset = "helix",
+			spec = {
+				{
+					mode = { "n", "x" },
+					{ "<leader><tab>", group = "tabs" },
+					{ "<leader>b", group = "buffer" },
+					{ "<leader>c", group = "code" },
+					{ "<leader>d", group = "debug" },
+					{ "<leader>f", group = "file/find" },
+					{ "<leader>g", group = "git" },
+					{ "<leader>q", group = "quit/session" },
+					{ "<leader>s", group = "search" },
+					{ "<leader>u", group = "ui" },
+					{ "<leader>x", group = "diagnostics/quickfix" },
+					{ "[", group = "prev" },
+					{ "]", group = "next" },
+					{ "g", group = "goto" },
+					{ "z", group = "fold" },
+				},
+			},
+		},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer keymaps",
+			},
+			{
+				"<C-w><Space>",
+				function()
+					require("which-key").show({ keys = "<c-w>", loop = true })
+				end,
+				desc = "Window controls",
+			},
+		},
+		config = function(_, opts)
+			local wk = require("which-key")
+			wk.setup(opts)
+			local ok, extras = pcall(require, "which-key.extras")
+			if ok then
+				wk.add({
+					{
+						"<leader>b",
+						expand = extras.expand.buf,
+					},
+					{
+						"<leader>w",
+						proxy = "<c-w>",
+						expand = extras.expand.win,
+					},
+				}, { mode = { "n", "x" }, notify = false })
+			end
+		end,
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -116,6 +172,15 @@ return {
 		config = function()
 			require("nvim-surround").setup()
 		end,
+	},
+	{
+		"stevearc/dressing.nvim",
+		event = "VeryLazy",
+		opts = {
+			select = {
+				backend = { "telescope", "builtin" },
+			},
+		},
 	},
 	{
 		"SmiteshP/nvim-navic",
