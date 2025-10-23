@@ -18,6 +18,9 @@ function M.setup()
 	opt.signcolumn = "yes"
 	opt.updatetime = 250
 	opt.timeoutlen = 400
+	opt.laststatus = 3
+	opt.showmode = false
+	opt.ruler = false
 
 	-- Clipboard and undo directories are left at Neovim defaults for now
 	-- so they can be tailored once this config is under regular use.

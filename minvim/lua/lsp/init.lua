@@ -63,6 +63,10 @@ local function on_attach(client, bufnr)
 	register_buffer_keymaps(client, bufnr)
 	try_register_with_which_key(bufnr)
 	apply_inlay_hints(client, bufnr)
+	local ok, navic = pcall(require, "nvim-navic")
+	if ok and client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
+	end
 end
 
 M.on_attach = on_attach
