@@ -91,7 +91,9 @@ M.languages = {
 		},
 		-- Ruff handles both linting and formatting duties. Run fix then format.
 		formatters = { "ruff_fix", "ruff_format" },
-		extras = {},
+		extras = {
+			inlay_hints = true,
+		},
 		null_ls = {},
 	},
 
