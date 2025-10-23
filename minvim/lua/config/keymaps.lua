@@ -13,6 +13,15 @@ function M.setup()
 
 	-- Quick escape using jk to leave insert mode; adjust if undesired.
 	map("i", "jk", "<ESC>")
+
+	local function diagnostic_jump(forward)
+		return function()
+			vim.diagnostic.jump({ count = (forward and 1 or -1) * vim.v.count1, float = true })
+		end
+	end
+
+	map("n", "<C-h>", diagnostic_jump(false), { desc = "Prev diagnostic" })
+	map("n", "<C-l>", diagnostic_jump(true), { desc = "Next diagnostic" })
 end
 
 return M
