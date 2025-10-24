@@ -103,7 +103,7 @@ return {
 				use_nvim_cmp_as_default = true,
 			},
 			keymap = {
-				preset = "default",
+				preset = "enter",
 				["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
 			},
 			sources = {
