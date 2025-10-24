@@ -158,6 +158,20 @@ return {
 		end,
 	},
 	{
+		"mg979/vim-visual-multi",
+		branch = "master",
+		event = "VeryLazy",
+		init = function()
+			vim.g.VM_default_mappings = 0
+			vim.g.VM_maps = {
+				["Add Cursor Down"] = "<C-j>",
+				["Add Cursor Up"] = "<C-k>",
+				["Find Under"] = "<C-n>",
+				["Skip Region"] = "<C-q>",
+			}
+		end,
+	},
+	{
 		"akinsho/toggleterm.nvim",
 		version = "*",
 		opts = {
