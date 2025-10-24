@@ -18,6 +18,7 @@ function M.setup()
 	opt.signcolumn = "yes"
 	opt.updatetime = 250
 	opt.timeoutlen = 400
+	opt.confirm = true
 	opt.laststatus = 3
 	opt.showmode = false
 	opt.ruler = false

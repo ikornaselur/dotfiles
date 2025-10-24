@@ -37,6 +37,15 @@ function M.setup()
 			vim.api.nvim_win_set_cursor(0, { lnum, math.max(mark[2], 0) })
 		end,
 	})
+
+	autocmd("BufEnter", {
+		group = augroup("minvim-statusline", { clear = true }),
+		callback = function()
+			if vim.bo.filetype ~= "dashboard" then
+				vim.o.laststatus = 3
+			end
+		end,
+	})
 end
 
 return M

@@ -183,14 +183,62 @@ return {
 		},
 	},
 	{
-		"SmiteshP/nvim-navic",
-		lazy = true,
-		opts = {
-			highlight = true,
-			separator = "  ",
+		"akinsho/bufferline.nvim",
+		event = "VeryLazy",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		keys = {
+			{ "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+			{ "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Close non-pinned" },
+			{ "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Close buffers right" },
+			{ "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", desc = "Close buffers left" },
+			{ "<S-h>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev buffer" },
+			{ "<S-l>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
+			{ "[b", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev buffer" },
+			{ "]b", "<Cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
+			{ "[B", "<Cmd>BufferLineMovePrev<CR>", desc = "Move buffer left" },
+			{ "]B", "<Cmd>BufferLineMoveNext<CR>", desc = "Move buffer right" },
 		},
+		opts = function()
+			local icons = {
+				diagnostics = { error = "", warn = "" },
+			}
+			return {
+				options = {
+					diagnostics = "nvim_lsp",
+					always_show_bufferline = false,
+					close_command = function(n)
+						vim.schedule(function()
+							pcall(vim.api.nvim_buf_delete, n, { force = false })
+						end)
+					end,
+					right_mouse_command = function(n)
+						vim.schedule(function()
+							pcall(vim.api.nvim_buf_delete, n, { force = false })
+						end)
+					end,
+					diagnostics_indicator = function(_, _, diag)
+						local ret = {}
+						if diag.error and diag.error > 0 then
+							table.insert(ret, icons.diagnostics.error .. diag.error)
+						end
+						if diag.warning and diag.warning > 0 then
+							table.insert(ret, icons.diagnostics.warn .. diag.warning)
+						end
+						return table.concat(ret, " ")
+					end,
+					offsets = {
+						{
+							filetype = "snacks_explorer",
+							text = "Explorer",
+							highlight = "Directory",
+							text_align = "left",
+						},
+					},
+				},
+			}
+		end,
 		config = function(_, opts)
-			require("nvim-navic").setup(opts)
+			require("bufferline").setup(opts)
 		end,
 	},
 	{
@@ -364,6 +412,43 @@ return {
 				},
 				extensions = { "quickfix" },
 			}
+		end,
+	},
+	{
+		"folke/todo-comments.nvim",
+		event = { "BufReadPost", "BufNewFile" },
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			highlight = {
+				pattern = [[.*<(KEYWORDS)\s*:]],
+			},
+			search = {
+				pattern = [[\b(KEYWORDS):]],
+			},
+		},
+	},
+	{
+		"folke/snacks.nvim",
+		event = "VeryLazy",
+		opts = {
+			explorer = {
+				enabled = true,
+			},
+			input = { enabled = false },
+			notifier = { enabled = false },
+			scope = { enabled = false },
+			words = { enabled = false },
+		},
+	},
+	{
+		"SmiteshP/nvim-navic",
+		lazy = true,
+		opts = {
+			highlight = true,
+			separator = "  ",
+		},
+		config = function(_, opts)
+			require("nvim-navic").setup(opts)
 		end,
 	},
 	{
