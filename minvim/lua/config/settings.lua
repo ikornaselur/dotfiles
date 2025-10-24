@@ -28,6 +28,16 @@ M.formatting = {
 	disable_filetypes = {},
 }
 
+-- UI toggles for optional niceties.
+M.ui = {
+	indent_guides = {
+		enabled = true,
+		provider = "snacks",
+		scope = true,
+		animate = true,
+	},
+}
+
 -- Mason install lists remain in plain tables so they can be tweaked easily.
 M.mason = {
 	lsp = {

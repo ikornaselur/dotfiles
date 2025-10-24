@@ -430,15 +430,132 @@ return {
 	{
 		"folke/snacks.nvim",
 		event = "VeryLazy",
-		opts = {
-			explorer = {
-				enabled = true,
-			},
-			input = { enabled = false },
-			notifier = { enabled = false },
-			scope = { enabled = false },
-			words = { enabled = false },
-		},
+		opts = function(_, opts)
+			opts = opts or {}
+			local indent_cfg = {}
+			local ok, settings = pcall(require, "config.settings")
+			if ok and settings.ui and settings.ui.indent_guides then
+				indent_cfg = settings.ui.indent_guides
+			end
+			if type(indent_cfg) ~= "table" then
+				indent_cfg = { enabled = indent_cfg }
+			end
+
+			local provider = indent_cfg.provider or "snacks"
+			local enabled = indent_cfg.enabled ~= false
+			local scope_enabled = indent_cfg.scope ~= false
+			local animate_enabled = indent_cfg.animate ~= false
+
+			opts.explorer = vim.tbl_deep_extend("force", { enabled = true }, opts.explorer or {})
+			opts.input = vim.tbl_deep_extend("force", { enabled = false }, opts.input or {})
+			opts.notifier = vim.tbl_deep_extend("force", { enabled = false }, opts.notifier or {})
+			opts.scope = vim.tbl_deep_extend("force", { enabled = scope_enabled and enabled }, opts.scope or {})
+			opts.words = vim.tbl_deep_extend("force", { enabled = false }, opts.words or {})
+
+			opts.indent = vim.tbl_deep_extend("force", {
+				enabled = provider == "snacks" and enabled,
+				indent = {
+					enabled = true,
+					char = "│",
+					only_scope = false,
+				},
+				animate = {
+					enabled = animate_enabled and enabled,
+				},
+				scope = {
+					enabled = scope_enabled and enabled,
+					char = "│",
+				},
+			}, opts.indent or {})
+
+			return opts
+		end,
+		config = function(_, opts)
+			local snacks = require("snacks")
+			snacks.setup(opts)
+			if snacks.config.scope and snacks.config.scope.enabled and snacks.scope and snacks.scope.enable then
+				snacks.scope.enable()
+			end
+			if snacks.config.indent and snacks.config.indent.enabled and snacks.indent and snacks.indent.enable then
+				snacks.indent.enable()
+			end
+		end,
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		event = { "BufReadPost", "BufNewFile" },
+		cond = function()
+			local ok, settings = pcall(require, "config.settings")
+			if not ok then
+				return false
+			end
+			local indent = settings.ui and settings.ui.indent_guides
+			if indent == nil then
+				return true
+			end
+			if type(indent) ~= "table" then
+				return indent ~= false
+			end
+			if indent.enabled == false then
+				return false
+			end
+			local provider = indent.provider or "snacks"
+			return provider ~= "snacks"
+		end,
+		opts = function()
+			local indent_cfg = {}
+			local ok, settings = pcall(require, "config.settings")
+			if ok and settings.ui and settings.ui.indent_guides then
+				indent_cfg = settings.ui.indent_guides
+			end
+			if type(indent_cfg) ~= "table" then
+				indent_cfg = {}
+			end
+
+			local scope_enabled = indent_cfg.scope ~= false
+
+			return {
+				indent = {
+					char = "│",
+					tab_char = "│",
+				},
+				scope = {
+					enabled = scope_enabled,
+					show_start = false,
+					show_end = false,
+					highlight = "IblScope",
+				},
+				exclude = {
+					filetypes = {
+						"dashboard",
+						"help",
+						"lazy",
+						"mason",
+						"neo-tree",
+						"snacks_dashboard",
+						"snacks_notif",
+						"snacks_terminal",
+						"snacks_win",
+						"toggleterm",
+						"Trouble",
+						"trouble",
+					},
+				},
+			}
+		end,
+		config = function(_, opts)
+			local ok, hooks = pcall(require, "ibl.hooks")
+			if ok then
+				hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+					local hl = vim.api.nvim_get_hl(0, { name = "Function", link = false })
+					if hl and hl.fg then
+						vim.api.nvim_set_hl(0, "IblScope", { fg = hl.fg, nocombine = true })
+					end
+				end)
+			end
+			require("ibl").setup(opts)
+		end,
 	},
 	{
 		"SmiteshP/nvim-navic",
