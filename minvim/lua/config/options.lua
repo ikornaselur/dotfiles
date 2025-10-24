@@ -22,6 +22,8 @@ function M.setup()
 	opt.laststatus = 3
 	opt.showmode = false
 	opt.ruler = false
+	opt.ignorecase = true
+	opt.smartcase = true
 
 	-- Clipboard and undo directories are left at Neovim defaults for now
 	-- so they can be tailored once this config is under regular use.
