@@ -59,6 +59,16 @@ function M.setup()
 
 	map("n", "<C-h>", diagnostic_jump(false), { desc = "Prev diagnostic" })
 	map("n", "<C-l>", diagnostic_jump(true), { desc = "Next diagnostic" })
+
+	-- Toggle dark/light background (persists on Linux via state file)
+	map("n", "<leader>ub", function()
+		require("config.theme").toggle()
+	end, { desc = "Toggle background (dark/light)" })
+
+	-- Optional command for scripts/mappings
+	vim.api.nvim_create_user_command("MinvimToggleBackground", function()
+		require("config.theme").toggle()
+	end, { desc = "Toggle background between dark/light" })
 end
 
 return M

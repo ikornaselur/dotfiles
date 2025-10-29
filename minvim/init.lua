@@ -22,6 +22,9 @@ require("config.keymaps").setup()
 require("config.clipboard").setup()
 require("config.autocmds").setup()
 
+-- Set persisted theme early (for non-macOS); auto-dark-mode handles macOS.
+require("config.theme").setup()
+
 -- Initialize Lazy with plugin modules housed under lua/plugins/
 require("lazy").setup({ import = "plugins" }, {
 	defaults = { lazy = false, version = false },

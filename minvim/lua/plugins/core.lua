@@ -12,6 +12,11 @@ return {
 		"f-person/auto-dark-mode.nvim",
 		lazy = false,
 		priority = 1000,
+		-- Only enable auto dark mode on macOS to avoid issues on remote Linux
+		cond = function()
+			local uv = vim.uv or vim.loop
+			return uv.os_uname().sysname == "Darwin"
+		end,
 		config = function()
 			local auto_dark_mode = require("auto-dark-mode")
 			auto_dark_mode.setup({
