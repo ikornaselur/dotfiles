@@ -47,6 +47,11 @@ function M.setup()
     local root = require("util.root").git()
     require("telescope.builtin").git_commits({ cwd = root })
   end, { desc = "Git commits (root)" })
+
+  -- Git: toggle inline blame for current buffer
+  map("n", "<leader>gh", function()
+    require("gitsigns").toggle_current_line_blame()
+  end, { desc = "Git blame (toggle line blame)" })
   map("n", "<leader>gC", function()
     require("telescope.builtin").git_bcommits()
   end, { desc = "Buffer commits" })
