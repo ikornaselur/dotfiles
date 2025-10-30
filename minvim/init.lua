@@ -25,6 +25,11 @@ require("config.autocmds").setup()
 -- Set persisted theme early (for non-macOS); auto-dark-mode handles macOS.
 require("config.theme").setup()
 
+-- Initialize root detection (LazyVim-style)
+pcall(function()
+	require("util.root").setup()
+end)
+
 -- Initialize Lazy with plugin modules housed under lua/plugins/
 require("lazy").setup({ import = "plugins" }, {
 	defaults = { lazy = false, version = false },
