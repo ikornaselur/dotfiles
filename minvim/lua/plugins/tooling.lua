@@ -110,10 +110,24 @@ return {
         default = { "lsp", "path", "buffer", "snippets" },
       },
       completion = {
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 150,
+          window = { border = "rounded" },
+        },
         menu = {
           border = "rounded",
+          -- Show more disambiguating info: item description (e.g. module path) and source name
+          draw = {
+            columns = {
+              { "kind_icon" },
+              { "label", "label_description" },
+              { "source_name" },
+            },
+          },
         },
       },
+      signature = { enabled = true, window = { border = "rounded" } },
     },
     config = function(_, opts)
       local blink = require("blink.cmp")

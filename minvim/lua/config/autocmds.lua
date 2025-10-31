@@ -46,6 +46,56 @@ function M.setup()
       end
     end,
   })
+
+  -- Remember folds and other view-related state per file.
+  -- Uses mkview/loadview which writes to stdpath('state')/view.
+  local function should_persist_view(buf)
+    local bt = vim.bo[buf].buftype
+    if bt ~= "" then
+      return false
+    end
+    if vim.bo[buf].modified == false and not vim.bo[buf].modifiable then
+      return false
+    end
+    local ft = vim.bo[buf].filetype
+    local skip = {
+      "gitcommit",
+      "gitrebase",
+      "help",
+      "dashboard",
+      "lazy",
+      "mason",
+      "neo-tree",
+      "snacks_explorer",
+      "toggleterm",
+      "Trouble",
+      "trouble",
+    }
+    for _, s in ipairs(skip) do
+      if ft == s then
+        return false
+      end
+    end
+    return true
+  end
+
+  autocmd("BufWinLeave", {
+    group = augroup("minvim-remember-folds", { clear = true }),
+    callback = function(args)
+      if should_persist_view(args.buf) then
+        pcall(vim.cmd, "silent! mkview")
+      end
+    end,
+  })
+
+  autocmd("BufWinEnter", {
+    group = augroup("minvim-remember-folds", { clear = false }),
+    callback = function(args)
+      if should_persist_view(args.buf) then
+        pcall(vim.cmd, "silent! loadview")
+      end
+    end,
+  })
 end
 
 return M

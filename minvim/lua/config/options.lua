@@ -33,6 +33,12 @@ function M.setup()
   opt.foldlevel = 99
   opt.foldlevelstart = 99
 
+  -- Persist view data like folds when saving/loading views.
+  -- (We create autocmds to mkview/loadview in config.autocmds.)
+  pcall(function()
+    vim.opt.viewoptions:append("folds")
+  end)
+
   -- Clipboard and undo directories are left at Neovim defaults for now
   -- so they can be tailored once this config is under regular use.
 end

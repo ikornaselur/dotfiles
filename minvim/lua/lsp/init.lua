@@ -3,11 +3,19 @@ local M = {}
 local settings = require("config.settings")
 
 local function get_capabilities()
+  local caps
   local ok, blink = pcall(require, "blink.cmp")
   if ok and blink.get_lsp_capabilities then
-    return blink.get_lsp_capabilities()
+    caps = blink.get_lsp_capabilities()
+  else
+    caps = vim.lsp.protocol.make_client_capabilities()
   end
-  return vim.lsp.protocol.make_client_capabilities()
+  -- Ensure modern completion item features that improve disambiguation in menus
+  caps.textDocument = caps.textDocument or {}
+  caps.textDocument.completion = caps.textDocument.completion or {}
+  caps.textDocument.completion.completionItem = caps.textDocument.completion.completionItem or {}
+  caps.textDocument.completion.completionItem.labelDetailsSupport = true
+  return caps
 end
 
 local function buf_map(bufnr, mode, lhs, rhs, desc)
