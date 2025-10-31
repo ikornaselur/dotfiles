@@ -77,6 +77,23 @@ function M.setup()
     require("config.theme").toggle()
   end, { desc = "Toggle background (dark/light)" })
 
+  -- Folding helpers (Treesitter-powered foldexpr configured in options)
+  -- Native z-motions still work; these are simple leader aliases.
+  map("n", "<leader>zf", "za", { desc = "Fold toggle" })
+  map("n", "<leader>zo", "zo", { desc = "Open fold" })
+  map("n", "<leader>zO", "zO", { desc = "Open folds recursively" })
+  map("n", "<leader>zc", "zc", { desc = "Close fold" })
+  map("n", "<leader>zC", "zC", { desc = "Close folds recursively" })
+  map("n", "<leader>zR", "zR", { desc = "Open all folds" })
+  map("n", "<leader>zM", "zM", { desc = "Close all folds" })
+  map("n", "<leader>zj", "zj", { desc = "Next fold" })
+  map("n", "<leader>zk", "zk", { desc = "Prev fold" })
+
+  -- UI toggle: enable/disable folding entirely
+  map("n", "<leader>uz", function()
+    vim.o.foldenable = not vim.o.foldenable
+  end, { desc = "Toggle folds (enable)" })
+
   -- Optional command for scripts/mappings
   vim.api.nvim_create_user_command("MinvimToggleBackground", function()
     require("config.theme").toggle()

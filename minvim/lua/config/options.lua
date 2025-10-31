@@ -25,6 +25,14 @@ function M.setup()
   opt.ignorecase = true
   opt.smartcase = true
 
+  -- Folding: use Treesitter for intelligent folds.
+  -- Keep folds open by default but enable folding and let users close when desired.
+  opt.foldmethod = "expr"
+  opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+  opt.foldenable = true
+  opt.foldlevel = 99
+  opt.foldlevelstart = 99
+
   -- Clipboard and undo directories are left at Neovim defaults for now
   -- so they can be tailored once this config is under regular use.
 end
