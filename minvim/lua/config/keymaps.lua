@@ -77,6 +77,14 @@ function M.setup()
     require("config.theme").toggle()
   end, { desc = "Toggle background (dark/light)" })
 
+  -- Formatting on demand (Conform)
+  map("n", "<leader>cf", function()
+    require("config.formatting").format()
+  end, { desc = "Format (Conform)" })
+  map("n", "<leader>cF", function()
+    require("config.formatting").autofix()
+  end, { desc = "Autofix + format" })
+
   -- Folding helpers (Treesitter-powered foldexpr configured in options)
   -- Native z-motions still work; these are simple leader aliases.
   map("n", "<leader>zf", "za", { desc = "Fold toggle" })
@@ -98,6 +106,12 @@ function M.setup()
   vim.api.nvim_create_user_command("MinvimToggleBackground", function()
     require("config.theme").toggle()
   end, { desc = "Toggle background between dark/light" })
+  vim.api.nvim_create_user_command("MinvimFormat", function()
+    require("config.formatting").format()
+  end, { desc = "Format current buffer (Conform)" })
+  vim.api.nvim_create_user_command("MinvimFix", function()
+    require("config.formatting").autofix()
+  end, { desc = "Autofix current buffer (ESLint/Ruff)" })
 end
 
 return M
