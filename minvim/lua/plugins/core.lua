@@ -46,6 +46,47 @@ return {
       })
     end,
   },
+  -- Sticky context of current function/class at the top of the window.
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = { "BufReadPost", "BufNewFile" },
+    cond = function()
+      local ok, settings = pcall(require, "config.settings")
+      if not ok then
+        return true
+      end
+      local ctx = settings.ui and settings.ui.treesitter_context
+      if ctx == nil then
+        return true
+      end
+      if type(ctx) ~= "table" then
+        return ctx ~= false
+      end
+      return ctx.enabled ~= false
+    end,
+    opts = function()
+      local cfg = {}
+      local ok, settings = pcall(require, "config.settings")
+      if ok and settings.ui and settings.ui.treesitter_context then
+        cfg = settings.ui.treesitter_context
+      end
+      if type(cfg) ~= "table" then
+        cfg = {}
+      end
+      return {
+        enable = true,
+        max_lines = cfg.max_lines or 3,
+        multiline_threshold = cfg.multiline_threshold or 20,
+        trim_scope = cfg.trim_scope or "outer",
+        mode = cfg.mode or "cursor",
+        separator = cfg.separator, -- nil disables separator line
+        zindex = cfg.zindex or 20,
+      }
+    end,
+    config = function(_, opts)
+      require("treesitter-context").setup(opts)
+    end,
+  },
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },

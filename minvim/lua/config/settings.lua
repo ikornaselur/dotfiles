@@ -36,6 +36,17 @@ M.ui = {
     scope = true,
     animate = true,
   },
+  -- Sticky context line at the top of the window showing the current
+  -- function/class via Treesitter. Toggle or tweak here.
+  treesitter_context = {
+    enabled = true,
+    max_lines = 3, -- limit context height; 0 = no limit
+    mode = "cursor", -- topline|cursor
+    separator = nil, -- set a character like "─" to draw a separator line
+    zindex = 20,
+    multiline_threshold = 20,
+    trim_scope = "outer",
+  },
 }
 
 -- Mason install lists remain in plain tables so they can be tweaked easily.
