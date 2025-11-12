@@ -23,7 +23,6 @@ local state = {
   expanded = false,
   peek_active = false,
   peek_augroup = nil,
-  peek_timer = nil,
 }
 
 local function safe_setup(opts)
@@ -67,11 +66,6 @@ local function clear_peek_watchers(restore)
     pcall(vim.api.nvim_del_augroup_by_id, state.peek_augroup)
     state.peek_augroup = nil
   end
-  if state.peek_timer then
-    pcall(state.peek_timer.stop, state.peek_timer)
-    pcall(state.peek_timer.close, state.peek_timer)
-    state.peek_timer = nil
-  end
   state.peek_active = false
   if restore then
     if not state.expanded then
@@ -80,11 +74,7 @@ local function clear_peek_watchers(restore)
   end
 end
 
-function M.peek(timeout_ms)
-  local ok, settings = pcall(require, "config.settings")
-  local cfg = ok and settings.ui and settings.ui.treesitter_context or {}
-  local ms = timeout_ms or cfg.peek_timeout_ms or 1500
-
+function M.peek()
   -- Apply expanded context
   if not safe_setup(build_opts(0)) then
     return
@@ -103,16 +93,6 @@ function M.peek(timeout_ms)
       clear_peek_watchers(true)
     end,
   })
-
-  -- Or restore after a short timeout
-  local uv = vim.uv or vim.loop
-  local t = uv.new_timer()
-  state.peek_timer = t
-  t:start(ms, 0, function()
-    vim.schedule(function()
-      clear_peek_watchers(true)
-    end)
-  end)
 end
 
 -- Expose a user command friendly alias

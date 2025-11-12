@@ -46,7 +46,6 @@ M.ui = {
     zindex = 20,
     multiline_threshold = 20,
     trim_scope = "outer",
-    peek_timeout_ms = 1500, -- auto-restore delay for peek
   },
 }
 
