@@ -102,10 +102,33 @@ function M.setup()
     vim.o.foldenable = not vim.o.foldenable
   end, { desc = "Toggle folds (enable)" })
 
+  -- Treesitter context: temporarily expand to full height (max_lines = 0)
+  map("n", "<leader>uC", function()
+    require("config.context").toggle_expand()
+  end, { desc = "Context line: expand/restore" })
+
+  -- Treesitter context: quick peek (expand until move or timeout)
+  map("n", "<C-p>", function()
+    require("config.context").peek()
+  end, { desc = "Context peek (temporary)" })
+
   -- Optional command for scripts/mappings
   vim.api.nvim_create_user_command("MinvimToggleBackground", function()
     require("config.theme").toggle()
   end, { desc = "Toggle background between dark/light" })
+  vim.api.nvim_create_user_command("MinvimContextExpand", function()
+    require("config.context").expand()
+  end, { desc = "Expand context (max_lines = 0)" })
+  vim.api.nvim_create_user_command("MinvimContextRestore", function()
+    require("config.context").restore()
+  end, { desc = "Restore context (configured max_lines)" })
+  vim.api.nvim_create_user_command("MinvimContextToggle", function()
+    require("config.context").toggle_expand()
+  end, { desc = "Toggle context expanded/normal" })
+  vim.api.nvim_create_user_command("MinvimContextPeek", function(opts)
+    local ms = tonumber(opts.args) or nil
+    require("config.context").peek(ms)
+  end, { desc = "Peek context temporarily", nargs = "?" })
   vim.api.nvim_create_user_command("MinvimFormat", function()
     require("config.formatting").format()
   end, { desc = "Format current buffer (Conform)" })
