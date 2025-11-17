@@ -40,7 +40,7 @@ eval "$(direnv hook zsh osx brew)"
 export DIRENV_LOG_FORMAT=""
 
 # Aliases
-alias vim="nvim -u ~/.config/nvim/init.lua"
+alias vim="nvim"
 alias ls="eza --git"
 alias rg="rg -S"
 alias rgff="rg --files -g"
