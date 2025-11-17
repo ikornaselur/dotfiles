@@ -95,6 +95,7 @@ return {
     "saghen/blink.cmp",
     version = "1.*",
     dependencies = {
+      "fang2hou/blink-copilot",
       "L3MON4D3/LuaSnip",
       "rafamadriz/friendly-snippets",
     },
@@ -107,7 +108,14 @@ return {
         ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
       },
       sources = {
-        default = { "lsp", "path", "buffer", "snippets" },
+        default = { "lsp", "copilot", "path", "buffer", "snippets" },
+        providers = {
+          copilot = {
+            name = "copilot",
+            module = "blink-copilot",
+            async = true,
+          },
+        },
       },
       completion = {
         documentation = {
@@ -133,6 +141,19 @@ return {
       local blink = require("blink.cmp")
       blink.setup(opts)
       require("luasnip.loaders.from_vscode").lazy_load()
+    end,
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    build = ":Copilot auth",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      suggestion = { enabled = false }, -- disable inline ghost text
+      panel = { enabled = false },
+    },
+    config = function(_, opts)
+      require("copilot").setup(opts)
     end,
   },
   {
