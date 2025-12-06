@@ -134,6 +134,7 @@ return {
         { pattern = "help", icon = "󰞋 ", color = "blue" },
         { pattern = "save", icon = " ", color = "azure" },
         { pattern = "live grep", icon = " ", color = "green" },
+        { pattern = "terminal", icon = " ", color = "red" },
       }
 
       opts.preset = "helix"
@@ -264,9 +265,67 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     opts = {
-      open_mapping = [[<C-/>]],
+      open_mapping = [[<C-\>]],
+      direction = "float",
       shade_terminals = false,
+      float_opts = { border = "rounded" },
     },
+    config = function(_, opts)
+      local toggleterm = require("toggleterm")
+      toggleterm.setup(opts)
+
+      vim.keymap.set({ "n", "t" }, "<C-\\>", function()
+        vim.cmd("ToggleTerm direction=float")
+      end, { desc = "Terminal (float)", silent = true })
+
+      -- Terminal-mode quality of life: quick normal mode + window navigation.
+      vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Terminal normal mode", silent = true })
+      vim.keymap.set(
+        "t",
+        "<C-h>",
+        [[<C-\><C-n><C-w>h]],
+        { desc = "Terminal: go left", silent = true }
+      )
+      vim.keymap.set(
+        "t",
+        "<C-j>",
+        [[<C-\><C-n><C-w>j]],
+        { desc = "Terminal: go down", silent = true }
+      )
+      vim.keymap.set(
+        "t",
+        "<C-k>",
+        [[<C-\><C-n><C-w>k]],
+        { desc = "Terminal: go up", silent = true }
+      )
+      vim.keymap.set(
+        "t",
+        "<C-l>",
+        [[<C-\><C-n><C-w>l]],
+        { desc = "Terminal: go right", silent = true }
+      )
+
+      -- In terminal windows, keep Ctrl-l usable while in insert/terminal mode to clear.
+      vim.api.nvim_create_autocmd("TermOpen", {
+        desc = "Terminal buffer keymaps",
+        pattern = "term://*",
+        callback = function(ev)
+          local buf = ev.buf
+          local function send_ctrl_l()
+            local job = vim.b[buf].terminal_job_id
+            if job then
+              pcall(vim.api.nvim_chan_send, job, "\x0c")
+            end
+          end
+          vim.keymap.set(
+            "t",
+            "<C-l>",
+            send_ctrl_l,
+            { buffer = buf, desc = "Terminal: clear", silent = true }
+          )
+        end,
+      })
+    end,
   },
   {
     "kylechui/nvim-surround",
