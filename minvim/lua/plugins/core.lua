@@ -113,6 +113,7 @@ return {
           { "<leader>f", group = "file/find" },
           { "<leader>g", group = "git" },
           { "<leader>q", group = "quit/session" },
+          { "<leader>t", group = "tests" },
           { "<leader>s", group = "search" },
           { "<leader>u", group = "ui" },
           { "<leader>x", group = "diagnostics/quickfix" },
