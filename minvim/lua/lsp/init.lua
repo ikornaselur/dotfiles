@@ -37,8 +37,8 @@ local function register_buffer_keymaps(client, bufnr)
     require("config.formatting").format({ bufnr = bufnr })
   end, "Format buffer (Conform)")
   buf_map(bufnr, "n", "<leader>ld", vim.diagnostic.open_float, "Line diagnostics")
-  buf_map(bufnr, "n", "[d", vim.diagnostic.goto_prev, "Prev diagnostic")
-  buf_map(bufnr, "n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
+  buf_map(bufnr, "n", "<C-h>", vim.diagnostic.goto_prev, "Prev diagnostic")
+  buf_map(bufnr, "n", "<C-l>", vim.diagnostic.goto_next, "Next diagnostic")
 end
 
 local function try_register_with_which_key(bufnr)
@@ -53,6 +53,8 @@ local function try_register_with_which_key(bufnr)
     { "<leader>ld", buffer = bufnr, desc = "Line diagnostics" },
     { "<leader>lf", buffer = bufnr, desc = "Format buffer" },
     { "<leader>lr", buffer = bufnr, desc = "Rename symbol" },
+    { "<C-h>", buffer = bufnr, desc = "Prev diagnostic" },
+    { "<C-l>", buffer = bufnr, desc = "Next diagnostic" },
   })
 end
 

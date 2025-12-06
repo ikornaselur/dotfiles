@@ -185,7 +185,11 @@ return {
             if vim.tbl_contains(fmt_settings.disable_filetypes, ft) then
               return
             end
-            conform.format({ bufnr = args.buf, timeout_ms = fmt_settings.timeout_ms })
+            conform.format({
+              bufnr = args.buf,
+              timeout_ms = fmt_settings.timeout_ms,
+              lsp_fallback = true, -- allow rust_analyzer (and others) to format when no formatter is configured
+            })
           end,
         })
       end

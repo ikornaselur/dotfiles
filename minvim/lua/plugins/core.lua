@@ -101,9 +101,48 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts_extend = { "spec" },
-    opts = {
-      preset = "helix",
-      spec = {
+    opts = function(_, opts)
+      local default_rules = require("which-key.icons").rules
+      local custom_icons = {
+        { pattern = "^tabs?", icon = "󰓩 ", color = "purple" },
+        { pattern = "buffer", icon = "󰈔", color = "cyan" },
+        { pattern = "code", icon = " ", color = "orange" },
+        { pattern = "debug", icon = "󰃤 ", color = "red" },
+        { pattern = "file", icon = "󰈙 ", color = "cyan" },
+        { pattern = "find", icon = " ", color = "green" },
+        { pattern = "^git", icon = "󰊢 ", color = "red" },
+        { pattern = "^lsp", icon = " ", color = "blue" },
+        { pattern = "goto", icon = "󰯸 ", color = "blue" },
+        { pattern = "^prev", icon = " ", color = "yellow" },
+        { pattern = "^next", icon = " ", color = "yellow" },
+        { pattern = "search", icon = " ", color = "green" },
+        { pattern = "tests?", icon = "󰙨 ", color = "purple" },
+        { pattern = "diagnostic", icon = "󱖫 ", color = "green" },
+        { pattern = "quickfix", icon = "󰁨 ", color = "yellow" },
+        { pattern = "^ui$", icon = "󰙵 ", color = "cyan" },
+        { pattern = "fold", icon = "󱃖 ", color = "cyan" },
+        { pattern = "session", icon = " ", color = "azure" },
+        { pattern = "quit", icon = "󰈆 ", color = "red" },
+        { pattern = "format", icon = " ", color = "cyan" },
+        { pattern = "window", icon = " ", color = "blue" },
+        { pattern = "explorer", icon = " ", color = "blue" },
+        { pattern = "terminal", icon = " ", color = "red" },
+        { pattern = "context", icon = " ", color = "orange" },
+        { pattern = "background", icon = " ", color = "purple" },
+        { pattern = "theme", icon = " ", color = "yellow" },
+        { pattern = "toggle", icon = " ", color = "yellow" },
+        { pattern = "help", icon = "󰞋 ", color = "blue" },
+        { pattern = "save", icon = " ", color = "azure" },
+        { pattern = "live grep", icon = " ", color = "green" },
+      }
+
+      opts.preset = "helix"
+      opts.icons = vim.tbl_extend("force", {
+        separator = "·",
+        group = " ",
+        rules = vim.list_extend(custom_icons, default_rules),
+      }, opts.icons or {})
+      opts.spec = {
         {
           mode = { "n", "x" },
           { "<leader><tab>", group = "tabs" },
@@ -121,10 +160,12 @@ return {
           { "[", group = "prev" },
           { "]", group = "next" },
           { "g", group = "goto" },
+          { "<leader>w", proxy = "<c-w>", group = "windows" },
           { "z", group = "fold" },
         },
-      },
-    },
+      }
+      return opts
+    end,
     keys = {
       {
         "<leader>?",
