@@ -8,6 +8,7 @@ function M.setup()
   opt.number = true
   opt.relativenumber = true
   opt.expandtab = true
+  opt.autoindent = true
   opt.shiftwidth = 2
   opt.tabstop = 2
   opt.smartindent = true

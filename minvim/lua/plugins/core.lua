@@ -41,7 +41,7 @@ return {
       local ts_settings = require("config.settings").treesitter
       require("nvim-treesitter.configs").setup({
         highlight = { enable = true },
-        indent = { enable = true },
+        indent = { enable = true, disable = { "rust" } }, -- use rust.vim indent for Rust
         ensure_installed = ts_settings.ensure_installed,
       })
     end,
