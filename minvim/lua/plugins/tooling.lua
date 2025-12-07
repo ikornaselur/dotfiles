@@ -118,6 +118,11 @@ return {
         },
       },
       completion = {
+        accept = {
+          auto_brackets = {
+            enabled = false, -- avoid auto-inserting closing brackets on completion accept
+          },
+        },
         documentation = {
           auto_show = true,
           auto_show_delay_ms = 150,
