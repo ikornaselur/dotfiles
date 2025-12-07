@@ -85,31 +85,9 @@ return {
           return nil
         end
 
-        local ok, mason_registry = pcall(require, "mason-registry")
-        if not ok then
-          return nil
-        end
-
-        local ok_pkg, codelldb = pcall(mason_registry.get_package, "codelldb")
-        if not ok_pkg or not (codelldb and codelldb.is_installed and codelldb:is_installed()) then
-          return nil
-        end
-
-        local install_path = codelldb.get_install_path and codelldb:get_install_path()
-        if not install_path then
-          return nil
-        end
-
-        local extension_path = install_path .. "/extension/"
-        local codelldb_path = extension_path .. "adapter/codelldb"
-        local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
-        if not vim.loop.fs_stat(liblldb_path) then
-          liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-        end
-
-        local cfg = require("rustaceanvim.config")
-        if cfg and cfg.get_codelldb_adapter then
-          return cfg.get_codelldb_adapter(codelldb_path, liblldb_path)
+        local ok, dap_cfg = pcall(require, "config.dap")
+        if ok and dap_cfg.codelldb_adapter then
+          return dap_cfg.codelldb_adapter()
         end
       end
 
