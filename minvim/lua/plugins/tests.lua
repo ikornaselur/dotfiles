@@ -41,6 +41,13 @@ return {
         end,
         desc = "All tests (project)",
       },
+      {
+        "<leader>tD",
+        function()
+          require("config.testing").run_nearest_dap()
+        end,
+        desc = "Nearest test (DAP)",
+      },
     },
     opts = function()
       local adapters = {}

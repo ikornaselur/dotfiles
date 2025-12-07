@@ -118,6 +118,16 @@ return {
         vim.g.rustaceanvim.dap = { adapter = dap_adapter }
       end
       vim.g.rustaceanvim.tools.inlay_hints = { auto = extras.inlay_hints ~= false }
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "rust",
+        callback = function(event)
+          local opts = { buffer = event.buf, silent = true, desc = "Rust: debuggables" }
+          vim.keymap.set("n", "<leader>rd", function()
+            vim.cmd.RustLsp("debuggables")
+          end, opts)
+        end,
+      })
     end,
   },
   {

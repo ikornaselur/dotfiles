@@ -43,4 +43,20 @@ function M.toggle_summary()
   neotest.summary.toggle()
 end
 
+function M.run_nearest_dap()
+  local neotest = get_neotest()
+  if not neotest then
+    return
+  end
+  neotest.run.run({ strategy = "dap" })
+end
+
+function M.run_file_dap()
+  local neotest = get_neotest()
+  if not neotest then
+    return
+  end
+  neotest.run.run(vim.fn.expand("%"), { strategy = "dap" })
+end
+
 return M
