@@ -64,6 +64,7 @@ M.mason = {
     "stylua",
     "ruff",
     "ty",
+    "codelldb",
   },
 }
 
@@ -84,6 +85,8 @@ M.languages = {
       crates = true,
       inlay_hints = true,
       rustacean = true,
+      use_mason_rust_analyzer = true,
+      dap = true,
     },
     null_ls = {},
   },
