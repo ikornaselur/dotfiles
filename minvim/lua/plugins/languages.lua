@@ -122,10 +122,19 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "rust",
         callback = function(event)
-          local opts = { buffer = event.buf, silent = true, desc = "Rust: debuggables" }
+          local buf = event.buf
           vim.keymap.set("n", "<leader>rd", function()
             vim.cmd.RustLsp("debuggables")
-          end, opts)
+          end, { buffer = buf, silent = true, desc = "Rust: debuggables" })
+
+          vim.keymap.set("n", "<leader>ri", function()
+            local hints = vim.lsp.inlay_hint
+            if not (hints and hints.is_enabled) then
+              return
+            end
+            local enabled = hints.is_enabled({ bufnr = buf })
+            hints.enable(not enabled, { bufnr = buf })
+          end, { buffer = buf, silent = true, desc = "Rust: toggle inlay hints" })
         end,
       })
     end,
