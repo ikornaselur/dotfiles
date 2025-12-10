@@ -137,6 +137,9 @@ return {
         { pattern = "terminal", icon = " ", color = "red" },
       }
 
+      opts.plugins = opts.plugins or {}
+      opts.plugins.presets = vim.tbl_extend("force", opts.plugins.presets or {}, { z = false })
+
       opts.preset = "helix"
       opts.icons = vim.tbl_extend("force", {
         separator = "·",
@@ -163,6 +166,21 @@ return {
           { "g", group = "goto" },
           { "<leader>w", proxy = "<c-w>", group = "windows" },
           { "z", group = "fold" },
+          { "za", desc = "Toggle fold" },
+          { "zA", desc = "Toggle fold recursively" },
+          { "zc", desc = "Close fold" },
+          { "zC", desc = "Close fold recursively" },
+          { "zo", desc = "Open fold" },
+          { "zO", desc = "Open fold recursively" },
+          { "zM", desc = "Close all folds" },
+          { "zR", desc = "Open all folds" },
+          { "zi", desc = "Enable/disable folds" },
+          { "zx", desc = "Recompute folds" },
+          { "zj", desc = "Next fold" },
+          { "zk", desc = "Prev fold" },
+          { "zt", desc = "Scroll line to top" },
+          { "zz", desc = "Scroll line to center" },
+          { "zb", desc = "Scroll line to bottom" },
         },
       }
       return opts

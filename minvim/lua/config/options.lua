@@ -12,7 +12,8 @@ function M.setup()
   opt.shiftwidth = 2
   opt.tabstop = 2
   opt.smartindent = true
-  opt.wrap = false
+  opt.wrap = true
+  opt.linebreak = true
   opt.splitright = true
   opt.splitbelow = true
   opt.cursorline = true

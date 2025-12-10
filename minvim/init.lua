@@ -21,6 +21,7 @@ require("config.options").setup()
 require("config.keymaps").setup()
 require("config.clipboard").setup()
 require("config.autocmds").setup()
+require("config.folds").setup()
 
 -- Set persisted theme early (for non-macOS); auto-dark-mode handles macOS.
 require("config.theme").setup()
