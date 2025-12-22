@@ -105,6 +105,8 @@ return {
       },
       keymap = {
         preset = "enter",
+        ["<CR>"] = { "accept", "fallback" },
+        ["<Tab>"] = { "accept", "fallback" },
         ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
       },
       sources = {
