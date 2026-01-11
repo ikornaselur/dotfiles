@@ -317,6 +317,13 @@ local function setup_keymaps(buf)
   end)
   map("<CR>", execute_selection)
   map("<Space>", execute_selection)
+
+  map("i", function()
+    close_dashboard(function()
+      vim.cmd.enew()
+      vim.cmd.startinsert()
+    end)
+  end)
 end
 
 function M.show()
