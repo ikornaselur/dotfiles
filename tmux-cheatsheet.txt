@@ -15,7 +15,7 @@ Alt + j            Move to pane below
 Alt + k            Move to pane above           Misc
 Alt + h            Move to pane left            ---------------
 Alt + l            Move to pane right           :setw synchronize-panes  Send command to all panes
-Prefix + q         Show pane numbers            Prefix + <
-Prefix + q + 0..9  Select pane by number        Prefix + >
- 
-:join-pane -t 0..9 Move current pane to window
+Prefix + q         Show pane numbers            Prefix + r               Reload config
+Prefix + q + 0..9  Select pane by number        Prefix + m               Toggle mouse
+:join-pane -t 0..9 Move current pane to window  Prefix + <               Window menu
+                                                Prefix + >               Pane menu
