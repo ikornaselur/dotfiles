@@ -1,7 +1,6 @@
 homebrew_cask_packages:
   - alt-tab
   - bettertouchtool
-  - docker-desktop
   - font-fira-code-nerd-font
   - hammerspoon
   - itsycal
