@@ -1,5 +1,5 @@
 - hosts: localhost
-  name: Set up Neovim with LazyVim
+  name: Set up Neovim with minvim
   gather_facts: false
   tasks:
     - name: Check if ~/.config/nvim exists
@@ -11,9 +11,9 @@
       ansible.builtin.command: mv ~/.config/nvim ~/.config/nvim.bak
       when: nvim_stat.stat.exists and not nvim_stat.stat.islnk
 
-    - name: Ensure ~/.config/nvim is symlinked to lazyvim config
+    - name: Ensure ~/.config/nvim is symlinked to minvim config
       ansible.builtin.file:
-        src: "~/.dotfiles/lazyvim"
+        src: "~/.dotfiles/minvim"
         dest: "~/.config/nvim"
         state: link
         force: true

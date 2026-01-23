@@ -1,11 +1,12 @@
 homebrew_cask_packages:
   - alt-tab
-  - docker
+  - bettertouchtool
+  - docker-desktop
   - font-fira-code-nerd-font
+  - hammerspoon
   - itsycal
   - little-snitch
   - rectangle
-  - bettertouchtool
   - wezterm
 
 homebrew_packages:
@@ -25,13 +26,11 @@ homebrew_packages:
   - imagemagick
   - jq
   - just
-  - just
   - neovim
   - nmap
   - nodejs
   - ripgrep
   - rsync
-  - rust
   - tig
   - tmux
   - wget
