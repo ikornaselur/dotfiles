@@ -1,0 +1,22 @@
+# Font settings
+font-family = FiraCode Nerd Font
+font-size = 14
+
+# Theme - auto-switches based on system appearance
+theme = light:Gruvbox Light,dark:Gruvbox Dark
+
+# Disable tab bar
+window-show-tab-bar = never
+
+# Window decorations - no title bar, just resize
+window-decoration = none
+
+# Window padding - all zeros
+window-padding-x = 0
+window-padding-y = 0
+
+# Keybindings for Option+Arrow word navigation
+# Option+Left sends Alt-b (backward-word)
+keybind = opt+left=text:\x1bb
+# Option+Right sends Alt-f (forward-word)
+keybind = opt+right=text:\x1bf
