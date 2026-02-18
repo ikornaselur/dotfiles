@@ -5,16 +5,17 @@ Pane                                            Windows
 ---------------                                 ---------------
 Prefix + {         Swap pane with previous      Prefix + c       Create window
 Prefix + }         Swap pane with next          Prefix + ,       Rename window
-Prefix + <C-o>     Rotate panes                 Prefix + &       Close current window
-Prefix + Space     Cycle through layouts        Prefix + w       List windows
-Prefix + !         Break pane to new window     Prefix + p       Previous window
-Prefix + ;         Toggle last active pane      Prefix + n       Next window
-Prefix + %         Split pane horizontally      Prefix + |       Toggle last active window
-Prefix + "         Split pane vertically        Prefix + 0..9    Select window by number
-Alt + j            Move to pane below
-Alt + k            Move to pane above           Misc
-Alt + h            Move to pane left            ---------------
-Alt + l            Move to pane right           :setw synchronize-panes  Send command to all panes
+Prefix + .         Rename pane                  Prefix + &       Close current window
+Prefix + <C-o>     Rotate panes                 Prefix + w       List windows
+Prefix + Space     Cycle through layouts        Prefix + p       Previous window
+Prefix + !         Break pane to new window     Prefix + n       Next window
+Prefix + ;         Toggle last active pane      Prefix + |       Toggle last active window
+Prefix + %         Split pane horizontally      Prefix + 0..9    Select window by number
+Prefix + "         Split pane vertically
+Alt + j            Move to pane below           Misc
+Alt + k            Move to pane above           ---------------
+Alt + h            Move to pane left            :setw synchronize-panes  Send command to all panes
+Alt + l            Move to pane right           Prefix + $               Rename session
 Prefix + q         Show pane numbers            Prefix + r               Reload config
 Prefix + q + 0..9  Select pane by number        Prefix + m               Toggle mouse
 :join-pane -t 0..9 Move current pane to window  Prefix + <               Window menu
