@@ -63,7 +63,6 @@ M.mason = {
     "eslint_d",
     "stylua",
     "ruff",
-    "ty",
     "codelldb",
   },
 }

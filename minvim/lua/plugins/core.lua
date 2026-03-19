@@ -93,6 +93,15 @@ return {
     opts = {},
   },
   {
+    "esmuellert/codediff.nvim",
+    cmd = "CodeDiff",
+    keys = {
+      { "<leader>gd", "<Cmd>CodeDiff<CR>", desc = "Code diff" },
+      { "<leader>gD", "<Cmd>CodeDiff HEAD<CR>", desc = "Code diff (HEAD)" },
+    },
+    opts = {},
+  },
+  {
     "numToStr/Comment.nvim",
     event = { "BufReadPost", "BufNewFile" },
     opts = {},
