@@ -55,20 +55,9 @@ return {
       end
       return {
         ensure_installed = filter_valid(settings.mason.lsp),
-        automatic_enable = { exclude = filter_valid(exclude) },
+        automatic_enable = false,
       }
     end,
-  },
-  {
-    "jay-babu/mason-null-ls.nvim",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "nvimtools/none-ls.nvim",
-    },
-    opts = {
-      ensure_installed = filter_valid(settings.mason.tools),
-      automatic_installation = false,
-    },
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
