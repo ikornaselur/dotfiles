@@ -39,7 +39,7 @@ end
 return {
   {
     "mrcjkb/rustaceanvim",
-    version = "^4",
+    version = "^7",
     ft = { "rust" },
     cond = rustacean_enabled,
     init = function()

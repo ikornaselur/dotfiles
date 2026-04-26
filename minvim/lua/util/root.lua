@@ -22,7 +22,7 @@ function M.detectors.lsp(buf)
 
   local roots = {}
   local clients = vim.lsp.get_clients({ bufnr = buf })
-  local ignore = vim.g.root_lsp_ignore or { "copilot" }
+  local ignore = vim.g.root_lsp_ignore or {}
   for _, client in ipairs(clients) do
     if not vim.tbl_contains(ignore, client.name) then
       if client.config and client.config.workspace_folders then
