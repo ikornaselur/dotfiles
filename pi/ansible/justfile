@@ -1,0 +1,31 @@
+# Run the full set of playbooks against a host
+full host user:
+  ansible-playbook -i '{{host}},' -u {{user}} --ask-become-pass full.yaml
+
+# Install/update apt packages
+apt host user:
+  ansible-playbook -i '{{host}},' -u {{user}} --ask-become-pass playbooks/apt.yaml
+
+# Symlink dotfiles
+dotfiles host user:
+  ansible-playbook -i '{{host}},' -u {{user}} playbooks/dotfiles.yaml
+
+# Set up oh-my-zsh + powerlevel10k
+omz host user:
+  ansible-playbook -i '{{host}},' -u {{user}} playbooks/omz.yaml
+
+# Install neovim from AppImage
+nvim host user:
+  ansible-playbook -i '{{host}},' -u {{user}} --ask-become-pass playbooks/nvim.yaml
+
+# Install litime
+litime host user:
+  ansible-playbook -i '{{host}},' -u {{user}} --ask-become-pass playbooks/litime.yaml
+
+# Install eza
+eza host user:
+  ansible-playbook -i '{{host}},' -u {{user}} --ask-become-pass playbooks/eza.yaml
+
+# Set up tmux
+tmux host user:
+  ansible-playbook -i '{{host}},' -u {{user}} playbooks/tmux.yaml

@@ -1,0 +1,29 @@
+- hosts: all
+  name: Install eza from GitHub release
+  gather_facts: false
+  tasks:
+    - name: Include common variables
+      include_vars: vars/common.yaml
+
+    - name: Ensure /opt/eza-{{ eza_version }} exists
+      ansible.builtin.file:
+        path: "/opt/eza-{{ eza_version }}"
+        state: directory
+        mode: "0755"
+      become: true
+
+    - name: Download and extract eza {{ eza_version }} tarball
+      ansible.builtin.unarchive:
+        src: "https://github.com/eza-community/eza/releases/download/v{{ eza_version }}/eza_{{ eza_arch }}.tar.gz"
+        dest: "/opt/eza-{{ eza_version }}"
+        remote_src: true
+        creates: "/opt/eza-{{ eza_version }}/eza"
+      become: true
+
+    - name: Symlink eza to /usr/local/bin/eza
+      ansible.builtin.file:
+        src: "/opt/eza-{{ eza_version }}/eza"
+        dest: /usr/local/bin/eza
+        state: link
+        force: true
+      become: true

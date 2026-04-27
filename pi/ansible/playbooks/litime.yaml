@@ -1,0 +1,21 @@
+- hosts: all
+  name: Install litime from GitHub release
+  gather_facts: false
+  tasks:
+    - name: Include common variables
+      include_vars: vars/common.yaml
+
+    - name: Download litime {{ litime_version }} binary
+      ansible.builtin.get_url:
+        url: "https://github.com/ikornaselur/litime/releases/download/v{{ litime_version }}/litime-{{ litime_arch }}"
+        dest: "/usr/local/bin/litime-{{ litime_version }}"
+        mode: "0755"
+      become: true
+
+    - name: Symlink litime to /usr/local/bin/litime
+      ansible.builtin.file:
+        src: "/usr/local/bin/litime-{{ litime_version }}"
+        dest: /usr/local/bin/litime
+        state: link
+        force: true
+      become: true

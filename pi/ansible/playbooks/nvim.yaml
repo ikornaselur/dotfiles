@@ -1,0 +1,37 @@
+- hosts: all
+  name: Install neovim from AppImage and link minvim config
+  gather_facts: false
+  tasks:
+    - name: Include common variables
+      include_vars: vars/common.yaml
+
+    - name: Download neovim {{ nvim_version }} AppImage
+      ansible.builtin.get_url:
+        url: "https://github.com/neovim/neovim/releases/download/v{{ nvim_version }}/nvim-linux-{{ nvim_arch }}.appimage"
+        dest: "/usr/local/bin/nvim-{{ nvim_version }}"
+        mode: "0755"
+      become: true
+
+    - name: Symlink nvim to /usr/local/bin/nvim
+      ansible.builtin.file:
+        src: "/usr/local/bin/nvim-{{ nvim_version }}"
+        dest: /usr/local/bin/nvim
+        state: link
+        force: true
+      become: true
+
+    - name: Check if ~/.config/nvim exists
+      ansible.builtin.stat:
+        path: ~/.config/nvim
+      register: nvim_stat
+
+    - name: Backup existing ~/.config/nvim if it is not a symlink
+      ansible.builtin.command: mv ~/.config/nvim ~/.config/nvim.bak
+      when: nvim_stat.stat.exists and not nvim_stat.stat.islnk
+
+    - name: Ensure ~/.config/nvim is symlinked to minvim config
+      ansible.builtin.file:
+        src: "{{ dotfiles_dest }}/minvim"
+        dest: ~/.config/nvim
+        state: link
+        force: true

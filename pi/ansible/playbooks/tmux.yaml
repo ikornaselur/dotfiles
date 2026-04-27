@@ -1,0 +1,23 @@
+- hosts: all
+  name: Set up tmux
+  gather_facts: false
+  tasks:
+    - name: Include common variables
+      include_vars: vars/common.yaml
+
+    - name: Ensure tmux config is symlinked
+      ansible.builtin.file:
+        src: "{{ dotfiles_dest }}/tmux.conf"
+        dest: ~/.tmux.conf
+        state: link
+        force: true
+
+    - name: Ensure tpm is up to date
+      ansible.builtin.git:
+        repo: https://github.com/tmux-plugins/tpm.git
+        dest: ~/.tmux/plugins/tpm
+        update: true
+        depth: 1
+
+    - name: Run plugin install
+      ansible.builtin.shell: ~/.tmux/plugins/tpm/bin/install_plugins

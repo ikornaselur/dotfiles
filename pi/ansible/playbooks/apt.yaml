@@ -1,0 +1,22 @@
+- hosts: all
+  name: Install apt packages
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Include common variables
+      include_vars: vars/common.yaml
+
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Ensure common packages are present
+      ansible.builtin.apt:
+        name: "{{ apt_packages }}"
+        state: present
+
+    - name: Set zsh as the login shell
+      ansible.builtin.user:
+        name: "{{ ansible_user }}"
+        shell: /usr/bin/zsh
