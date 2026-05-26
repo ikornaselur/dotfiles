@@ -1,11 +1,13 @@
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/usr/local/go/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$PATH"
-export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="/usr/local/opt/libpq/bin:$PATH"
+export BUN_INSTALL="$HOME/.bun"
+typeset -U path
+path=(
+  $HOME/.cargo/bin
+  $BUN_INSTALL/bin
+  $HOME/.yarn/bin
+  $HOME/.local/bin
+  /opt/homebrew/bin
+  $path
+)
 
 litime --main-formatting "dimmed white" --author-formatting "intense white"
 
@@ -27,16 +29,10 @@ plugins=(git zsh-syntax-highlighting zsh-completions zsh-autosuggestions fzf)
 
 source $ZSH/oh-my-zsh.sh
 
-autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
-
 export EDITOR=nvim
 
 # Direnv
-eval "$(direnv hook zsh osx brew)"
+eval "$(direnv hook zsh)"
 export DIRENV_LOG_FORMAT=""
 
 # Aliases
@@ -53,6 +49,9 @@ alias greb="git rebase origin/master"
 alias dc="docker-compose"
 alias flushdns="sudo killall -HUP mDNSResponder"
 alias rustrepl=evcxr
+alias x=uvx
+# It's glo with date
+alias glod='git log --pretty=format:"%C(yellow)%h%C(auto)%d%C(reset) %C(blue)%ad%C(reset) %s" --date=format:"%b %d - %H:%M"'
 
 source ~/.zshrc.extra
 
@@ -61,3 +60,16 @@ source ~/.zshrc.extra
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(zoxide init zsh --cmd j)"
+
+export NVM_DIR=~/.nvm
+_nvm_lazy_load() {
+  unset -f nvm node npm npx
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+}
+nvm()  { _nvm_lazy_load; nvm "$@"; }
+node() { _nvm_lazy_load; node "$@"; }
+npm()  { _nvm_lazy_load; npm "$@"; }
+npx()  { _nvm_lazy_load; npx "$@"; }
+
+# bun completions
+[ -s "/Users/axel/.bun/_bun" ] && source "/Users/axel/.bun/_bun"
