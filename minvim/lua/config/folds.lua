@@ -6,11 +6,22 @@ local function has_parser(buf)
 end
 
 local function ensure_treesitter(buf)
-  if has_parser(buf) then
-    return true
+  if not has_parser(buf) then
+    local ok = pcall(vim.treesitter.start, buf)
+    if not (ok and has_parser(buf)) then
+      return false
+    end
   end
-  local ok = pcall(vim.treesitter.start, buf)
-  return ok and has_parser(buf)
+  -- Force a full synchronous parse so fold levels exist immediately. On large
+  -- files the initial parse is otherwise deferred, leaving foldexpr returning 0
+  -- for every line (symptom: "E490: No fold found" on the whole buffer).
+  local ok, parser = pcall(vim.treesitter.get_parser, buf)
+  if ok and parser then
+    pcall(function()
+      parser:parse(true)
+    end)
+  end
+  return true
 end
 
 local function refresh(buf)
