@@ -52,6 +52,8 @@ alias rustrepl=evcxr
 alias x=uvx
 # It's glo with date
 alias glod='git log --pretty=format:"%C(yellow)%h%C(auto)%d%C(reset) %C(blue)%ad%C(reset) %s" --date=format:"%b %d - %H:%M"'
+alias mux=tmuxinator
+alias m='tmuxinator start'
 
 source ~/.zshrc.extra
 
@@ -62,14 +64,12 @@ eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(zoxide init zsh --cmd j)"
 
 export NVM_DIR=~/.nvm
-_nvm_lazy_load() {
-  unset -f nvm node npm npx
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-}
-nvm()  { _nvm_lazy_load; nvm "$@"; }
-node() { _nvm_lazy_load; node "$@"; }
-npm()  { _nvm_lazy_load; npm "$@"; }
-npx()  { _nvm_lazy_load; npx "$@"; }
+# Self-contained so each wrapper still works if inherited into a sub-shell
+# (exported functions don't carry along a separate unexported helper).
+nvm()  { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; nvm "$@"; }
+node() { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; node "$@"; }
+npm()  { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; npm "$@"; }
+npx()  { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; npx "$@"; }
 
 # bun completions
 [ -s "/Users/axel/.bun/_bun" ] && source "/Users/axel/.bun/_bun"
