@@ -93,6 +93,8 @@ install_neovim() {
     *) die "Unsupported architecture: $(uname -m)" ;;
   esac
 
+  NVIM_OPT_DIR="/opt/nvim-linux-${arch}"
+
   local tarball="nvim-linux-${arch}.tar.gz"
   local url="https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/${tarball}"
   local tmp; tmp="$(mktemp -d)"
@@ -102,14 +104,21 @@ install_neovim() {
   curl -fsSL "$url" -o "$tmp/$tarball" \
     || die "Failed to download $url (does v${NVIM_VERSION} ship a linux-${arch} tarball?)"
 
-  log "Installing Neovim into ${NVIM_PREFIX}..."
+  log "Installing Neovim into ${NVIM_OPT_DIR}..."
   # Extract as the normal user (into our own tmp dir) so cleanup can remove it;
-  # only the copy into the prefix below needs root.
+  # only the move into place below needs root.
   tar -C "$tmp" -xzf "$tmp/$tarball"
-  # Drop stale runtime files from any previous tarball install in this prefix
-  # (cp won't remove files the new version no longer ships).
+  # Install the tarball as a self-contained tree and symlink the binary onto
+  # PATH. The release build is relocatable (it finds its runtime relative to
+  # the binary), so we avoid merging into ${NVIM_PREFIX} — that collides with
+  # files the distro already owns there (e.g. a /usr/local/share/man symlink).
+  $SUDO rm -rf "$NVIM_OPT_DIR"
+  $SUDO mkdir -p "$(dirname "$NVIM_OPT_DIR")" "$NVIM_PREFIX/bin"
+  $SUDO mv "$tmp/nvim-linux-${arch}" "$NVIM_OPT_DIR"
+  $SUDO ln -sf "$NVIM_OPT_DIR/bin/nvim" "$NVIM_PREFIX/bin/nvim"
+  # Drop stale files from an older script that copied the tarball into the
+  # prefix directly; the new layout makes them dead weight.
   $SUDO rm -rf "$NVIM_PREFIX/share/nvim" "$NVIM_PREFIX/lib/nvim"
-  $SUDO cp -rf "$tmp/nvim-linux-${arch}/." "$NVIM_PREFIX/"
 }
 
 # True if $1 (current version) is >= $2 (required version).
