@@ -71,5 +71,13 @@ node() { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.
 npm()  { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; npm "$@"; }
 npx()  { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; npx "$@"; }
 
+# Default node's bin on PATH so global CLIs work without sourcing nvm.
+() {
+  local ver
+  ver=$(<"$NVM_DIR/alias/default" 2>/dev/null) || return
+  while [ -n "$ver" ] && [ -r "$NVM_DIR/alias/$ver" ]; do ver=$(<"$NVM_DIR/alias/$ver"); done
+  [ -d "$NVM_DIR/versions/node/$ver/bin" ] && path=("$NVM_DIR/versions/node/$ver/bin" $path)
+}
+
 # bun completions
 [ -s "/Users/axel/.bun/_bun" ] && source "/Users/axel/.bun/_bun"
