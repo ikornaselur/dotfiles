@@ -59,6 +59,7 @@
     timewarrior             # timewarrior tracking status (https://timewarrior.net/)
     taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     per_directory_history   # Oh My Zsh per-directory-history local/global indicator
+    time                    # time at which the command was executed
     newline
   )
   typeset -g POWERLEVEL9K_MODE=nerdfont-v3
@@ -418,10 +419,14 @@
   typeset -g POWERLEVEL9K_BATTERY_VERBOSE=false
   typeset -g POWERLEVEL9K_WIFI_FOREGROUND=68
   typeset -g POWERLEVEL9K_TIME_FOREGROUND=66
-  typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
-  typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=false
+  typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%Y-%m-%d %H:%M:%S}'
+  typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=true
+  # Time stays hidden while typing; it appears (stamped at Enter) only in
+  # finalized prompts of executed commands.
+  function p10k-on-pre-prompt()  { p10k display '*/time'=hide }
+  function p10k-on-post-prompt() { p10k display '*/time'=show }
   typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
-  typeset -g POWERLEVEL9K_INSTANT_PROMPT=verbose
+  typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
   typeset -g POWERLEVEL9K_DISABLE_HOT_RELOAD=true
   (( ! $+functions[p10k] )) || p10k reload
 }

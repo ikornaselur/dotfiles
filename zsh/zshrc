@@ -81,3 +81,6 @@ npx()  { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.
 
 # bun completions
 [ -s "/Users/axel/.bun/_bun" ] && source "/Users/axel/.bun/_bun"
+
+# Let's stop processing here.
+return
