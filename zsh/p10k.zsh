@@ -428,6 +428,7 @@
   typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
   typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
   typeset -g POWERLEVEL9K_DISABLE_HOT_RELOAD=true
+  [[ ! -f ~/.p10k.zsh.extra ]] || source ~/.p10k.zsh.extra
   (( ! $+functions[p10k] )) || p10k reload
 }
 typeset -g POWERLEVEL9K_CONFIG_FILE=${${(%):-%x}:a}
